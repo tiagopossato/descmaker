@@ -4,8 +4,7 @@
 cff-version: 1.2.0
 title: DEScMaker
 message: >-
-  If you use this software, please cite it using the
-  metadata from this file.
+  If you use this software, please cite it using the metadata from this file.
 type: software
 authors:
   - given-names: Tiago
@@ -13,14 +12,12 @@ authors:
     email: dev.tiago.possato@gmail.com
     affiliation: IFC, UTFPR
     orcid: 'https://orcid.org/0000-0002-9285-4331'
-repository-code: 'https://gitlab.com/tiago.possato/descmaker'
+repository-code: 'https://github.com/tiagopossato/descmaker'
 abstract: >-
-  A software to parse "Waters/Supremica" files and generate
-  C code from his inside supervisors.
+  A software to parse "Waters/Supremica" files and generate C code from his inside supervisors.
 keywords:
   - DES
   - TCS
   - code generation
 license: GPL-3.0+
-date-released: '2023-03-12'
-
+date-released: '2023-04-02'

@@ -33,3 +33,17 @@ add the following line to your `~/.bashrc` file:
 export PATH=$PATH:/path-to-project/app
 ```
 than run `source ~/.bashrc` to reload the file.
+
+
+# How to cite this work
+
+```bibtex
+@software{Possato2023,
+author = {Possato, Tiago},
+license = {GPL-3.0+},
+month = {4},
+title = {{DEScMaker}},
+url = {https://github.com/tiagopossato/descmaker},
+year = {2023}
+}
+```
