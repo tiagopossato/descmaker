@@ -47,3 +47,9 @@ url = {https://github.com/tiagopossato/descmaker},
 year = {2023}
 }
 ```
+
+```apa
+Possato, T. (2023). DEScMaker [Computer software]. https://github.com/tiagopossato/descmaker
+```
+
+```mla
