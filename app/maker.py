@@ -114,7 +114,7 @@ i = 0
 for event in event_list:
     event['Name'] = event['Name'].replace('.', '_')
     # Event on = {CONTROLLABLE, 0, "on", NULL};
-    events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, \"{event['Name']}\", NULL}};\n"
+    events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, SUP_DEBUG_STR(\"{event['Name']}\"), NULL}};\n"
     events_h += f"extern Event {event['Name']};\n"
     set_callback += f"  set_event_callback(&{event['Name']}, default_callback);\n"
     handle_event += f"  handle_event(&{event['Name']});\n"

@@ -52,4 +52,6 @@ year = {2023}
 Possato, T. (2023). DEScMaker [Computer software]. https://github.com/tiagopossato/descmaker
 ```
 
-```mla
+```abnt
+POSSATO, Tiago. DEScMaker. 2023. Disponível em: <https://github.com/tiagopossato/descmaker>. Acesso em: dia mes. ano.
+```

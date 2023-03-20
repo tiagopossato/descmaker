@@ -22,15 +22,17 @@ bool run_supervisor(Supervisor *supervisor, Event *event) {
   assert(supervisor != NULL);
   assert(event != NULL);
 
-  SUP_DEBUG_PRINT("Running supervisor %s with event %s\n", supervisor->name,
-                  event->name);
-
   State *last_state = supervisor->current_state;
   Transition *transition = supervisor->current_state->transitions;
   while (transition != NULL) {
     if (transition->event->id == event->id) {
       supervisor->current_state = transition->target;
       supervisor->last_state = last_state;
+      SUP_DEBUG_PRINT("%s, event %s %s => %s -> %s\n", supervisor->name,
+                      event->kind == CONTROLLABLE ? SUP_DEBUG_STR("CONTROLLABLE")
+                                                  : SUP_DEBUG_STR("UNCONTROLLABLE"),
+                      event->name, supervisor->last_state->name,
+                      supervisor->current_state->name);
       return true;
     }
     transition = transition->next;
@@ -73,7 +75,7 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event) {
   return false;
 }
 
-bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event){
+bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event) {
   // if event is in the alphabet return true
   Alphabet *alphabet = supervisor->alphabet;
   while (alphabet != NULL) {

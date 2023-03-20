@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-void handle_event(Event *event);
+bool handle_event(Event *event);
 
 #ifdef __cplusplus
 }
