@@ -7,6 +7,11 @@ class CustomTemplate(Template):
 	delimiter = '%$%'
 
 def fill_template(template, dest, template_dict):
+    # verify if script is being executed on Windows and convert paths to Windows format
+    if os.name == 'nt':
+        template = template.replace('/', '\\')
+        dest = dest.replace('/', '\\')
+
     # make the names of the files
     with open(template, 'r') as f:
         src = CustomTemplate(f.read())
