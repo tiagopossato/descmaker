@@ -5,7 +5,6 @@ param(
     [Parameter(Mandatory=$false, HelpMessage="Output directory")]
     [string]$o = "generated_code",
     [Parameter(Mandatory=$false, HelpMessage="Execute the generated code")]
-    [string]$e = "y"
 )
 
 #This will set the $BASEDIR variable to the directory where the script is located.
@@ -17,13 +16,6 @@ function print_help {
     Write-Host " -i <input>: input file (required)"
     Write-Host " -o <output>: output directory. Default: generated_code"
 }
-
-
-#print received parameters
-# Write-Host "Input file: $i"
-# Write-Host "Output directory: $o"
-# Write-Host "Execute: $e"
-# Write-Host "Script location: $BASEDIR"
 
 # verify if output directory exists
 if (Test-Path $o -PathType Container) {
@@ -75,21 +67,6 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "Generation successful!"
     Write-Host ""
     Write-Host ""
-    Write-Host ""
-
-    if ($e -eq "y") {
-        Write-Host "-------------------EXECUTING----------------------"
-        Write-Host ""
-        Write-Host ""
-        Write-Host ""
-        # change to output directory
-        Set-Location $o
-        # run the generated code
-        python main.py
-        # change to previous directory
-        Set-Location $SCRIPTPWD
-    }
-
     Write-Host ""
     Write-Host ""
     Write-Host "-------------------INSTRUCTIONS----------------------"
