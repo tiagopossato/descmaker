@@ -8,12 +8,19 @@ The code generated is independent and don't any requeriment.
 
 ## Pre-requisites
 
-### Ambient
+### Windows
+ run ```setup_win.ps1``` with Powershell to create virtual environment and install dependencies.
 
-run `env_setup.sh` to creat an virtual environment and install the requeriments.
+ run ```app\descmaker.ps1``` with Powershell to execute the software. Use ```-i``` to set input file. Use ```-o``` to set output path. If not set, the output will be in ```generetad_code```.
+ 
+### Linux
+run ```setup_linux.sh``` with bash to create virtual environment and install dependencies.
 
+ run ```app\descmaker.sh``` with terminal to execute the software. Use ```-i``` to set input file. Use ```-o``` to set output path. If not set, the output will be in ```generetad_code```.
+ 
 ### Supremica
 - For convenience, when synthesizing a supervisor, mark the 'Rename states' option.
+- Do not name a supervisor as 'supervisor'
 - Before send supervisor 'To editor', 'Rename automaton' to remove caracteres and spaces. Keep only letters and numbers.
 
 ## Generate code
