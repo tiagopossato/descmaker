@@ -32,7 +32,3 @@ To use with PlatformIO, comment the main function in `main.c` and rename `main.c
 |  |-- README.md
 |  |-- run.sh
 ```
-
-# Visual explanation
-
-![Visual explanation](https://github.com/tiagopossato/descmaker/blob/main/docs/visual_readme.drawio.svg?raw=true

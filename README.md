@@ -47,6 +47,9 @@ export PATH=$PATH:/path-to-project/app
 ```
 than run `source ~/.bashrc` to reload the file.
 
+# Visual explanation
+
+![Visual explanation](https://github.com/tiagopossato/descmaker/blob/main/docs/visual_readme.drawio.svg?raw=true)
 
 # How to cite this work
 
