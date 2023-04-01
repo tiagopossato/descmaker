@@ -49,7 +49,7 @@ than run `source ~/.bashrc` to reload the file.
 
 # Visual explanation
 
-![Visual explanation](https://github.com/tiagopossato/descmaker/blob/main/docs/visual_readme.drawio.svg?raw=true)
+![Visual explanation](https://github.com/tiagopossato/descmaker/blob/main/docs/visual_readme.svg?raw=true)
 
 # How to cite this work
 
