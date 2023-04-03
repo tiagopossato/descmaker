@@ -6,7 +6,7 @@
 #include "../../lib/supervisor/supervisor.h"
 
 // create events
-extern Event btnON;
+extern Event btn;
 extern Event liga;
 extern Event desliga;
 

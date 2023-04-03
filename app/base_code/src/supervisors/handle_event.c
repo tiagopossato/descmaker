@@ -1,8 +1,12 @@
-#include "handle_event.h"
+#include <assert.h>
+#include <stdio.h>
 #include "../../lib/supervisor/supervisor.h"
 #include "events.h"
+#include "handle_event.h"
+
 #include "sup.h"
-#include <stdio.h>
+
+
 
 /**
  * @brief The alphabet
@@ -17,7 +21,7 @@ struct _SupervisorList {
 // first create all supervisors
 extern SupervisorList sup_list;
 
-// than recreate and linking them
+// then recreate and linking them
 SupervisorList sup_list = {&sup, NULL};
 
 bool handle_event(Event *event) {

@@ -7,45 +7,64 @@
 #include "sup.h"
 
 // Supervisor specific instances
+// alphabet create
+Alphabet sup_btn_evt0;
+Alphabet sup_desliga_evt1;
+Alphabet sup_liga_evt2;
+
 // Alphabet init
-Alphabet sup_btnON_evt0;
-Alphabet sup_liga_evt1;
-Alphabet sup_desliga_evt2;
+Alphabet sup_btn_evt0 = {&btn, &sup_desliga_evt1};
+Alphabet sup_desliga_evt1 = {&desliga, &sup_liga_evt2};
+Alphabet sup_liga_evt2 = {&liga, NULL};
 
 // states create
-State sup_q0;
-State sup_q2;
-State sup_q3;
-State sup_q4;
+State sup_G1S0_E1S0_E2S0_G2S0;
+State sup_G1S0_E1S0_E2S0_G2S1;
+State sup_G1S0_E1S0_E2S1_G2S1;
+State sup_G1S0_E1S1_E2S0_G2S0;
+State sup_G1S0_E1S1_E2S0_G2S1;
+State sup_G1S0_E1S1_E2S1_G2S0;
+State sup_G1S0_E1S1_E2S1_G2S1;
 
 // transitions create and init
-Transition sup_q0_t0;
-Transition sup_q2_t0;
-Transition sup_q2_t1;
-Transition sup_q3_t0;
-Transition sup_q4_t0;
-Transition sup_q4_t1;
+Transition sup_G1S0_E1S0_E2S0_G2S0_t0;
+Transition sup_G1S0_E1S0_E2S0_G2S0_t0 = {&btn, &sup_G1S0_E1S1_E2S1_G2S0, NULL};
 
-Alphabet sup_btnON_evt0 = {&btnON, &sup_liga_evt1};
-Alphabet sup_liga_evt1 = {&liga, &sup_desliga_evt2};
-Alphabet sup_desliga_evt2 = {&desliga, NULL};
+Transition sup_G1S0_E1S0_E2S0_G2S1_t0;
+Transition sup_G1S0_E1S0_E2S0_G2S1_t1;
+Transition sup_G1S0_E1S0_E2S0_G2S1_t0 = {&desliga, &sup_G1S0_E1S0_E2S0_G2S0, &sup_G1S0_E1S0_E2S0_G2S1_t1};
+Transition sup_G1S0_E1S0_E2S0_G2S1_t1 = {&btn, &sup_G1S0_E1S1_E2S1_G2S1, NULL};
 
-// transitions create and init
-Transition sup_q0_t0 = {&btnON, &sup_q2, NULL};
+Transition sup_G1S0_E1S0_E2S1_G2S1_t0;
+Transition sup_G1S0_E1S0_E2S1_G2S1_t0 = {&btn, &sup_G1S0_E1S1_E2S0_G2S1, NULL};
 
-Transition sup_q2_t0 = {&btnON, &sup_q2, &sup_q2_t1};
-Transition sup_q2_t1 = {&liga, &sup_q3, NULL};
+Transition sup_G1S0_E1S1_E2S0_G2S0_t0;
+Transition sup_G1S0_E1S1_E2S0_G2S0_t1;
+Transition sup_G1S0_E1S1_E2S0_G2S0_t0 = {&liga, &sup_G1S0_E1S0_E2S0_G2S1, &sup_G1S0_E1S1_E2S0_G2S0_t1};
+Transition sup_G1S0_E1S1_E2S0_G2S0_t1 = {&btn, &sup_G1S0_E1S1_E2S1_G2S0, NULL};
 
-Transition sup_q3_t0 = {&btnON, &sup_q4, NULL};
+Transition sup_G1S0_E1S1_E2S0_G2S1_t0;
+Transition sup_G1S0_E1S1_E2S0_G2S1_t1;
+Transition sup_G1S0_E1S1_E2S0_G2S1_t0 = {&desliga, &sup_G1S0_E1S1_E2S0_G2S0, &sup_G1S0_E1S1_E2S0_G2S1_t1};
+Transition sup_G1S0_E1S1_E2S0_G2S1_t1 = {&btn, &sup_G1S0_E1S1_E2S1_G2S1, NULL};
 
-Transition sup_q4_t0 = {&desliga, &sup_q0, &sup_q4_t1};
-Transition sup_q4_t1 = {&btnON, &sup_q4, NULL};
+Transition sup_G1S0_E1S1_E2S1_G2S0_t0;
+Transition sup_G1S0_E1S1_E2S1_G2S0_t1;
+Transition sup_G1S0_E1S1_E2S1_G2S0_t0 = {&liga, &sup_G1S0_E1S0_E2S1_G2S1, &sup_G1S0_E1S1_E2S1_G2S0_t1};
+Transition sup_G1S0_E1S1_E2S1_G2S0_t1 = {&btn, &sup_G1S0_E1S1_E2S0_G2S0, NULL};
+
+Transition sup_G1S0_E1S1_E2S1_G2S1_t0;
+Transition sup_G1S0_E1S1_E2S1_G2S1_t0 = {&btn, &sup_G1S0_E1S1_E2S0_G2S1, NULL};
+
 
 // states init
-State sup_q0 = {true, SUP_DEBUG_STR("q0"), &sup_q0_t0};
-State sup_q2 = {false, SUP_DEBUG_STR("q2"), &sup_q2_t0};
-State sup_q3 = {false, SUP_DEBUG_STR("q3"), &sup_q3_t0};
-State sup_q4 = {false, SUP_DEBUG_STR("q4"), &sup_q4_t0};
+State sup_G1S0_E1S0_E2S0_G2S0 = {true, SUP_DEBUG_STR("G1S0_E1S0_E2S0_G2S0"), &sup_G1S0_E1S0_E2S0_G2S0_t0};
+State sup_G1S0_E1S0_E2S0_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S0_E2S0_G2S1"), &sup_G1S0_E1S0_E2S0_G2S1_t0};
+State sup_G1S0_E1S0_E2S1_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S0_E2S1_G2S1"), &sup_G1S0_E1S0_E2S1_G2S1_t0};
+State sup_G1S0_E1S1_E2S0_G2S0 = {false, SUP_DEBUG_STR("G1S0_E1S1_E2S0_G2S0"), &sup_G1S0_E1S1_E2S0_G2S0_t0};
+State sup_G1S0_E1S1_E2S0_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S1_E2S0_G2S1"), &sup_G1S0_E1S1_E2S0_G2S1_t0};
+State sup_G1S0_E1S1_E2S1_G2S0 = {false, SUP_DEBUG_STR("G1S0_E1S1_E2S1_G2S0"), &sup_G1S0_E1S1_E2S1_G2S0_t0};
+State sup_G1S0_E1S1_E2S1_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S1_E2S1_G2S1"), &sup_G1S0_E1S1_E2S1_G2S1_t0};
 
 // Supervisor create
-Supervisor sup = {&sup_q0, &sup_q0, NULL,  &sup_btnON_evt0, "sup"};
+Supervisor sup = {&sup_G1S0_E1S0_E2S0_G2S0, &sup_G1S0_E1S0_E2S0_G2S0, NULL,  &sup_btn_evt0, "sup"};

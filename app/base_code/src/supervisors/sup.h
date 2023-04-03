@@ -1,8 +1,10 @@
 #ifndef __SUP_H__
 #define __SUP_H__
 
-#include "../../lib/supervisor/supervisor.h"
+#include <stdbool.h>
+#include <stdlib.h>
 
+#include "../../lib/supervisor/supervisor.h"
 // Supervisor create
 extern Supervisor sup;
 
