@@ -9,6 +9,15 @@ The code generated is independent and don't any requeriment.
 ## Pre-requisites
 
 ### Windows
+
+Install python3.
+
+Open Powershell as administrator and run:
+```powershell
+Set-ExecutionPolicy Unrestricted
+```
+Select 'Y' and press enter.
+
 run ```setup_win.ps1``` with Powershell to create virtual environment and install dependencies.
 
 ### Linux
