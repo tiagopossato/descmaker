@@ -20,6 +20,11 @@ Select 'Y' and press enter.
 
 run ```setup_win.ps1``` with Powershell to create virtual environment and install dependencies.
 
+
+#### Windows alternative
+
+<span style="color:red">Use WSL and be free and happy.</span>
+
 ### Linux
 run ```setup_linux.sh``` with bash to create virtual environment and install dependencies.
  
