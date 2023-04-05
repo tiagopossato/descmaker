@@ -24,8 +24,8 @@
      inkscape:pagecheckerboard="0"
      showgrid="false"
      inkscape:zoom="1.9934986"
-     inkscape:cx="259.59386"
-     inkscape:cy="141.71066"
+     inkscape:cx="288.68844"
+     inkscape:cy="179.83459"
      inkscape:window-width="1318"
      inkscape:window-height="704"
      inkscape:window-x="0"
@@ -117,37 +117,7 @@
        id="path22" />
     <g
        transform="translate(40.593806,-52.099645)"
-       id="g28">
-      <switch
-         id="switch26">
-        <foreignObject
-           pointer-events="none"
-           width="100%"
-           height="100%"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-           style="overflow: visible; text-align: left;">
-          <xhtml:div
-             style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 216px; margin-left: 400px;">
-            <xhtml:div
-               data-drawio-colors="color: rgb(0, 0, 0); "
-               style="box-sizing: border-box; font-size: 0px; text-align: center;">
-              <xhtml:div
-                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">User</xhtml:div>
-            </xhtml:div>
-          </xhtml:div>
-        </foreignObject>
-        <text
-           x="400"
-           y="228"
-           fill="#000000"
-           font-family="Helvetica"
-           font-size="12px"
-           text-anchor="middle"
-           id="text24"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-             id="tspan21532">User</tspan></text>
-      </switch>
-    </g>
+       id="g28" />
     <g
        transform="translate(-0.5,-0.5)"
        id="g38">
@@ -366,39 +336,6 @@
            id="tspan530">        └── sup.h</tspan></text>
     </g>
     <g
-       transform="translate(45.669044,-21.620024)"
-       id="g90">
-      <switch
-         id="switch88">
-        <foreignObject
-           pointer-events="none"
-           width="100%"
-           height="100%"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-           style="overflow: visible; text-align: left;">
-          <xhtml:div
-             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 88px; height: 1px; padding-top: 42px; margin-left: 251px;">
-            <xhtml:div
-               data-drawio-colors="color: rgb(0, 0, 0); "
-               style="box-sizing: border-box; font-size: 0px; text-align: center;">
-              <xhtml:div
-                 style="display: inline-block; font-size: 12px; font-family: &quot;Times New Roman&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">C project</xhtml:div>
-            </xhtml:div>
-          </xhtml:div>
-        </foreignObject>
-        <text
-           x="295"
-           y="46"
-           fill="#000000"
-           font-family="'Times New Roman'"
-           font-size="12px"
-           text-anchor="middle"
-           id="text86"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-             id="tspan8562">C project</tspan></text>
-      </switch>
-    </g>
-    <g
        fill="#000000"
        font-family="Helvetica"
        pointer-events="none"
@@ -432,95 +369,6 @@
        stroke-miterlimit="10"
        pointer-events="none"
        id="path100" />
-    <g
-       transform="translate(-0.13671875,40.351562)"
-       id="g106">
-      <switch
-         id="switch104">
-        <foreignObject
-           pointer-events="none"
-           width="100%"
-           height="100%"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-           style="overflow: visible; text-align: left;">
-          <xhtml:div
-             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 57px; height: 1px; padding-top: 42px; margin-left: 15px;">
-            <xhtml:div
-               data-drawio-colors="color: rgb(0, 0, 0); "
-               style="box-sizing: border-box; font-size: 0px; text-align: center;">
-              <xhtml:div
-                 style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
-                <xhtml:p>
-                  <xhtml:font
-                     face="Times New Roman">.wmod</xhtml:font>
-                </xhtml:p>
-              </xhtml:div>
-            </xhtml:div>
-          </xhtml:div>
-        </foreignObject>
-        <text
-           x="44"
-           y="46"
-           fill="#000000"
-           font-family="Helvetica"
-           font-size="12px"
-           text-anchor="middle"
-           id="text102"><tspan
-             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-             id="tspan12748">.wmod</tspan></text>
-      </switch>
-    </g>
-    <g
-       transform="translate(-0.13671875,40.351562)"
-       id="g112">
-      <switch
-         id="switch110">
-        <foreignObject
-           pointer-events="none"
-           width="100%"
-           height="100%"
-           requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-           style="overflow: visible; text-align: left;">
-          <xhtml:div
-             style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 57px; height: 1px; padding-top: 71px; margin-left: 16px;">
-            <xhtml:div
-               data-drawio-colors="color: rgb(0, 0, 0); "
-               style="box-sizing: border-box; font-size: 0px; text-align: center;">
-              <xhtml:div
-                 style="display: inline-block; font-size: 8px; font-family: &quot;Times New Roman&quot;; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: normal; overflow-wrap: normal;">
-                <xhtml:p>with the synthesized supervisor</xhtml:p>
-              </xhtml:div>
-            </xhtml:div>
-          </xhtml:div>
-        </foreignObject>
-        <text
-           x="43.966606"
-           y="62.153816"
-           fill="#000000"
-           font-family="'Times New Roman'"
-           font-size="8px"
-           text-anchor="middle"
-           id="text108"><tspan
-             sodipodi:role="line"
-             id="tspan69680"
-             x="43.966606"
-             y="62.153816"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-               id="tspan14142">with the</tspan></tspan><tspan
-             sodipodi:role="line"
-             id="tspan69682"
-             x="43.966606"
-             y="72.228363"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-               id="tspan69684">synthesized</tspan></tspan><tspan
-             sodipodi:role="line"
-             x="43.966606"
-             y="82.30291"
-             id="tspan72230"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-               id="tspan72232">supervisor</tspan></tspan></text>
-      </switch>
-    </g>
     <path
        d="m 508.39381,212.40034 c -3.58,0 -7.22,-3.29 -7.22,-7.82 v -13.57 h 68.55 c 4.46,0 7.37,3.99 7.37,7.68 v 13.71 z"
        fill="#ffffff"
@@ -589,39 +437,6 @@
          stroke-miterlimit="10"
          pointer-events="none"
          id="path130" />
-      <g
-         transform="translate(-3.703125,-5.8203125)"
-         id="g136">
-        <switch
-           id="switch134">
-          <foreignObject
-             pointer-events="none"
-             width="100%"
-             height="100%"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-             style="overflow: visible; text-align: left;">
-            <xhtml:div
-               style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 185px; margin-left: 90px;">
-              <xhtml:div
-                 data-drawio-colors="color: rgb(0, 0, 0); "
-                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                <xhtml:div
-                   style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">User</xhtml:div>
-              </xhtml:div>
-            </xhtml:div>
-          </foreignObject>
-          <text
-             x="90"
-             y="197"
-             fill="#000000"
-             font-family="Helvetica"
-             font-size="12px"
-             text-anchor="middle"
-             id="text132"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-               id="tspan16550">User</tspan></text>
-        </switch>
-      </g>
     </g>
     <g
        id="g59708"
@@ -646,40 +461,6 @@
          pointer-events="none"
          id="path32-3"
          style="stroke-width:0.951546;stroke-miterlimit:10;stroke-dasharray:none" />
-      <g
-         transform="translate(-3.9732,224.82109)"
-         id="g44-7">
-        <switch
-           id="switch42-5">
-          <foreignObject
-             pointer-events="none"
-             width="100%"
-             height="100%"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-             style="overflow: visible; text-align: left;">
-            <xhtml:div
-               style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 14px; margin-left: 163px;">
-              <xhtml:div
-                 data-drawio-colors="color: rgb(0, 0, 0); "
-                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                <xhtml:div
-                   style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">DEScMaker<xhtml:br />
-</xhtml:div>
-              </xhtml:div>
-            </xhtml:div>
-          </foreignObject>
-          <text
-             x="163"
-             y="26"
-             fill="#000000"
-             font-family="Helvetica"
-             font-size="12px"
-             text-anchor="middle"
-             id="text40-9"><tspan
-               style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-               id="tspan10124-2">DEScMaker</tspan></text>
-        </switch>
-      </g>
       <path
          d="m 148.52372,313.22438 c -0.95722,0.34809 -2.01884,0.16244 -2.81941,-0.49311 -0.94562,-0.77736 -1.37493,-2.07684 -1.09064,-3.31834 l 1.72297,1.81003 1.71137,-0.47571 0.44669,-1.78101 -1.72876,-1.76937 c 1.04424,-0.31327 2.16386,-0.006 2.93544,0.80056 0.75996,0.80639 1.06742,1.97823 0.80637,3.0863 l 0.84701,0.87599 h -0.57434 l -1.3227,1.38649 0.78897,0.82959 -0.41767,0.4293 z m 2.55836,-0.74254 c 0.44671,0.0754 0.89341,-0.0812 1.21247,-0.4177 0.32488,-0.33069 0.4815,-0.80638 0.4293,-1.28207 l 3.91005,-4.04353 2.19869,2.25672 -3.88104,4.01449 c -0.45831,-0.0928 -0.92821,0.058 -1.25889,0.40029 -0.33647,0.34807 -0.4931,0.84118 -0.4235,1.33428 l -0.90498,0.93401 -0.77738,-0.82957 -3.88687,4.01447 0.16245,0.15084 -0.60334,0.76576 -1.97244,1.29369 -0.31326,-0.33647 1.23566,-2.01304 0.74837,-0.63234 0.13923,0.16823 3.89846,-4.02608 -0.80638,-0.82958 z m 2.73241,2.01302 4.00868,4.16534 c 0.38289,0.58592 0.33648,1.3749 -0.11021,1.90281 -0.52792,0.62654 -1.42713,0.67876 -2.01305,0.12764 l -4.43217,-4.62364 0.43509,-0.43509 0.77155,0.81798 1.34011,-1.36909 z"
          fill-opacity="0.1"
@@ -706,41 +487,6 @@
            stroke-miterlimit="10"
            pointer-events="none"
            id="path54-5" />
-        <g
-           transform="translate(-54.91135,289.45543)"
-           id="g44-3">
-          <switch
-             id="switch42-2">
-            <foreignObject
-               pointer-events="none"
-               width="100%"
-               height="100%"
-               requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-               style="overflow: visible; text-align: left;">
-              <xhtml:div
-                 style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 14px; margin-left: 163px;">
-                <xhtml:div
-                   data-drawio-colors="color: rgb(0, 0, 0); "
-                   style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                  <xhtml:div
-                     style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">DEScMaker<xhtml:br />
-</xhtml:div>
-                </xhtml:div>
-              </xhtml:div>
-            </foreignObject>
-            <text
-               x="163.69675"
-               y="26"
-               fill="#000000"
-               font-family="Helvetica"
-               font-size="12px"
-               text-anchor="middle"
-               id="text40-0"
-               style="font-size:6.66667px"><tspan
-                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-                 id="tspan10124-6">.wmod</tspan></text>
-          </switch>
-        </g>
       </g>
       <g
          transform="translate(28.759954,302.57123)"
@@ -773,17 +519,6 @@
                id="path35746"
                sodipodi:nodetypes="ccccccccccccccccc"
                transform="translate(-28.549166,-307.36822)" />
-            <text
-               x="167.37479"
-               y="12.504812"
-               fill="#000000"
-               font-family="Helvetica"
-               font-size="12px"
-               text-anchor="middle"
-               id="text40-0-70"
-               style="font-size:6.66667px"><tspan
-                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-                 id="tspan10124-6-9">C Project</tspan></text>
           </g>
         </switch>
       </g>
@@ -818,17 +553,6 @@
                id="path35746-7"
                sodipodi:nodetypes="ccccccccccccccccc"
                transform="translate(-28.549166,-307.36822)" />
-            <text
-               x="167.10464"
-               y="12.484786"
-               fill="#000000"
-               font-family="Helvetica"
-               font-size="12px"
-               text-anchor="middle"
-               id="text40-0-70-9"
-               style="font-size:6.66667px"><tspan
-                 style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:6.66667px;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr'"
-                 id="tspan10124-6-9-2">Template</tspan></text>
           </g>
         </switch>
       </g>
@@ -890,6 +614,115 @@
            id="path126-1-7" />
       </g>
     </g>
+    <text
+       xml:space="preserve"
+       style="font-size:14.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="141.78995"
+       y="60.842464"
+       id="text3073-3"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6"
+         x="141.78995"
+         y="60.842464"
+         style="font-size:14.6667px">DEScMaker</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="74.577728"
+       y="217.85703"
+       id="text3073-3-0"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-9"
+         x="74.577728"
+         y="217.85703"
+         style="font-size:10.6667px">User</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="430.38431"
+       y="168.61301"
+       id="text3073-3-0-3"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-9-6"
+         x="430.38431"
+         y="168.61301"
+         style="font-size:10.6667px">User</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.66667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="163.66042"
+       y="75.514755"
+       id="text3073-3-7"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-5"
+         x="163.66042"
+         y="75.514755"
+         style="font-size:6.66667px">Template</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.66667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="213.40926"
+       y="113.54752"
+       id="text3073-3-7-3"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-5-5"
+         x="213.40926"
+         y="113.54752"
+         style="font-size:6.66667px">C Project</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:6.66667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="125.56473"
+       y="124.50838"
+       id="text3073-3-7-3-6"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-5-5-2"
+         x="125.56473"
+         y="124.50838"
+         style="font-size:6.66667px">.wmod</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="310.33197"
+       y="24.239021"
+       id="text3073"><tspan
+         sodipodi:role="line"
+         id="tspan3071"
+         x="310.33197"
+         y="24.239021"
+         style="font-size:14.6667px">C Project</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="21.190371"
+       y="87.33815"
+       id="text3073-3-7-3-6-9"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-5-5-2-1"
+         x="21.190371"
+         y="87.33815"
+         style="font-size:14.6667px">.wmod</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:8px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="43.886398"
+       y="102.09972"
+       id="text3073-3-7-3-6-9-2"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-5-5-2-1-7"
+         x="43.886398"
+         y="102.09972"
+         style="font-size:8px;text-align:center;text-anchor:middle">with the </tspan><tspan
+         sodipodi:role="line"
+         x="43.886398"
+         y="112.09972"
+         id="tspan35632"
+         style="font-size:8px;text-align:center;text-anchor:middle">synthesized</tspan><tspan
+         sodipodi:role="line"
+         x="43.886398"
+         y="122.09972"
+         id="tspan35634"
+         style="font-size:8px;text-align:center;text-anchor:middle">supervisor</tspan></text>
   </g>
   <switch
      id="switch146"
