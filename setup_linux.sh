@@ -5,6 +5,9 @@ declare -a dependencies=(
     "python3"
     "python3-pip"
     "python3-venv"
+    "rsync"
+    "cmake"
+    "gcc"
 )
 
 # loop through dependencies
