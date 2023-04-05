@@ -23,15 +23,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="1.9934986"
-     inkscape:cx="288.68844"
-     inkscape:cy="179.83459"
+     inkscape:zoom="0.70480819"
+     inkscape:cx="63.137745"
+     inkscape:cy="40.436534"
      inkscape:window-width="1318"
      inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g138" />
+     inkscape:current-layer="g59708" />
   <defs
      id="defs2" />
   <g
@@ -472,93 +472,28 @@
          id="path46"
          style="fill:none;fill-opacity:0.1;stroke:#000000;stroke-width:0.5;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
       <g
-         id="g47764">
+         id="g47764"
+         style="stroke-width:1.3;stroke-miterlimit:4;stroke-dasharray:none">
         <path
            d="m 119.94878,302.35479 v 25.71 H 98.168781 v -30 h 18.669999 z"
            fill="#ffffff"
            stroke="#000000"
            stroke-miterlimit="10"
            pointer-events="none"
-           id="path52-3" />
+           id="path52-3"
+           style="stroke-width:1.3;stroke-miterlimit:4;stroke-dasharray:none" />
         <path
            d="m 116.83878,297.97479 c 0.25,1 -0.17,2.04 -1.11,2.76 l 4.22,1.62"
            fill="none"
            stroke="#000000"
            stroke-miterlimit="10"
            pointer-events="none"
-           id="path54-5" />
-      </g>
-      <g
-         transform="translate(28.759954,302.57123)"
-         id="g44-3-1">
-        <switch
-           id="switch42-2-2">
-          <foreignObject
-             pointer-events="none"
-             width="100%"
-             height="100%"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-             style="overflow: visible; text-align: left;">
-            <xhtml:div
-               style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 14px; margin-left: 163px;">
-              <xhtml:div
-                 data-drawio-colors="color: rgb(0, 0, 0); "
-                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                <xhtml:div
-                   style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">DEScMaker<xhtml:br />
-</xhtml:div>
-              </xhtml:div>
-            </xhtml:div>
-          </foreignObject>
-          <g
-             id="g49175"
-             transform="translate(4.4474152,-9.7056332)">
-            <path
-               style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-               d="m 181.1549,337.92926 26.11826,0.16272 4.43735,-15.65018 -12.79694,-0.10447 -3.0122,2.16255 h -12.00291 l -2.74356,13.42938 28.57737,0.36834 0.41984,-10.58097 1.5584,-5.27483 -1.9163,-0.0515 0.34891,-8.54695 -17.34871,-0.0595 -1.60117,-1.5023 -7.96493,-0.01 -1.81996,1.53698 -0.2534,24.1207"
-               id="path35746"
-               sodipodi:nodetypes="ccccccccccccccccc"
-               transform="translate(-28.549166,-307.36822)" />
-          </g>
-        </switch>
-      </g>
-      <g
-         transform="translate(-20.882722,264.75057)"
-         id="g44-3-1-6">
-        <switch
-           id="switch42-2-2-1">
-          <foreignObject
-             pointer-events="none"
-             width="100%"
-             height="100%"
-             requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"
-             style="overflow: visible; text-align: left;">
-            <xhtml:div
-               style="display: flex; align-items: unsafe flex-start; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 14px; margin-left: 163px;">
-              <xhtml:div
-                 data-drawio-colors="color: rgb(0, 0, 0); "
-                 style="box-sizing: border-box; font-size: 0px; text-align: center;">
-                <xhtml:div
-                   style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: none; white-space: nowrap;">DEScMaker<xhtml:br />
-</xhtml:div>
-              </xhtml:div>
-            </xhtml:div>
-          </foreignObject>
-          <g
-             id="g49175-8"
-             transform="translate(4.4474152,-9.7056332)">
-            <path
-               style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-               d="m 181.1549,337.92926 26.11826,0.16272 4.43735,-15.65018 -12.79694,-0.10447 -3.0122,2.16255 h -12.00291 l -2.74356,13.42938 28.57737,0.36834 0.41984,-10.58097 1.5584,-5.27483 -1.9163,-0.0515 0.34891,-8.54695 -17.34871,-0.0595 -1.60117,-1.5023 -7.96493,-0.01 -1.81996,1.53698 -0.2534,24.1207"
-               id="path35746-7"
-               sodipodi:nodetypes="ccccccccccccccccc"
-               transform="translate(-28.549166,-307.36822)" />
-          </g>
-        </switch>
+           id="path54-5"
+           style="stroke-width:1.3;stroke-miterlimit:4;stroke-dasharray:none" />
       </g>
       <g
          id="g59263"
-         transform="translate(4.3068603,-21.363049)">
+         transform="matrix(0.91745861,0,0,1.0079256,13.963575,-24.023914)">
         <path
            d="m 116.56934,335.72927 h 16.94162"
            fill="none"
@@ -650,24 +585,24 @@
     <text
        xml:space="preserve"
        style="font-size:6.66667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
-       x="163.66042"
-       y="75.514755"
+       x="164.89566"
+       y="83.975746"
        id="text3073-3-7"><tspan
          sodipodi:role="line"
          id="tspan3071-6-5"
-         x="163.66042"
-         y="75.514755"
+         x="164.89566"
+         y="83.975746"
          style="font-size:6.66667px">Template</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:6.66667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
-       x="213.40926"
-       y="113.54752"
+       x="214.68883"
+       y="123.4128"
        id="text3073-3-7-3"><tspan
          sodipodi:role="line"
          id="tspan3071-6-5-5"
-         x="213.40926"
-         y="113.54752"
+         x="214.68883"
+         y="123.4128"
          style="font-size:6.66667px">C Project</tspan></text>
     <text
        xml:space="preserve"
@@ -723,6 +658,16 @@
          y="122.09972"
          id="tspan35634"
          style="font-size:8px;text-align:center;text-anchor:middle">supervisor</tspan></text>
+    <path
+       d="m 163.54112,66.401265 c -1.21102,0 -2.20859,0.87814 -2.20859,1.9442 v 5.83257 1.29613 16.2016 c 0,1.06604 0.99757,1.94418 2.20859,1.94418 h 29.44783 c 1.21102,0 2.20859,-0.87814 2.20859,-1.94418 v -15.55354 -1.94419 -3.24032 c 0,-1.06605 -0.99757,-1.9442 -2.20859,-1.9442 h -19.87729 c 0.0638,0 -0.0229,2.3e-4 -0.20274,-0.18227 -0.17991,-0.1825 -0.40137,-0.48527 -0.63267,-0.81007 -0.2313,-0.3248 -0.4737,-0.67137 -0.77933,-0.9759 -0.30562,-0.30452 -0.72728,-0.62401 -1.33004,-0.62401 z m 0,1.29613 h 6.62576 c -0.0448,0 0.045,0.004 0.22719,0.18606 0.18217,0.18153 0.40389,0.48303 0.6341,0.80628 0.2302,0.32326 0.46859,0.66856 0.76783,0.9721 0.29924,0.30355 0.7112,0.62781 1.31566,0.62781 h 5.00046 14.87683 c 0.41597,0 0.7362,0.2819 0.7362,0.64807 v 1.41764 c -0.23182,-0.0736 -0.47717,-0.12151 -0.7362,-0.12151 h -29.44783 c -0.25903,0 -0.50438,0.0479 -0.7362,0.12151 v -4.00989 c 0,-0.36618 0.32023,-0.64807 0.7362,-0.64807 z m 0,5.83257 h 29.44783 c 0.41597,0 0.7362,0.28189 0.7362,0.64807 v 1.94419 15.55354 c 0,0.36617 -0.32023,0.64806 -0.7362,0.64806 h -29.44783 c -0.41597,0 -0.7362,-0.28189 -0.7362,-0.64806 v -16.2016 -1.29613 c 0,-0.36618 0.32023,-0.64807 0.7362,-0.64807 z"
+       id="path124-3"
+       style="stroke:none;stroke-width:0.230242;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="ssccssssccssccssssscsssscsscsscssssscsssscss" />
+    <path
+       d="m 213.31837,105.69574 c -1.21102,0 -2.20859,0.87814 -2.20859,1.9442 v 5.83257 1.29613 16.20161 c 0,1.06604 0.99757,1.94418 2.20859,1.94418 h 29.44783 c 1.21102,0 2.20859,-0.87814 2.20859,-1.94418 v -15.55355 -1.94419 -3.24032 c 0,-1.06605 -0.99757,-1.9442 -2.20859,-1.9442 h -19.87729 c 0.0638,0 -0.0229,2.3e-4 -0.20274,-0.18227 -0.17991,-0.1825 -0.40137,-0.48527 -0.63267,-0.81007 -0.2313,-0.3248 -0.4737,-0.67137 -0.77933,-0.9759 -0.30562,-0.30452 -0.72728,-0.62401 -1.33004,-0.62401 z m 0,1.29613 h 6.62576 c -0.0448,0 0.045,0.004 0.22719,0.18606 0.18217,0.18153 0.40389,0.48303 0.6341,0.80628 0.2302,0.32326 0.46859,0.66856 0.76783,0.9721 0.29924,0.30355 0.7112,0.62781 1.31566,0.62781 h 5.00046 14.87683 c 0.41597,0 0.7362,0.2819 0.7362,0.64807 v 1.41764 c -0.23182,-0.0736 -0.47717,-0.12151 -0.7362,-0.12151 h -29.44783 c -0.25903,0 -0.50438,0.0479 -0.7362,0.12151 v -4.00989 c 0,-0.36618 0.32023,-0.64807 0.7362,-0.64807 z m 0,5.83257 h 29.44783 c 0.41597,0 0.7362,0.28189 0.7362,0.64807 v 1.94419 15.55355 c 0,0.36617 -0.32023,0.64806 -0.7362,0.64806 h -29.44783 c -0.41597,0 -0.7362,-0.28189 -0.7362,-0.64806 v -16.20161 -1.29613 c 0,-0.36618 0.32023,-0.64807 0.7362,-0.64807 z"
+       id="path124-3-6"
+       style="stroke:none;stroke-width:0.230242;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       sodipodi:nodetypes="ssccssssccssccssssscsssscsscsscssssscsssscss" />
   </g>
   <switch
      id="switch146"
