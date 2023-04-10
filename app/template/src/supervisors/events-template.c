@@ -1,6 +1,4 @@
 #include <stdlib.h>
-
-#include "../../lib/supervisor/supervisor.h"
-
+#include "events.h"
 // create events
 %$%{events_c}

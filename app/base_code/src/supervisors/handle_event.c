@@ -1,6 +1,4 @@
-#include <assert.h>
 #include <stdio.h>
-#include "../../lib/supervisor/supervisor.h"
 #include "events.h"
 #include "handle_event.h"
 

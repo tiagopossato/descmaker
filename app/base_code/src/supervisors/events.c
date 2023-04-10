@@ -1,6 +1,5 @@
 #include <stdlib.h>
-
-#include "../../lib/supervisor/supervisor.h"
+#include "events.h"
 
 // create events
 Event btn = {UNCONTROLLABLE, 0, SUP_DEBUG_STR("btn"), NULL};
