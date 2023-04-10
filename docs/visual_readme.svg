@@ -23,15 +23,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      showgrid="false"
-     inkscape:zoom="0.70480819"
-     inkscape:cx="63.137745"
-     inkscape:cy="40.436534"
+     inkscape:zoom="0.9967493"
+     inkscape:cx="347.63004"
+     inkscape:cy="84.77558"
      inkscape:window-width="1318"
      inkscape:window-height="704"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="g59708" />
+     inkscape:current-layer="g138" />
   <defs
      id="defs2" />
   <g
@@ -369,18 +369,6 @@
        stroke-miterlimit="10"
        pointer-events="none"
        id="path100" />
-    <path
-       d="m 508.39381,212.40034 c -3.58,0 -7.22,-3.29 -7.22,-7.82 v -13.57 h 68.55 c 4.46,0 7.37,3.99 7.37,7.68 v 13.71 z"
-       fill="#ffffff"
-       stroke="none"
-       pointer-events="none"
-       id="path114" />
-    <path
-       d="m 565.42381,203.69034 v -3.97 h 5.78 v 3.98 z m -21.31,2.14 v -8.25 h 19.2 v 8.25 z m -5.91,-1.02 c -1.24,0 -2.6,-1.14 -2.6,-3.14 0,-1.44 0.97,-3.07 2.61,-3.07 1.53,0 2.58,1.49 2.58,3.19 0,1.91 -1.44,3.02 -2.59,3.02 z m -25.13,1.02 v -8.25 h 19.21 v 8.25 z m -4.34,-2.17 c -0.8,0 -1.64,-0.77 -1.64,-1.95 0,-1.05 0.75,-1.97 1.64,-1.97 0.86,0 1.68,0.95 1.68,1.94 0,1.03 -0.71,1.98 -1.68,1.98 z"
-       fill="#ffffff"
-       stroke="none"
-       pointer-events="none"
-       id="path116" />
     <g
        id="g212"
        transform="translate(-78.146609,-6.1018666)">
@@ -582,6 +570,28 @@
          x="430.38431"
          y="168.61301"
          style="font-size:10.6667px">User</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="506.51523"
+       y="128.03461"
+       id="text3073-3-0-3-4"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-9-6-4"
+         x="506.51523"
+         y="128.03461"
+         style="font-size:10.6667px">Microcontroller</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.6667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
+       x="520.54706"
+       y="189.34433"
+       id="text3073-3-0-3-4-7"><tspan
+         sodipodi:role="line"
+         id="tspan3071-6-9-6-4-6"
+         x="520.54706"
+         y="189.34433"
+         style="font-size:10.6667px">Computer</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:6.66667px;line-height:1.25;font-family:'Times New Roman Cyr';-inkscape-font-specification:'Times New Roman Cyr, Normal';font-variant-ligatures:none"
