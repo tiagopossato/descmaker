@@ -285,10 +285,6 @@ for sup_index in range(len(supervisors)):
 
 # -------- end of for "sup in supervisors:" ---------------
 
-fill_template(f"{output_dir}/src/main.c",
-                f"{output_dir}/src/main.c", 
-                {'include_supervisors': include_supervisors})
-
 fill_template(f"{base_dir}/template/src/supervisors/handle_event-template.c",
                 f"{output_dir}/src/supervisors/handle_event.c", 
                 {'supervisor_list_create': supervisor_list_create,

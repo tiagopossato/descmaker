@@ -7,7 +7,6 @@
 #include "../lib/supervisor/supervisor.h"
 #include "supervisors/events.h"
 #include "supervisors/handle_event.h"
-%$%{include_supervisors}
 
 void default_callback(Event *event) { printf("Default callback\n"); }
 
