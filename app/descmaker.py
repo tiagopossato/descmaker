@@ -74,6 +74,11 @@ if __name__ == '__main__':
     if(os.name == 'posix'):
         print(f"Execute: {execute}")
 
+    # get execution path
+    execution_path = os.getcwd()
+    # join execution path with output_dir
+    output_dir = os.path.join(execution_path, output_dir)
+    
     # get script path
     script_path = os.path.dirname(os.path.realpath(__file__))
     # join script path with 'base_code' folder
@@ -117,8 +122,8 @@ if __name__ == '__main__':
     # Path to the script that must run under the virtualenv
     maker = os.path.join(script_path, 'maker.py')
 
-    print(f'Python bin: {python_bin}')
-    print(f'Maker: {maker}')
+    # print(f'Python bin: {python_bin}')
+    # print(f'Maker: {maker}')
 
     result = subprocess.Popen([python_bin, maker, '--input', input_file, '--output', output_dir])
     result.wait()
