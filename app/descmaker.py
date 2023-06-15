@@ -98,6 +98,8 @@ if __name__ == '__main__':
 
     # verify if virtual env named 'env' exists
     if not os.path.exists(env_dir):
+        # get current execution path
+        current_dir = os.getcwd()
         # change execution path to output_dir
         os.chdir(parent_dir)
         print(f"Virtual env 'env' not found in '{parent_dir}'.")
@@ -114,6 +116,8 @@ if __name__ == '__main__':
             exit(0)
         else:
             print("Requirements installed successfully!")
+        # change execution path to output_dir
+        os.chdir(current_dir)
     
     # Call the function to copy the directory structure
     copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
