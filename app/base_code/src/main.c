@@ -14,14 +14,20 @@ void setup(){
   printf("Start supervisor!\n\n");
   // set default callback for example
   set_event_callback(&btn, default_callback);
+  
   set_event_callback(&liga, default_callback);
   set_event_callback(&desliga, default_callback);
 
   // handle events for teste
   handle_event(&btn);
-  handle_event(&liga);
-  handle_event(&desliga);
-
+  printf("\n-----------------------------------------\n");
+  handle_event(&btn);
+  printf("\n-----------------------------------------\n");
+  handle_event(&btn);
+  printf("\n-----------------------------------------\n");
+  handle_event(&btn);
+    printf("\n-----------------------------------------\n");
+  handle_event(&btn);
 }
 
 void loop(){

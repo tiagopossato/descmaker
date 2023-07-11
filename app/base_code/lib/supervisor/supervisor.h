@@ -122,6 +122,15 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event);
 bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event);
 
 /**
+ * Get the enabled controllable events in the current state of the supervisor.
+ * @param supervisor The supervisor.
+ * @param events The array of events to be filled.
+ * @return The number of enabled controllable events.
+ */
+uint16_t get_enabled_controllable_events(Supervisor *supervisor,
+                                         Event **events);
+
+/**
  * Run the supervisor.
  * @param supervisor The supervisor.
  * @param event The event to be processed.

@@ -29,8 +29,9 @@ bool run_supervisor(Supervisor *supervisor, Event *event) {
       supervisor->current_state = transition->target;
       supervisor->last_state = last_state;
       SUP_DEBUG_PRINT("%s, event %s %s => %s -> %s\n", supervisor->name,
-                      event->kind == CONTROLLABLE ? SUP_DEBUG_STR("CONTROLLABLE")
-                                                  : SUP_DEBUG_STR("UNCONTROLLABLE"),
+                      event->kind == CONTROLLABLE
+                          ? SUP_DEBUG_STR("CONTROLLABLE")
+                          : SUP_DEBUG_STR("UNCONTROLLABLE"),
                       event->name, supervisor->last_state->name,
                       supervisor->current_state->name);
       return true;
@@ -85,4 +86,19 @@ bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event) {
     alphabet = alphabet->next;
   }
   return false;
+}
+
+uint16_t get_enabled_controllable_events(Supervisor *supervisor,
+                                         Event **events) {
+  uint16_t i = 0;
+  State *current_state = supervisor->current_state;
+  Transition *transition = current_state->transitions;
+  while (transition != NULL) {
+    if (transition->event->kind == CONTROLLABLE) {
+      events[i] = transition->event;
+      i++;
+    }
+    transition = transition->next;
+  }
+  return i;
 }

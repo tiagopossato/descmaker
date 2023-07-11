@@ -5,6 +5,8 @@
 
 #include "../../lib/supervisor/supervisor.h"
 
+#define TOTAL_CONTROLLABLE_EVENTS_COUNT 3
+
 // create events
 extern Event btn;
 extern Event liga;

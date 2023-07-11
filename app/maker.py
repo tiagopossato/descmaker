@@ -49,6 +49,8 @@ def convert_supervisor(input_file, output_dir):
             continue
         event_list.append({'Kind':e.get('Kind'), 'Name':e.get('Name')})
 
+    # count controllable events
+    events_controllable_count = len([x for x in event_list if x['Kind'] == 'CONTROLLABLE'])
 
     # get all supervisors
     simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
@@ -122,7 +124,8 @@ def convert_supervisor(input_file, output_dir):
 
     fill_template(f"{base_dir}/template/src/supervisors/events-template.h",
                     f"{output_dir}/src/supervisors/events.h", 
-                    {'events_h': events_h})
+                    {'events_controllable_count': events_controllable_count,
+                    'events_h': events_h})
 
     fill_template(f"{base_dir}/template/src/supervisors/events-template.c",
                     f"{output_dir}/src/supervisors/events.c", 

@@ -1,10 +1,10 @@
-#include <stdio.h>
-#include "events.h"
 #include "handle_event.h"
+#include "events.h"
+#include <stdio.h>
 
 #include "sup.h"
 
-
+Event *event_list[TOTAL_CONTROLLABLE_EVENTS_COUNT];
 
 /**
  * @brief The alphabet
@@ -61,5 +61,33 @@ bool handle_event(Event *event) {
 
   run_event_callback(event);
 
+  // pega os eventos habilitados controláveis no primeiro supervisor da lista
+  sup = &sup_list;
+  uint16_t event_list_count =
+      get_enabled_controllable_events(sup_list.supervisor, event_list);
+  if (event_list_count > 0) {
+    // print_event_list(event_list);
+    for (uint16_t i = 0; i < event_list_count; i++) {
+      printf("Rodando automaticamente o evento %s: %s\n", event_list[i]->name,
+             event_list[i]->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                                 : "UNCONTROLLABLE");
+      // tenta executar o evento. A própria função handle_event verifica se está
+      // habilitado em todos os outros supervisores
+      // Não é preciso montar uma lista dos eventos habilitados em todos os
+      // supervisores, pois se não está habilidatado em um supervisor, não
+      // estará nos outros
+      if (handle_event(event_list[i]) == true) {
+        // se retornar verdadeiro, o evento foi executado com sucesso
+        // desta forma, os supervisores já foram atualizados e não deve-se
+        // continuar a execução
+        break;
+      } else {
+        // se retornar falso, o evento não foi executado com sucesso
+        // desta forma, os supervisores não foram atualizados e pode-se
+        // continuar a execução
+        continue;
+      }
+    }
+  }
   return true;
 }
