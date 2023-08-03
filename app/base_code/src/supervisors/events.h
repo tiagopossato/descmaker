@@ -5,11 +5,13 @@
 
 #include "../../lib/supervisor/supervisor.h"
 
-#define TOTAL_CONTROLLABLE_EVENTS_COUNT 3
+#define CONTROLLABLE_EVENTS_COUNT 2
 
 // create events
 extern Event btn;
 extern Event liga;
 extern Event desliga;
+
+extern Event *controllable_event_list[CONTROLLABLE_EVENTS_COUNT];
 
 #endif // __EVENTS_H__

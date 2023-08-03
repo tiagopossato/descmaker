@@ -24,6 +24,11 @@ bool run_supervisor(Supervisor *supervisor, Event *event) {
 
   State *last_state = supervisor->current_state;
   Transition *transition = supervisor->current_state->transitions;
+  
+  if (!is_event_in_supervisor_alphabet(supervisor, event)) {
+    return true;
+  }
+
   while (transition != NULL) {
     if (transition->event->id == event->id) {
       supervisor->current_state = transition->target;

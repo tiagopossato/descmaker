@@ -3,34 +3,35 @@
  *
  * @brief Main file for the supervisor project
  */
-#include <stdio.h>
 #include "../lib/supervisor/supervisor.h"
+#include "supervisors/event_handler.h"
 #include "supervisors/events.h"
-#include "supervisors/handle_event.h"
+#include <stdio.h>
 
-void default_callback(Event *event) { printf("Default callback\n"); }
+void botao_callback(Event *event) { printf("Botão pressionado\n"); }
+void liga_callback(Event *event) { printf("\n\nLiga callback\n\n"); }
+void desliga_callback(Event *event) { printf("\n\nDesliga callback\n\n"); }
 
-void setup(){
+void setup() {
   printf("Start supervisor!\n\n");
   // set default callback for example
-  set_event_callback(&btn, default_callback);
-  
-  set_event_callback(&liga, default_callback);
-  set_event_callback(&desliga, default_callback);
+  set_event_callback(&btn, botao_callback);
+
+  set_event_callback(&liga, liga_callback);
+  set_event_callback(&desliga, desliga_callback);
 
   // handle events for teste
-  handle_event(&btn);
+  trigger_event(&btn);
   printf("\n-----------------------------------------\n");
-  handle_event(&btn);
+  trigger_event(&btn);
   printf("\n-----------------------------------------\n");
-  handle_event(&btn);
+  trigger_event(&btn);
   printf("\n-----------------------------------------\n");
-  handle_event(&btn);
-    printf("\n-----------------------------------------\n");
-  handle_event(&btn);
+  trigger_event(&btn);
+  printf("\n-----------------------------------------\n");
 }
 
-void loop(){
+void loop() {
   // handle events for teste
 }
 
