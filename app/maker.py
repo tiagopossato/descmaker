@@ -99,6 +99,7 @@ def convert_supervisor(input_file, output_dir):
     # make file events.c
     # Event btnON = {UNCONTROLLABLE, 0, "btnON", NULL};
     events_c = ""
+    controllable_event_list = ""
 
     # make file events.h
     # extern Event btnON;
@@ -109,8 +110,8 @@ def convert_supervisor(input_file, output_dir):
     set_callback = ""
 
     # create handle events list for test
-    # handle_event(Events['Se'])
-    handle_event = ""
+    # trigger_event(Events['Se'])
+    trigger_event = ""
 
     i = 0
     for event in event_list:
@@ -118,10 +119,16 @@ def convert_supervisor(input_file, output_dir):
         # Event on = {CONTROLLABLE, 0, "on", NULL};
         events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, SUP_DEBUG_STR(\"{event['Name']}\"), NULL}};\n"
         events_h += f"extern Event {event['Name']};\n"
-        set_callback += f"  set_event_callback(&{event['Name']}, default_callback);\n"
-        handle_event += f"  handle_event(&{event['Name']});\n"
+        if event['Kind'] == 'CONTROLLABLE':
+            set_callback += f"  set_event_callback(&{event['Name']}, default_callback);\n"
+            controllable_event_list += f"&{event['Name']},"
+        if event['Kind'] == 'UNCONTROLLABLE':
+            trigger_event += f"  trigger_event(&{event['Name']});\n" 
         i = i + 1
 
+    # remove last comma on controllable_event_list
+    controllable_event_list = controllable_event_list[:-1]
+    
     fill_template(f"{base_dir}/template/src/supervisors/events-template.h",
                     f"{output_dir}/src/supervisors/events.h", 
                     {'events_controllable_count': events_controllable_count,
@@ -129,12 +136,13 @@ def convert_supervisor(input_file, output_dir):
 
     fill_template(f"{base_dir}/template/src/supervisors/events-template.c",
                     f"{output_dir}/src/supervisors/events.c", 
-                    {'events_c': events_c})
+                    {'events_c': events_c,
+                     'controllable_event_list':controllable_event_list})
 
     fill_template(f"{base_dir}/template/src/main-template.c",
                     f"{output_dir}/src/main.c", 
                     {'set_callback': set_callback,
-                    'handle_event': handle_event})
+                    'trigger_event': trigger_event})
 
     #include "supervisors/sup.h"
     # create include supervisor files
@@ -283,8 +291,8 @@ def convert_supervisor(input_file, output_dir):
 
     # -------- end of for "sup in supervisors:" ---------------
 
-    fill_template(f"{base_dir}/template/src/supervisors/handle_event-template.c",
-                    f"{output_dir}/src/supervisors/handle_event.c", 
+    fill_template(f"{base_dir}/template/src/supervisors/event_handler-template.c",
+                    f"{output_dir}/src/supervisors/event_handler.c", 
                     {'supervisor_list_create': supervisor_list_create,
                     'supervisor_list_init': supervisor_list_init,
                     'supervisor_list_head': supervisor_list_head,

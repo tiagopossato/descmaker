@@ -6,8 +6,6 @@
 
 bool handle_event(Event *event);
 
-// Event *event_list[TOTAL_CONTROLLABLE_EVENTS_COUNT];
-
 /**
  * @brief The alphabet
  */
@@ -31,8 +29,7 @@ bool trigger_event(Event *event) {
   run_event_callback(event);
 
   for (uint16_t i = 0; i < CONTROLLABLE_EVENTS_COUNT; i++) {
-
-    printf("Automatically running the %s event '%s'\n",
+    SUP_DEBUG_PRINT("Automatically running the %s event '%s'\n",
            controllable_event_list[i]->kind == CONTROLLABLE ? "CONTROLLABLE"
                                                             : "UNCONTROLLABLE",
            controllable_event_list[i]->name);

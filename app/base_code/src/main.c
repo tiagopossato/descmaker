@@ -8,19 +8,16 @@
 #include "supervisors/events.h"
 #include <stdio.h>
 
-void botao_callback(Event *event) { printf("Botão pressionado\n"); }
 void liga_callback(Event *event) { printf("\n\nLiga callback\n\n"); }
 void desliga_callback(Event *event) { printf("\n\nDesliga callback\n\n"); }
 
 void setup() {
   printf("Start supervisor!\n\n");
-  // set default callback for example
-  set_event_callback(&btn, botao_callback);
-
+  // set callback on controllable events for example
   set_event_callback(&liga, liga_callback);
   set_event_callback(&desliga, desliga_callback);
 
-  // handle events for teste
+  // trigger uncontrolable event for teste
   trigger_event(&btn);
   printf("\n-----------------------------------------\n");
   trigger_event(&btn);

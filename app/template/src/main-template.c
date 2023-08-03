@@ -6,20 +6,19 @@
 #include <stdio.h>
 #include "../lib/supervisor/supervisor.h"
 #include "supervisors/events.h"
-#include "supervisors/handle_event.h"
+#include "supervisors/event_handler.h"
 
 void default_callback(Event *event) { printf("Default callback\n"); }
 
 void setup(){
   printf("Start supervisor!\n\n");
-  // set default callback for example
+  // set callback on controllable events for example
 %$%{set_callback}
-  // handle events for teste
-%$%{handle_event}
+  // trigger uncontrolable event for teste
+%$%{trigger_event}
 }
 
 void loop(){
-  // handle events for teste
 }
 
 int main(void) {

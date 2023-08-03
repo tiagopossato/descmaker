@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "events.h"
-#include "handle_event.h"
+#include "event_handler.h"
 
 %$%{handle_include_supervisors}
 
-Event *event_list[TOTAL_CONTROLLABLE_EVENTS_COUNT];
+bool handle_event(Event *event);
 
 /**
  * @brief The alphabet
@@ -20,6 +20,37 @@ struct _SupervisorList {
 %$%{supervisor_list_create}
 // then recreate and linking them
 %$%{supervisor_list_init}
+
+bool trigger_event(Event *event) {
+  if (!handle_event(event)) {
+    return false;
+  }
+  run_event_callback(event);
+
+  for (uint16_t i = 0; i < CONTROLLABLE_EVENTS_COUNT; i++) {
+    SUP_DEBUG_PRINT("Automatically running the %s event '%s'\n",
+           controllable_event_list[i]->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                                            : "UNCONTROLLABLE",
+           controllable_event_list[i]->name);
+    // tenta executar o evento. A própria função handle_event verifica se está
+    // habilitado em todos os outros supervisores
+    // Não é preciso montar uma lista dos eventos habilitados em todos os
+    // supervisores, pois se não está habilitado em um supervisor, não
+    // estará nos outros
+    if (trigger_event(controllable_event_list[i]) == true) {
+      // se retornar verdadeiro, o evento foi executado com sucesso
+      // desta forma, os supervisores já foram atualizados e não deve-se
+      // continuar a execução
+      break;
+    } else {
+      // se retornar falso, o evento não foi executado com sucesso
+      // desta forma, os supervisores não foram atualizados e pode-se
+      // continuar a execução
+      continue;
+    }
+  }
+}
+
 bool handle_event(Event *event) {
   // check if event is enabled in all supervisors
   SupervisorList *sup = &%$%{supervisor_list_head};
@@ -51,42 +82,10 @@ bool handle_event(Event *event) {
   // run all supervisors
   sup = &%$%{supervisor_list_head};
   while (sup != NULL) {
-    if (is_event_in_supervisor_alphabet(sup->supervisor, event)) {
-      run_supervisor(sup->supervisor, event);
-    }
+    run_supervisor(sup->supervisor, event);
     sup = sup->next;
   }
 
   run_event_callback(event);
-
-  // pega os eventos habilitados controláveis no primeiro supervisor da lista
-  sup = &%$%{supervisor_list_head};
-  uint16_t event_list_count =
-      get_enabled_controllable_events(sup->supervisor, event_list);
-  if (event_list_count > 0) {
-    // print_event_list(event_list);
-    for (uint16_t i = 0; i < event_list_count; i++) {
-      printf("Rodando automaticamente o evento %s: %s\n", event_list[i]->name,
-             event_list[i]->kind == CONTROLLABLE ? "CONTROLLABLE"
-                                                 : "UNCONTROLLABLE");
-      // tenta executar o evento. A própria função handle_event verifica se está
-      // habilitado em todos os outros supervisores
-      // Não é preciso montar uma lista dos eventos habilitados em todos os
-      // supervisores, pois se não está habilidatado em um supervisor, não
-      // estará nos outros
-      if (handle_event(event_list[i]) == true) {
-        // se retornar verdadeiro, o evento foi executado com sucesso
-        // desta forma, os supervisores já foram atualizados e não deve-se
-        // continuar a execução
-        break;
-      } else {
-        // se retornar falso, o evento não foi executado com sucesso
-        // desta forma, os supervisores não foram atualizados e pode-se
-        // continuar a execução
-        continue;
-      }
-    }
-  }
-
   return true;
 }
