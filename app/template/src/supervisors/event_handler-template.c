@@ -25,7 +25,7 @@ bool trigger_event(Event *event) {
   if (!handle_event(event)) {
     return false;
   }
-  run_event_callback(event);
+  run_event_action(event);
 
   for (uint16_t i = 0; i < CONTROLLABLE_EVENTS_COUNT; i++) {
     SUP_DEBUG_PRINT("Automatically running the %s event '%s'\n",

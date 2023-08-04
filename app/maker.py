@@ -132,9 +132,9 @@ def convert_supervisor(input_file, output_dir):
     # extern Event btnON;
     events_h = ""
 
-    # create set callback list
-    # Events['Se'].set_callback(default_callback)
-    set_callback = ""
+    # create set action list
+    # Events['Se'].set_action(default_action)
+    set_action = ""
 
     # create handle events list for test
     # trigger_event(Events['Se'])
@@ -147,7 +147,7 @@ def convert_supervisor(input_file, output_dir):
         events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, SUP_DEBUG_STR(\"{event['Name']}\"), NULL}};\n"
         events_h += f"extern Event {event['Name']};\n"
         if event['Kind'] == 'CONTROLLABLE':
-            set_callback += f"  set_event_callback(&{event['Name']}, default_callback);\n"
+            set_action += f"  set_event_action(&{event['Name']}, default_action);\n"
             controllable_event_list += f"&{event['Name']},"
         if event['Kind'] == 'UNCONTROLLABLE':
             trigger_event += f"  trigger_event(&{event['Name']});\n" 
@@ -168,7 +168,7 @@ def convert_supervisor(input_file, output_dir):
 
     fill_template(f"{base_dir}/template/src/main-template.c",
                     f"{output_dir}/src/main.c", 
-                    {'set_callback': set_callback,
+                    {'set_action': set_action,
                     'trigger_event': trigger_event})
 
     #include "supervisors/sup.h"

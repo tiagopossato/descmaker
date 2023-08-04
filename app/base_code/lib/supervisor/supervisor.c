@@ -59,13 +59,13 @@ void print_state(State *state) {
   }
 }
 
-void set_event_callback(Event *event, EventCallback callback) {
-  event->callback = callback;
+void set_event_action(Event *event, EventAction action) {
+  event->action = action;
 }
 
-void run_event_callback(Event *event) {
-  if (event->callback != NULL) {
-    event->callback(event);
+void run_event_action(Event *event) {
+  if (event->action != NULL) {
+    event->action(event);
   }
 }
 
