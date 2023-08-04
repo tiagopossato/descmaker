@@ -8,7 +8,12 @@
 #include "supervisors/events.h"
 #include "supervisors/event_handler.h"
 
-void default_callback(Event *event) { printf("Default callback\n"); }
+void default_callback(Event *event) {
+  printf("Callback for %s event '%s'\n",
+                  event->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                              : "UNCONTROLLABLE",
+                  event->name);
+}
 
 void setup(){
   printf("Start supervisor!\n\n");

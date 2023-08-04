@@ -86,6 +86,5 @@ bool handle_event(Event *event) {
     sup = sup->next;
   }
 
-  run_event_callback(event);
   return true;
 }
