@@ -136,7 +136,7 @@ uint16_t get_enabled_controllable_events(Supervisor *supervisor,
  * @param event The event to be processed.
  * @return True if the event was processed, false otherwise.
  */
-bool run_supervisor(Supervisor *supervisor, Event *event);
+bool make_supervisor_transition(Supervisor *supervisor, Event *event);
 #ifdef __cplusplus
 }
 #endif

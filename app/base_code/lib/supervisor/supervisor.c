@@ -18,7 +18,7 @@ void print_supervisor_alphabet(Supervisor *supervisor) {
   }
 }
 
-bool run_supervisor(Supervisor *supervisor, Event *event) {
+bool make_supervisor_transition(Supervisor *supervisor, Event *event) {
   assert(supervisor != NULL);
   assert(event != NULL);
 

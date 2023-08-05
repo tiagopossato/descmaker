@@ -83,7 +83,7 @@ bool handle_event(Event *event) {
   // run all supervisors
   sup = &sup_list;
   while (sup != NULL) {
-    run_supervisor(sup->supervisor, event);
+    make_supervisor_transition(sup->supervisor, event);
     sup = sup->next;
   }
 
