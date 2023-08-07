@@ -51,8 +51,6 @@ if __name__ == '__main__':
 
     # verify if virtual env named 'env' exists
     if not os.path.exists(env_dir):
-        # get current execution path
-        current_dir = os.getcwd()
         # change execution path to output_dir
         os.chdir(parent_dir)
         print(f"Virtual env 'env' not found in '{parent_dir}'.")
