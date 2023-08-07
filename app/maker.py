@@ -1,8 +1,23 @@
-from bs4 import BeautifulSoup 
-import os
-import argparse
-from string import Template
+try:
+    from bs4 import BeautifulSoup 
+    import os
+    import argparse
+    from string import Template
+    from utils import copy_directory, remove_directory
+except ImportError as e:
+    print("Import error: ", e)
+    exit(-1)
 
+# Specify the regex patterns to exclude files and directories
+exclude_files = [
+    r'sup.c',  # Exclude a specific files
+    r'sup.h',
+    r'platformio.ini'
+]
+
+exclude_dirs = [
+    r'build'  # Exclude directories build
+]
 class CustomTemplate(Template):
 	delimiter = '%$%'
 
@@ -28,8 +43,20 @@ def convert_supervisor(input_file, output_dir):
 
     if input_file==None or not os.path.exists(input_file):
         print(f"File {input_file} not found")
-        exit(-1)
+        # raise exception
+        raise FileNotFoundError
 
+    # join script path with 'base_code' folder
+    base_code_path = os.path.join(base_dir, 'base_code')
+
+    # Call the function to copy the directory structure
+    try:
+        copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
+        print("Directory copied successfully!")
+    except Exception as e:
+        print("Directory copy failed!")
+        exit(-1)
+        
     # print input_file and output files
     print(f"Input file: {input_file}")
     print(f"Output path: {output_dir}")
@@ -49,6 +76,8 @@ def convert_supervisor(input_file, output_dir):
             continue
         event_list.append({'Kind':e.get('Kind'), 'Name':e.get('Name')})
 
+    # count controllable events
+    events_controllable_count = len([x for x in event_list if x['Kind'] == 'CONTROLLABLE'])
 
     # get all supervisors
     simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
@@ -97,18 +126,19 @@ def convert_supervisor(input_file, output_dir):
     # make file events.c
     # Event btnON = {UNCONTROLLABLE, 0, "btnON", NULL};
     events_c = ""
+    controllable_event_list = ""
 
     # make file events.h
     # extern Event btnON;
     events_h = ""
 
-    # create set callback list
-    # Events['Se'].set_callback(default_callback)
-    set_callback = ""
+    # create set action list
+    # Events['Se'].set_action(default_action)
+    set_action = ""
 
     # create handle events list for test
-    # handle_event(Events['Se'])
-    handle_event = ""
+    # trigger_event(Events['Se'])
+    trigger_event = ""
 
     i = 0
     for event in event_list:
@@ -116,22 +146,30 @@ def convert_supervisor(input_file, output_dir):
         # Event on = {CONTROLLABLE, 0, "on", NULL};
         events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, SUP_DEBUG_STR(\"{event['Name']}\"), NULL}};\n"
         events_h += f"extern Event {event['Name']};\n"
-        set_callback += f"  set_event_callback(&{event['Name']}, default_callback);\n"
-        handle_event += f"  handle_event(&{event['Name']});\n"
+        if event['Kind'] == 'CONTROLLABLE':
+            set_action += f"  set_event_action(&{event['Name']}, default_action);\n"
+            controllable_event_list += f"&{event['Name']},"
+        if event['Kind'] == 'UNCONTROLLABLE':
+            trigger_event += f"  trigger_event(&{event['Name']});\n" 
         i = i + 1
 
-    fill_template(f"{base_dir}/template/src/supervisors/events-template.h",
-                    f"{output_dir}/src/supervisors/events.h", 
-                    {'events_h': events_h})
+    # remove last comma on controllable_event_list
+    controllable_event_list = controllable_event_list[:-1]
+    
+    fill_template(f"{base_dir}/template/src/event_handler/events-template.h",
+                    f"{output_dir}/src/event_handler/events.h", 
+                    {'events_controllable_count': events_controllable_count,
+                    'events_h': events_h})
 
-    fill_template(f"{base_dir}/template/src/supervisors/events-template.c",
-                    f"{output_dir}/src/supervisors/events.c", 
-                    {'events_c': events_c})
+    fill_template(f"{base_dir}/template/src/event_handler/events-template.c",
+                    f"{output_dir}/src/event_handler/events.c", 
+                    {'events_c': events_c,
+                     'controllable_event_list':controllable_event_list})
 
     fill_template(f"{base_dir}/template/src/main-template.c",
                     f"{output_dir}/src/main.c", 
-                    {'set_callback': set_callback,
-                    'handle_event': handle_event})
+                    {'set_action': set_action,
+                    'trigger_event': trigger_event})
 
     #include "supervisors/sup.h"
     # create include supervisor files
@@ -143,7 +181,7 @@ def convert_supervisor(input_file, output_dir):
     supervisor_list_head = f"{supervisors[0]['name'].replace('.', '_')}_list"
     handle_include_supervisors = ""
     cmake_append_supervisors = ""
-
+    index = 0
     for sup_index in range(len(supervisors)):
         sup = supervisors[sup_index]
         sup['name'] = sup['name'].replace('.', '_')
@@ -156,7 +194,10 @@ def convert_supervisor(input_file, output_dir):
         supervisor_list_create += f"extern SupervisorList {sup['name']}_list;\n"
         
         next_sup = f"&{supervisors[sup_index+1]['name']}_list" if sup_index < len(supervisors)-1 else "NULL"
-        supervisor_list_init += f"SupervisorList {sup['name']}_list = {{&{sup['name']}, {next_sup}}};\n"
+        if(index == 0):
+            supervisor_list_init += f"SupervisorList sup_list = {{&{sup['name']}, {next_sup}}};\n"
+        else:
+            supervisor_list_init += f"SupervisorList {sup['name']}_list = {{&{sup['name']}, {next_sup}}};\n"
         
         # create event list
         # Alphabet sup_evt0;
@@ -277,11 +318,12 @@ def convert_supervisor(input_file, output_dir):
                     {'supervisor_name_upper': sup['name'].upper(),
                     'supervisor_create_header': f"extern Supervisor {sup['name']};\n"
                     })
+        index += 1
 
     # -------- end of for "sup in supervisors:" ---------------
 
-    fill_template(f"{base_dir}/template/src/supervisors/handle_event-template.c",
-                    f"{output_dir}/src/supervisors/handle_event.c", 
+    fill_template(f"{base_dir}/template/src/supervisors/supervisor_list-template.c",
+                    f"{output_dir}/src/supervisors/supervisor_list.c", 
                     {'supervisor_list_create': supervisor_list_create,
                     'supervisor_list_init': supervisor_list_init,
                     'supervisor_list_head': supervisor_list_head,
@@ -309,10 +351,16 @@ def convert_supervisor(input_file, output_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, help='Input file')
-    parser.add_argument('--output', type=str, help='Output path')
+    parser.add_argument('--input', type=str, help='Input file', required=True)
+    parser.add_argument('--output', type=str, help='Output path', default='generated_code', required=False)
 
     input_file = parser.parse_args().input
     output_dir = parser.parse_args().output
 
-    convert_supervisor(input_file, output_dir)
+    try:
+        convert_supervisor(input_file, output_dir)
+        print("Supervisor converted successfully!")
+    except Exception as e:
+        # remove output directory
+        remove_directory(output_dir)
+        print(e)

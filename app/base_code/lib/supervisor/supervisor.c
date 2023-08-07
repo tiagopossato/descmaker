@@ -18,19 +18,25 @@ void print_supervisor_alphabet(Supervisor *supervisor) {
   }
 }
 
-bool run_supervisor(Supervisor *supervisor, Event *event) {
+bool make_supervisor_transition(Supervisor *supervisor, Event *event) {
   assert(supervisor != NULL);
   assert(event != NULL);
 
   State *last_state = supervisor->current_state;
   Transition *transition = supervisor->current_state->transitions;
+  
+  if (!is_event_in_supervisor_alphabet(supervisor, event)) {
+    return true;
+  }
+
   while (transition != NULL) {
     if (transition->event->id == event->id) {
       supervisor->current_state = transition->target;
       supervisor->last_state = last_state;
       SUP_DEBUG_PRINT("%s, event %s %s => %s -> %s\n", supervisor->name,
-                      event->kind == CONTROLLABLE ? SUP_DEBUG_STR("CONTROLLABLE")
-                                                  : SUP_DEBUG_STR("UNCONTROLLABLE"),
+                      event->kind == CONTROLLABLE
+                          ? SUP_DEBUG_STR("CONTROLLABLE")
+                          : SUP_DEBUG_STR("UNCONTROLLABLE"),
                       event->name, supervisor->last_state->name,
                       supervisor->current_state->name);
       return true;
@@ -53,13 +59,13 @@ void print_state(State *state) {
   }
 }
 
-void set_event_callback(Event *event, EventCallback callback) {
-  event->callback = callback;
+void set_event_action(Event *event, EventAction action) {
+  event->action = action;
 }
 
-void run_event_callback(Event *event) {
-  if (event->callback != NULL) {
-    event->callback(event);
+void run_event_action(Event *event) {
+  if (event->action != NULL) {
+    event->action(event);
   }
 }
 
@@ -85,4 +91,19 @@ bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event) {
     alphabet = alphabet->next;
   }
   return false;
+}
+
+uint16_t get_enabled_controllable_events(Supervisor *supervisor,
+                                         Event **events) {
+  uint16_t i = 0;
+  State *current_state = supervisor->current_state;
+  Transition *transition = current_state->transitions;
+  while (transition != NULL) {
+    if (transition->event->kind == CONTROLLABLE) {
+      events[i] = transition->event;
+      i++;
+    }
+    transition = transition->next;
+  }
+  return i;
 }

@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
-#include "events.h"
+#include "../event_handler/events.h"
 #include "%$%{sup_name_source}.h"
 
 // Supervisor specific instances

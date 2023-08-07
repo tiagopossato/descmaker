@@ -45,11 +45,11 @@ struct _Transition {
 typedef enum EventKind { CONTROLLABLE, UNCONTROLLABLE } EventKind;
 
 /**
- * @brief The event callback
+ * @brief The event action
  * @param event The event
- * @note The event callback should be set using setEventCallback
+ * @note The event action should be set using setEventAction
  */
-typedef void (*EventCallback)(Event *event);
+typedef void (*EventAction)(Event *event);
 
 /**
  * @brief An event
@@ -61,7 +61,7 @@ struct _Event {
   EventKind kind;
   uint16_t id;
   const char *name;
-  EventCallback callback;
+  EventAction action;
 };
 
 /**
@@ -80,19 +80,19 @@ extern "C" {
 #endif
 
 /**
- * @brief Set the event callback
+ * @brief Set the event action
  * @param event The event
- * @param callback The callback to set
- * @note The callback will be called when the event is triggered
+ * @param action The action to set
+ * @note The action will be called when the event is triggered
  */
-void set_event_callback(Event *event, EventCallback callback);
+void set_event_action(Event *event, EventAction action);
 
 /**
- * @brief Run the event callback
+ * @brief Run the event action
  * @param event The event
  * @note This function should only be called by the supervisor
  */
-void run_event_callback(Event *event);
+void run_event_action(Event *event);
 
 /**
  * Print the state and transitions
@@ -122,12 +122,21 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event);
 bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event);
 
 /**
+ * Get the enabled controllable events in the current state of the supervisor.
+ * @param supervisor The supervisor.
+ * @param events The array of events to be filled.
+ * @return The number of enabled controllable events.
+ */
+uint16_t get_enabled_controllable_events(Supervisor *supervisor,
+                                         Event **events);
+
+/**
  * Run the supervisor.
  * @param supervisor The supervisor.
  * @param event The event to be processed.
  * @return True if the event was processed, false otherwise.
  */
-bool run_supervisor(Supervisor *supervisor, Event *event);
+bool make_supervisor_transition(Supervisor *supervisor, Event *event);
 #ifdef __cplusplus
 }
 #endif

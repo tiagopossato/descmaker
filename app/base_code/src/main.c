@@ -3,28 +3,31 @@
  *
  * @brief Main file for the supervisor project
  */
+#include "event_handler/events.h"
+#include "event_handler/event_handler.h"
 #include <stdio.h>
-#include "../lib/supervisor/supervisor.h"
-#include "supervisors/events.h"
-#include "supervisors/handle_event.h"
 
-void default_callback(Event *event) { printf("Default callback\n"); }
+void liga_action(Event *event) { printf("\n\nLiga action\n\n"); }
+void desliga_action(Event *event) { printf("\n\nDesliga action\n\n"); }
 
-void setup(){
+void setup() {
   printf("Start supervisor!\n\n");
-  // set default callback for example
-  set_event_callback(&btn, default_callback);
-  set_event_callback(&liga, default_callback);
-  set_event_callback(&desliga, default_callback);
+  // set action on controllable events for example
+  set_event_action(&liga, liga_action);
+  set_event_action(&desliga, desliga_action);
 
-  // handle events for teste
-  handle_event(&btn);
-  handle_event(&liga);
-  handle_event(&desliga);
-
+  // trigger uncontrolable event for teste
+  trigger_event(&btn);
+  printf("\n-----------------------------------------\n");
+  trigger_event(&btn);
+  printf("\n-----------------------------------------\n");
+  trigger_event(&btn);
+  printf("\n-----------------------------------------\n");
+  trigger_event(&btn);
+  printf("\n-----------------------------------------\n");
 }
 
-void loop(){
+void loop() {
   // handle events for teste
 }
 
