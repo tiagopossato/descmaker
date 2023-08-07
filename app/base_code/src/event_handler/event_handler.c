@@ -40,6 +40,11 @@ bool is_event_enabled(Event *event) {
 
 bool handle_event(Event *event) {
   SupervisorList *sup = &sup_list;
+  SUP_DEBUG_PRINT("Handling the %s event '%s'\n",
+                  event->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                              : "UNCONTROLLABLE",
+                  event->name);
+
   if (!is_event_enabled(event)) {
     return false;
   }
@@ -56,10 +61,9 @@ bool trigger_event(Event *event) {
   if (!handle_event(event)) {
     return false;
   }
-  SUP_DEBUG_PRINT("Running the %s event '%s'\n",
-                  event->kind == CONTROLLABLE
-                    ? "CONTROLLABLE"
-                    : "UNCONTROLLABLE",
+  SUP_DEBUG_PRINT("Running action for %s event '%s'\n",
+                  event->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                              : "UNCONTROLLABLE",
                   event->name);
   run_event_action(event);
 
