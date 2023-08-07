@@ -156,13 +156,13 @@ def convert_supervisor(input_file, output_dir):
     # remove last comma on controllable_event_list
     controllable_event_list = controllable_event_list[:-1]
     
-    fill_template(f"{base_dir}/template/src/supervisors/events-template.h",
-                    f"{output_dir}/src/supervisors/events.h", 
+    fill_template(f"{base_dir}/template/src/event_handler/events-template.h",
+                    f"{output_dir}/src/event_handler/events.h", 
                     {'events_controllable_count': events_controllable_count,
                     'events_h': events_h})
 
-    fill_template(f"{base_dir}/template/src/supervisors/events-template.c",
-                    f"{output_dir}/src/supervisors/events.c", 
+    fill_template(f"{base_dir}/template/src/event_handler/events-template.c",
+                    f"{output_dir}/src/event_handler/events.c", 
                     {'events_c': events_c,
                      'controllable_event_list':controllable_event_list})
 
@@ -181,7 +181,7 @@ def convert_supervisor(input_file, output_dir):
     supervisor_list_head = f"{supervisors[0]['name'].replace('.', '_')}_list"
     handle_include_supervisors = ""
     cmake_append_supervisors = ""
-
+    index = 0
     for sup_index in range(len(supervisors)):
         sup = supervisors[sup_index]
         sup['name'] = sup['name'].replace('.', '_')
@@ -194,7 +194,10 @@ def convert_supervisor(input_file, output_dir):
         supervisor_list_create += f"extern SupervisorList {sup['name']}_list;\n"
         
         next_sup = f"&{supervisors[sup_index+1]['name']}_list" if sup_index < len(supervisors)-1 else "NULL"
-        supervisor_list_init += f"SupervisorList {sup['name']}_list = {{&{sup['name']}, {next_sup}}};\n"
+        if(index == 0):
+            supervisor_list_init += f"SupervisorList sup_list = {{&{sup['name']}, {next_sup}}};\n"
+        else:
+            supervisor_list_init += f"SupervisorList {sup['name']}_list = {{&{sup['name']}, {next_sup}}};\n"
         
         # create event list
         # Alphabet sup_evt0;
@@ -315,11 +318,12 @@ def convert_supervisor(input_file, output_dir):
                     {'supervisor_name_upper': sup['name'].upper(),
                     'supervisor_create_header': f"extern Supervisor {sup['name']};\n"
                     })
+        index += 1
 
     # -------- end of for "sup in supervisors:" ---------------
 
-    fill_template(f"{base_dir}/template/src/supervisors/event_handler-template.c",
-                    f"{output_dir}/src/supervisors/event_handler.c", 
+    fill_template(f"{base_dir}/template/src/supervisors/supervisor_list-template.c",
+                    f"{output_dir}/src/supervisors/supervisor_list.c", 
                     {'supervisor_list_create': supervisor_list_create,
                     'supervisor_list_init': supervisor_list_init,
                     'supervisor_list_head': supervisor_list_head,

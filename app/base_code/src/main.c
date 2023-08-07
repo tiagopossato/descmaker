@@ -3,9 +3,8 @@
  *
  * @brief Main file for the supervisor project
  */
-#include "../lib/supervisor/supervisor.h"
-#include "supervisors/event_handler.h"
-#include "supervisors/events.h"
+#include "event_handler/events.h"
+#include "event_handler/event_handler.h"
 #include <stdio.h>
 
 void liga_action(Event *event) { printf("\n\nLiga action\n\n"); }

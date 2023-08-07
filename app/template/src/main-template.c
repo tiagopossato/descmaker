@@ -4,9 +4,8 @@
  * @brief Main file for the supervisor project
  */
 #include <stdio.h>
-#include "../lib/supervisor/supervisor.h"
-#include "supervisors/events.h"
-#include "supervisors/event_handler.h"
+#include "event_handler/events.h"
+#include "event_handler/event_handler.h"
 
 void default_action(Event *event) {
   printf("Action for %s event '%s'\n",
