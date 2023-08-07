@@ -56,7 +56,15 @@ if __name__ == '__main__':
         print(f"Virtual env 'env' not found in '{parent_dir}'.")
         # create virtual env
         print("Creating virtual env...")
-        os.system('python3 -m venv env')
+        if(os.name == 'nt'):
+            result = subprocess.Popen(['python', '-m', 'venv', 'env'])
+        else:
+            result = subprocess.Popen(['python3', '-m', 'venv', 'env'])
+        result.wait()
+
+        if(result.returncode != 0):
+            print("Error creating virtual env!")
+            exit(-1)
         print("Virtual env created successfully!")
         # install requirements
         print("Installing requirements...")
