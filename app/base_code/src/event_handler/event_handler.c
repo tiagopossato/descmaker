@@ -85,4 +85,5 @@ bool trigger_event(Event *event) {
       continue;
     }
   }
+  return true;
 }
