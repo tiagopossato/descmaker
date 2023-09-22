@@ -49,7 +49,7 @@ typedef enum EventKind { CONTROLLABLE, UNCONTROLLABLE } EventKind;
  * @param event The event
  * @note The event action should be set using setEventAction
  */
-typedef void (*EventAction)(Event *event);
+typedef void (*EventAction)(const Event *event);
 
 /**
  * @brief An event
@@ -92,7 +92,7 @@ void set_event_action(Event *event, EventAction action);
  * @param event The event
  * @note This function should only be called by the supervisor
  */
-void run_event_action(Event *event);
+void run_event_action(const Event *event);
 
 /**
  * Print the state and transitions

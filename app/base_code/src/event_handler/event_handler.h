@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-bool trigger_event(Event *event);
+bool trigger_event(const Event *event);
 
 #ifdef __cplusplus
 }

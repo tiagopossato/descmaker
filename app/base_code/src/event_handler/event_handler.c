@@ -4,10 +4,10 @@
 #include "event_handler.h"
 #include "events.h"
 
-bool is_event_enabled(Event *event);
-bool handle_event(Event *event);
+bool is_event_enabled(const Event *event);
+bool handle_event(const Event *event);
 
-bool is_event_enabled(Event *event) {
+bool is_event_enabled(const Event *event) {
   // check if event is enabled in all supervisors
   SupervisorList *sup = &sup_list;
   bool event_enabled = false;
@@ -38,7 +38,7 @@ bool is_event_enabled(Event *event) {
   return event_enabled;
 }
 
-bool handle_event(Event *event) {
+bool handle_event(const Event *event) {
   SupervisorList *sup = &sup_list;
   SUP_DEBUG_PRINT("Handling the %s event '%s'\n",
                   event->kind == CONTROLLABLE ? "CONTROLLABLE"
@@ -57,7 +57,7 @@ bool handle_event(Event *event) {
   return true;
 }
 
-bool trigger_event(Event *event) {
+bool trigger_event(const Event *event) {
   if (!handle_event(event)) {
     return false;
   }

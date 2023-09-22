@@ -7,8 +7,8 @@
 #include "event_handler/event_handler.h"
 #include <stdio.h>
 
-void liga_action(Event *event) { printf("\n\nLiga action\n\n"); }
-void desliga_action(Event *event) { printf("\n\nDesliga action\n\n"); }
+void liga_action(const Event *event) { printf("\n\nLiga action\n\n"); }
+void desliga_action(const Event *event) { printf("\n\nDesliga action\n\n"); }
 
 void setup() {
   printf("Start supervisor!\n\n");

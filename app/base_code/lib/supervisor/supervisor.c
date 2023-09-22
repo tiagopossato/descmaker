@@ -63,7 +63,7 @@ void set_event_action(Event *event, EventAction action) {
   event->action = action;
 }
 
-void run_event_action(Event *event) {
+void run_event_action(const Event *event) {
   if (event->action != NULL) {
     event->action(event);
   }
