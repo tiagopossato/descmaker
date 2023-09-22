@@ -17,26 +17,26 @@ typedef struct _Alphabet Alphabet;
  * @brief The state
  */
 struct _State {
-  bool is_start;
+  const bool is_start;
   const char *name;
-  Transition *transitions;
+  const Transition *transitions;
 };
 
 /**
  * @brief The alphabet
  */
 struct _Alphabet {
-  Event *event;
-  Alphabet *next;
+  const Event *event;
+  const Alphabet *next;
 };
 
 /**
  * @brief A transition
  */
 struct _Transition {
-  Event *event;
-  State *target;
-  Transition *next;
+  const Event *event;
+  const State *target;
+  const Transition *next;
 };
 
 /**
@@ -58,8 +58,8 @@ typedef void (*EventAction)(Event *event);
  *      Use the provided functions to access the event.
  */
 struct _Event {
-  EventKind kind;
-  uint16_t id;
+  const EventKind kind;
+  const uint16_t id;
   const char *name;
   EventAction action;
 };
@@ -68,10 +68,10 @@ struct _Event {
  * @brief The supervisor
  */
 struct _Supervisor {
-  State *initial_state;
+  const State *initial_state;
   State *current_state;
   State *last_state;
-  Alphabet *alphabet;
+  const Alphabet *alphabet;
   const char *name;
 };
 
@@ -97,7 +97,7 @@ void run_event_action(Event *event);
 /**
  * Print the state and transitions
  */
-void print_state(State *state);
+void print_state(const State *state);
 
 /**
  * Print the supervisor alphabet.
@@ -111,7 +111,7 @@ void print_supervisor_alphabet(Supervisor *supervisor);
  * @param event The event to be checked.
  * @return True if the event is enabled, false otherwise.
  */
-bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event);
+bool is_supervisor_event_enabled(Supervisor *supervisor, const Event *event);
 
 /**
  * Check if the event is in the supervisor alphabet.
@@ -119,7 +119,7 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event);
  * @param event The event to be checked.
  * @return True if the event is in the alphabet, false otherwise.
  */
-bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event);
+bool is_event_in_supervisor_alphabet(Supervisor *supervisor, const Event *event);
 
 /**
  * Get the enabled controllable events in the current state of the supervisor.
@@ -136,7 +136,7 @@ uint16_t get_enabled_controllable_events(Supervisor *supervisor,
  * @param event The event to be processed.
  * @return True if the event was processed, false otherwise.
  */
-bool make_supervisor_transition(Supervisor *supervisor, Event *event);
+bool make_supervisor_transition(Supervisor *supervisor, const Event *event);
 #ifdef __cplusplus
 }
 #endif

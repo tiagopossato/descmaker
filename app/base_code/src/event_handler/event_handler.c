@@ -68,20 +68,19 @@ bool trigger_event(Event *event) {
   run_event_action(event);
 
   for (uint16_t i = 0; i < CONTROLLABLE_EVENTS_COUNT; i++) {
-    // tenta executar o evento. A própria função handle_event verifica se está
-    // habilitado em todos os outros supervisores
-    // Não é preciso montar uma lista dos eventos habilitados em todos os
-    // supervisores, pois se não está habilitado em um supervisor, não
-    // estará nos outros
+    // tries to execute the event. The handle_event function itself checks that
+    // it is enabled on all other supervisors There's no need to build a list of
+    // the events enabled in all the supervisors, because if it isn't enabled in
+    // one supervisor, it won't be in the others
     if (trigger_event(controllable_event_list[i]) == true) {
-      // se retornar verdadeiro, o evento foi executado com sucesso
-      // desta forma, os supervisores já foram atualizados e não deve-se
-      // continuar a execução
+      // if true, the event was executed successfully
+      // thus, the supervisors have already been updated and there is no need to
+      // continue execution
       break;
     } else {
-      // se retornar falso, o evento não foi executado com sucesso
-      // desta forma, os supervisores não foram atualizados e pode-se
-      // continuar a execução
+      // if false, the event was not executed successfully
+      // so the supervisors have not been updated and can be
+      // continue execution
       continue;
     }
   }

@@ -7,7 +7,7 @@
 
 void print_supervisor_alphabet(Supervisor *supervisor) {
   assert(supervisor != NULL);
-  Alphabet *alphabet = supervisor->alphabet;
+  const Alphabet *alphabet = supervisor->alphabet;
   SUP_DEBUG_PRINT("Alphabet: [");
   while (alphabet != NULL) {
     SUP_DEBUG_PRINT("%s%s", alphabet->event->name,
@@ -18,12 +18,12 @@ void print_supervisor_alphabet(Supervisor *supervisor) {
   }
 }
 
-bool make_supervisor_transition(Supervisor *supervisor, Event *event) {
+bool make_supervisor_transition(Supervisor *supervisor, const Event *event) {
   assert(supervisor != NULL);
   assert(event != NULL);
 
   State *last_state = supervisor->current_state;
-  Transition *transition = supervisor->current_state->transitions;
+  const Transition *transition = supervisor->current_state->transitions;
   
   if (!is_event_in_supervisor_alphabet(supervisor, event)) {
     return true;
@@ -46,11 +46,11 @@ bool make_supervisor_transition(Supervisor *supervisor, Event *event) {
   return false;
 }
 
-void print_state(State *state) {
+void print_state(const State *state) {
   assert(state != NULL);
   // print transitions for the initial state
   SUP_DEBUG_PRINT("[");
-  Transition *transition = state->transitions;
+  const Transition *transition = state->transitions;
   while (transition != NULL) {
     SUP_DEBUG_PRINT("%s->%s%s", transition->event->name,
                     transition->target->name,
@@ -69,9 +69,9 @@ void run_event_action(Event *event) {
   }
 }
 
-bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event) {
+bool is_supervisor_event_enabled(Supervisor *supervisor, const Event *event) {
   // if event is enabled in one transition return true
-  Transition *transition = supervisor->current_state->transitions;
+  const Transition *transition = supervisor->current_state->transitions;
   while (transition != NULL) {
     if (transition->event->id == event->id) {
       return true;
@@ -81,9 +81,9 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, Event *event) {
   return false;
 }
 
-bool is_event_in_supervisor_alphabet(Supervisor *supervisor, Event *event) {
+bool is_event_in_supervisor_alphabet(Supervisor *supervisor, const Event *event) {
   // if event is in the alphabet return true
-  Alphabet *alphabet = supervisor->alphabet;
+  const Alphabet *alphabet = supervisor->alphabet;
   while (alphabet != NULL) {
     if (alphabet->event->id == event->id) {
       return true;
@@ -97,7 +97,7 @@ uint16_t get_enabled_controllable_events(Supervisor *supervisor,
                                          Event **events) {
   uint16_t i = 0;
   State *current_state = supervisor->current_state;
-  Transition *transition = current_state->transitions;
+  const Transition *transition = current_state->transitions;
   while (transition != NULL) {
     if (transition->event->kind == CONTROLLABLE) {
       events[i] = transition->event;

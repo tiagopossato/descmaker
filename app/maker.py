@@ -208,9 +208,9 @@ def convert_supervisor(input_file, output_dir):
         first_alphabet_event =f"{sup['name']}_{sup['event_list'][0]['Name']}_evt0"
         for i in range(len(sup['event_list'])):
             event = sup['event_list'][i]
-            alphabet_create += f"Alphabet {sup['name']}_{event['Name']}_evt{i};\n"
+            alphabet_create += f"const Alphabet {sup['name']}_{event['Name']}_evt{i};\n"
             next_event_name = f"&{sup['name']}_{sup['event_list'][i+1]['Name']}_evt{i+1}" if i < len(sup['event_list'])-1  else 'NULL'
-            alphabet_init += f"Alphabet {sup['name']}_{event['Name']}_evt{i} = {{&{event['Name']}, {next_event_name}}};\n"
+            alphabet_init += f"const Alphabet {sup['name']}_{event['Name']}_evt{i} = {{&{event['Name']}, {next_event_name}}};\n"
             i=i+1
 
         # State sup_q0;
@@ -224,7 +224,7 @@ def convert_supervisor(input_file, output_dir):
         for state in sup['state_list']:
             # change . to _ in state name
             state_name = f"{sup['name']}_{state['Name'].replace('.', '_')}"
-            state_create += f"State {state_name};\n"
+            state_create += f"const State {state_name};\n"
             state_initializer_dict[state_name] = None
             state_transition_create[state_name] = []
             state_transition_init[state_name] = []
@@ -268,7 +268,7 @@ def convert_supervisor(input_file, output_dir):
                         if state['Initial']==1:
                             is_initial = 'true'
                             supervisor_initial_state = f"{sup['name']}_{state['Name']}"
-                        state_initializer_dict[state_name] = f"State {state_name} = {{{is_initial}, SUP_DEBUG_STR(\"{transition['Source']}\"), &{transition_name}}};\n"
+                        state_initializer_dict[state_name] = f"const State {state_name} = {{{is_initial}, SUP_DEBUG_STR(\"{transition['Source']}\"), &{transition_name}}};\n"
                         break
             
             # make next transition name
@@ -280,9 +280,9 @@ def convert_supervisor(input_file, output_dir):
             else:
                 next_name = 'NULL'
 
-            transition_create = f"Transition {transition_name};\n"
-            transition_create_header = f"extern Transition {transition_name};\n"
-            transition_init = f"Transition {transition_name} = {{&{transition['Event']}, &{sup['name']}_{transition['Target']}, {next_name}}};\n"
+            transition_create = f"const Transition {transition_name};\n"
+            # transition_create_header = f"extern Transition {transition_name};\n"
+            transition_init = f"const Transition {transition_name} = {{&{transition['Event']}, &{sup['name']}_{transition['Target']}, {next_name}}};\n"
             state_transition_create[state_name].append(transition_create)
             state_transition_init[state_name].append(transition_init)
             
