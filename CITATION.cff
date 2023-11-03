@@ -32,8 +32,8 @@ repository-code: 'https://github.com/tiagopossato/descmaker'
 abstract: >-
   A software to parse "Waters/Supremica" files and generate C code from his inside supervisors.
 keywords:
-  - DES
-  - TCS
-  - code generation
+  - Formal modeling
+  - Model conversion
+  - Code generation
 license: GPL-3.0+
 date-released: '2023-04-03'
