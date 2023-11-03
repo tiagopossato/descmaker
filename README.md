@@ -37,19 +37,20 @@ The script will generate a structure with the same name of the output directory.
 
 ```bibtex
 @software{Possato2023,
-author = {Possato, Tiago},
+author = {Possato, Tiago and Valentini, João H. and Southier, Luiz F. P. and Teixeira, Marcelo},
 license = {GPL-3.0+},
 month = {4},
 title = {{DEScMaker}},
 url = {https://github.com/tiagopossato/descmaker},
 year = {2023}
 }
+
 ```
 
 ```apa
-Possato, T. (2023). DEScMaker [Computer software]. https://github.com/tiagopossato/descmaker
+Possato, T., Valentini, J. H., Southier, L. F. P., & Teixeira, M. (2023). DEScMaker [Computer software]. https://github.com/tiagopossato/descmaker
 ```
 
 ```abnt
-POSSATO, Tiago. DEScMaker. 2023. Disponível em: <https://github.com/tiagopossato/descmaker>. Acesso em: dia mes. ano.
+Possato, T., Valentini, J. H., Southier, L. F. P., Teixeira, M. DEScMaker. 2023. Disponível em: <https://github.com/tiagopossato/descmaker>. Acesso em: dia mes. ano.
 ```
