@@ -24,7 +24,7 @@ bool make_supervisor_transition(Supervisor *supervisor, const Event *event) {
 
   State *last_state = supervisor->current_state;
   const Transition *transition = supervisor->current_state->transitions;
-  
+
   if (!is_event_in_supervisor_alphabet(supervisor, event)) {
     return true;
   }
@@ -81,7 +81,8 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, const Event *event) {
   return false;
 }
 
-bool is_event_in_supervisor_alphabet(Supervisor *supervisor, const Event *event) {
+bool is_event_in_supervisor_alphabet(Supervisor *supervisor,
+                                     const Event *event) {
   // if event is in the alphabet return true
   const Alphabet *alphabet = supervisor->alphabet;
   while (alphabet != NULL) {
@@ -106,4 +107,11 @@ uint16_t get_enabled_controllable_events(Supervisor *supervisor,
     transition = transition->next;
   }
   return i;
+}
+
+void set_supervisor_to_initial_state(Supervisor *supervisor) {
+  // Save last state
+  supervisor->last_state = supervisor->current_state;
+  // Puts fsm to initial state
+  supervisor->current_state = supervisor->initial_state;
 }

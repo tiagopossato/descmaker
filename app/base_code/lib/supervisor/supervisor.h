@@ -137,6 +137,12 @@ uint16_t get_enabled_controllable_events(Supervisor *supervisor,
  * @return True if the event was processed, false otherwise.
  */
 bool make_supervisor_transition(Supervisor *supervisor, const Event *event);
+
+/**
+ * Puts the supervisor in the initial state
+ * @param supervisor The supervisor.
+*/
+void set_supervisor_to_initial_state(Supervisor *supervisor);
 #ifdef __cplusplus
 }
 #endif
