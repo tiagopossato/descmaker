@@ -10,8 +10,24 @@ authors:
   - given-names: Tiago
     family-names: Possato
     email: dev.tiago.possato@gmail.com
-    affiliation: IFC, UTFPR
+    affiliation: UTFPR, IFC
     orcid: 'https://orcid.org/0000-0002-9285-4331'
+  
+  - given-names: João H. 
+    family-names: Valentini
+    email: joaovalentini@alunos.utfpr.edu.br
+    affiliation: UTFPR
+     
+  - given-names: Luiz F. P.
+    family-names: Southier
+    email: luizsouthier@gmail.com
+    affiliation: UTFPR
+
+  - given-names: Marcelo
+    family-names: Teixeira
+    email: mtex@utfpr.edu.br
+    affiliation: UTFPR
+
 repository-code: 'https://github.com/tiagopossato/descmaker'
 abstract: >-
   A software to parse "Waters/Supremica" files and generate C code from his inside supervisors.
