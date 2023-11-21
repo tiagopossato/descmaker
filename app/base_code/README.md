@@ -59,26 +59,30 @@ To use with PlatformIO, comment the main function in `main.c` and rename `main.c
 
 # Files structure
 ```
-|-- generated_code
-|  |-- lib
-|  |  |-- supervisor
-|  |  |  |-- supervisor.c
-|  |  |  |-- supervisor.h
-|  |  |  |-- sup_debug.h
-|  |  |  |-- CMakeLists.txt
-|  |  |  |-- README.md
-|  |  |-- CMakeLists.txt
-|  |-- src
-|  |  |-- supervisors
-|  |  |  |-- events.c
-|  |  |  |-- events.h
-|  |  |  |-- handle_event.c
-|  |  |  |-- handle_event.h
-|  |  |  |-- [sup's].c
-|  |  |  |-- [sup's].h
-|  |  |-- main.c
-|  |-- CMakeLists.txt
-|  |-- platformio.ini
-|  |-- README.md
-|  |-- run.sh
+.
+├── generated_code
+│   ├── CMakeLists.txt
+│   ├── lib
+│   │   ├── CMakeLists.txt
+│   │   └── supervisor
+│   │       ├── CMakeLists.txt
+│   │       ├── README.md
+│   │       ├── structure.png
+│   │       ├── sup_debug.h
+│   │       ├── supervisor.c
+│   │       └── supervisor.h
+│   ├── README.md
+│   ├── run.sh
+│   └── src
+│       ├── event_handler
+│       │   ├── event_handler.c
+│       │   ├── event_handler.h
+│       │   ├── events.c
+│       │   └── events.h
+│       ├── main.c
+│       └── supervisors
+│           ├── sup.c
+│           ├── supervisor_list.c
+│           ├── supervisor_list.h
+│           └── sup.h
 ```

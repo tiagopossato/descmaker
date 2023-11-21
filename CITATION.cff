@@ -4,33 +4,34 @@
 cff-version: 1.2.0
 title: DEScMaker
 message: >-
-  If you use this software, please cite it using the metadata from this file.
+  If you use this software, please cite it using the
+  metadata from this file.
 type: software
 authors:
   - given-names: Tiago
     family-names: Possato
     email: dev.tiago.possato@gmail.com
-    affiliation: UTFPR, IFC
+    affiliation: 'UTFPR, IFC'
     orcid: 'https://orcid.org/0000-0002-9285-4331'
-  
-  - given-names: João H. 
+  - given-names: João H.
     family-names: Valentini
     email: joaovalentini@alunos.utfpr.edu.br
     affiliation: UTFPR
-     
   - given-names: Luiz F. P.
     family-names: Southier
     email: luizsouthier@gmail.com
     affiliation: UTFPR
-
   - given-names: Marcelo
     family-names: Teixeira
     email: mtex@utfpr.edu.br
     affiliation: UTFPR
-
+identifiers:
+  - type: doi
+    value: 10.1007/978-3-031-49342-3_7
 repository-code: 'https://github.com/tiagopossato/descmaker'
 abstract: >-
-  A software to parse "Waters/Supremica" files and generate C code from his inside supervisors.
+  A software to parse "Waters/Supremica" files and generate
+  C code from his inside supervisors.
 keywords:
   - Formal modeling
   - Model conversion

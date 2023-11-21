@@ -14,8 +14,8 @@ Install python3.
 - For convenience, when synthesizing a supervisor, mark the 'Rename states' option.
 - Before send supervisor 'To editor', 'Rename automaton' to remove caracteres and spaces. Keep only letters and numbers.
 - Do not name a supervisor as 'supervisor'
-- The name of all distinguishers MUST start with GD. For example, GD1, GD2, GDwhatever, etc.
-- As one would anticipate, it is imperative that no other components bear nomenclature commencing with 'GD'.
+- The name of all distinguishers MUST start with H. For example, H1, HD2, H_whatever, etc.
+- As one would anticipate, it is imperative that no other components bear nomenclature commencing with 'H'.
 
 ## Generate code
 
