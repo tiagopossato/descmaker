@@ -2,12 +2,12 @@
 <Module xmlns="http://waters.sourceforge.net/xsd/module" xmlns:B="http://waters.sourceforge.net/xsd/base" Name="example">
 <EventDeclList>
 <EventDecl Kind="UNCONTROLLABLE" Name="btn"/>
-<EventDecl Kind="CONTROLLABLE" Name="liga"/>
-<EventDecl Kind="CONTROLLABLE" Name="desliga"/>
+<EventDecl Kind="CONTROLLABLE" Name="on"/>
+<EventDecl Kind="CONTROLLABLE" Name="off"/>
 <EventDecl Kind="PROPOSITION" Name=":accepting"/>
 </EventDeclList>
 <ComponentList>
-<SimpleComponent Kind="PLANT" Name="botao">
+<SimpleComponent Kind="PLANT" Name="G1_button">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G1S0">
@@ -40,7 +40,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="PLANT" Name="motor">
+<SimpleComponent Kind="PLANT" Name="G2_motor">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G2S0">
@@ -69,7 +69,7 @@
 <EdgeList>
 <Edge Source="G2S0" Target="G2S1">
 <LabelBlock>
-<SimpleIdentifier Name="liga"/>
+<SimpleIdentifier Name="on"/>
 <LabelGeometry Anchor="NW">
 <Point X="-14" Y="-21"/>
 </LabelGeometry>
@@ -80,9 +80,9 @@
 </Edge>
 <Edge Source="G2S1" Target="G2S0">
 <LabelBlock>
-<SimpleIdentifier Name="desliga"/>
+<SimpleIdentifier Name="off"/>
 <LabelGeometry Anchor="NW">
-<Point X="-26" Y="9"/>
+<Point X="-9" Y="9"/>
 </LabelGeometry>
 </LabelBlock>
 <SplineGeometry>
@@ -135,7 +135,7 @@
 </Edge>
 <Edge Source="E1S1" Target="E1S1">
 <LabelBlock>
-<SimpleIdentifier Name="liga"/>
+<SimpleIdentifier Name="on"/>
 <LabelGeometry Anchor="NW">
 <Point X="-11" Y="-24"/>
 </LabelGeometry>
@@ -157,7 +157,7 @@
 </Edge>
 <Edge Source="E1S0" Target="E1S0">
 <LabelBlock>
-<SimpleIdentifier Name="desliga"/>
+<SimpleIdentifier Name="off"/>
 <LabelGeometry Anchor="NW">
 <Point X="-50" Y="-25"/>
 </LabelGeometry>
@@ -225,7 +225,7 @@
 </Edge>
 <Edge Source="G1S0.E1S0.G2S1" Target="G1S0.E1S0.G2S0">
 <LabelBlock>
-<SimpleIdentifier Name="desliga"/>
+<SimpleIdentifier Name="off"/>
 <LabelGeometry Anchor="NW">
 <Point X="-55" Y="-7"/>
 </LabelGeometry>
@@ -258,7 +258,7 @@
 </Edge>
 <Edge Source="G1S0.E1S1.G2S0" Target="G1S0.E1S1.G2S1">
 <LabelBlock>
-<SimpleIdentifier Name="liga"/>
+<SimpleIdentifier Name="on"/>
 <LabelGeometry Anchor="NW">
 <Point X="9" Y="-9"/>
 </LabelGeometry>

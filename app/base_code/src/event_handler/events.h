@@ -9,8 +9,8 @@
 
 // create events
 extern Event btn;
-extern Event liga;
-extern Event desliga;
+extern Event on;
+extern Event off;
 
 extern Event *controllable_event_list[CONTROLLABLE_EVENTS_COUNT];
 
