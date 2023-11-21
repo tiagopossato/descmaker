@@ -189,7 +189,7 @@ def convert_supervisor(input_file, output_dir):
         include_supervisors += f"#include \"supervisors/{sup['name']}.h\"\n"
         handle_include_supervisors += f"#include \"{sup['name']}.h\"\n"
         
-        cmake_append_supervisors += f"list(APPEND SOURCE_FILES src/supervisors/{sup['name']}.c)\n"
+        cmake_append_supervisors += f"    src/supervisors/{sup['name']}.c\n"
 
         supervisor_list_create += f"extern SupervisorList {sup['name']}_list;\n"
         
