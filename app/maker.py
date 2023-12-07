@@ -111,6 +111,9 @@ def convert_supervisor(input_file, output_dir):
         local_event_list = []
         for node in edgeList:
             for evt in node.find_all('SimpleIdentifier'):
+                # ignore guards
+                if evt.get('Name').startswith("{"):
+                    continue
                 transition_list.append({'Source':node.get('Source'), 'Event':evt.get('Name'), 'Target':node.get('Target')})
                 for x in event_list:
                     if x['Name'] == evt.get('Name'):
