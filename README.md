@@ -5,15 +5,70 @@ This tool can parse a "Waters/Supremica" file (.wmod) and generate code with the
 The code generated is independent and don't any requeriment.
 
 # File tree
-DEScMaker
-    descmaker.py
-    c_app
-        maker.py
-    python_app
-        maker.py
+.
+├── app_c
+│   ├── base_code
+│   ├── template
+│   └── maker.py
+├── app_python
+│   ├── base_code
+│   ├── template
+│   └── maker.py
+└── descmaker.py
 
+## Generated Python code file tree
+.
+├── __init__.py
+├── log.csv
+├── main.py
+├── README.md
+└── Supervisor
+    ├── Base
+    │   ├── Event.py
+    │   ├── __init__.py
+    │   ├── __pycache__
+    │   ├── README.md
+    │   ├── State.py
+    │   ├── Supervisor.py
+    │   └── Transition.py
+    ├── event_handler.py
+    ├── events.py
+    ├── __init__.py
+    ├── logger.py
+    ├── __pycache__
+    ├── README.md
+    └── supervisors
+        ├── __init__.py
+        ├── __pycache__
+        ├── README.md
+        └── [sups].py
 
-
+## Generated C code file tree
+.
+├── CMakeLists.txt
+├── lib
+│   ├── CMakeLists.txt
+│   └── supervisor
+│       ├── CMakeLists.txt
+│       ├── README.md
+│       ├── structure.png
+│       ├── sup_debug.h
+│       ├── supervisor.c
+│       └── supervisor.h
+├── README.md
+├── run.sh
+└── src
+    ├── event_handler
+    │   ├── event_handler.c
+    │   ├── event_handler.h
+    │   ├── events.c
+    │   └── events.h
+    ├── main.c
+    └── supervisors
+        ├── [sups].c
+        ├── [sups].h
+        ├── supervisor_list.c
+        └── supervisor_list.h
 
 # How to use
 
@@ -26,23 +81,24 @@ Install python3.
 - Before send supervisor 'To editor', 'Rename automaton' to remove caracteres and spaces. Keep only letters and numbers.
 - Do not name a supervisor as 'supervisor'
 - The name of all distinguishers MUST start with H. For example, H1, HD2, H_whatever, etc.
-- As one would anticipate, it is imperative that no other components bear nomenclature commencing with 'H'.
+- It is imperative that no other component has a name beginning with "H".
 
 ## Generate code
 
-run `python3 app\descmaker.py -i <input> -o <output> -e` with terminal to execute the software:
+run `python3 app\descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
 - `-i <input>` : input file (required)
 - `-o <output>` : output directory. Default: generated_code
+- `-l <language>` : output language. Can be c, python or micropython(under development). Default: c
 - `-e` : in Linux, if present, compile with cmake/gcc and execute the generated code. Default: no execution
 
-In the first execution, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.
+In the first run, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.
 
-The script will generate a structure with the same name of the output directory. The folder will contain the generated code, organized in the same structure of the `base_code`. Inside generated code also will be a `README.md` with the instructions to run the code. Now, this can be readed in `app/base_code/README.md`.
+The script will generate a structure with the same name of the output directory. The folder will contain the generated code, arranged in the same structure of the `base_code`. Inside generated code also will be a `README.md` with the instructions to run the code. Now, this can be readed in `app/base_code/README.md`.
 
 
-# Visual explanation
+# Visual description
 
-![Visual explanation](https://github.com/tiagopossato/descmaker/blob/main/docs/visual_readme.svg?raw=true)
+![Visual description](https://github.com/tiagopossato/descmaker/blob/main/docs/visual_readme.svg?raw=true)
 
 # How to cite this work
 
