@@ -1,8 +1,19 @@
 # DEScMaker
 
-This tool can parse a "Waters/Supremica" file (.wmod) and generate a C code with the same structure of the inside supervisors and distinguishers.
+This tool can parse a "Waters/Supremica" file (.wmod) and generate code with the same structure of the inside supervisors and distinguishers.
 
 The code generated is independent and don't any requeriment.
+
+# File tree
+DEScMaker
+    descmaker.py
+    c_app
+        maker.py
+    python_app
+        maker.py
+
+
+
 
 # How to use
 
