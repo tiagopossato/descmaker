@@ -22,13 +22,17 @@ if __name__ == '__main__':
         parser.print_help()
         exit(-1)
 
+    if output_language ==  'micropython':
+        print("Keep calm, this feature is under development...")
+        exit(-1)
+   
     # print input and output files
     print(f"Input file: {input_file}")
     print(f"Output path: {output_dir}")
     print(f"Output language: {output_language}")
     print(f"Execute: {execute}")
 
-   
+
     # get execution path
     execution_path = os.getcwd()
 

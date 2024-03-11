@@ -5,70 +5,70 @@ This tool can parse a "Waters/Supremica" file (.wmod) and generate code with the
 The code generated is independent and don't any requeriment.
 
 # File tree
-.
-├── app_c
-│   ├── base_code
-│   ├── template
-│   └── maker.py
-├── app_python
-│   ├── base_code
-│   ├── template
-│   └── maker.py
-└── descmaker.py
+    .
+    ├── app_c
+    │   ├── base_code
+    │   ├── template
+    │   └── maker.py
+    ├── app_python
+    │   ├── base_code
+    │   ├── template
+    │   └── maker.py
+    └── descmaker.py
 
 ## Generated Python code file tree
-.
-├── __init__.py
-├── log.csv
-├── main.py
-├── README.md
-└── Supervisor
-    ├── Base
-    │   ├── Event.py
-    │   ├── __init__.py
-    │   ├── __pycache__
-    │   ├── README.md
-    │   ├── State.py
-    │   ├── Supervisor.py
-    │   └── Transition.py
-    ├── event_handler.py
-    ├── events.py
+    .
     ├── __init__.py
-    ├── logger.py
-    ├── __pycache__
+    ├── log.csv
+    ├── main.py
     ├── README.md
-    └── supervisors
+    └── Supervisor
+        ├── Base
+        │   ├── Event.py
+        │   ├── __init__.py
+        │   ├── __pycache__
+        │   ├── README.md
+        │   ├── State.py
+        │   ├── Supervisor.py
+        │   └── Transition.py
+        ├── event_handler.py
+        ├── events.py
         ├── __init__.py
+        ├── logger.py
         ├── __pycache__
         ├── README.md
-        └── [sups].py
+        └── supervisors
+            ├── __init__.py
+            ├── __pycache__
+            ├── README.md
+            └── [sups].py
 
 ## Generated C code file tree
-.
-├── CMakeLists.txt
-├── lib
-│   ├── CMakeLists.txt
-│   └── supervisor
-│       ├── CMakeLists.txt
-│       ├── README.md
-│       ├── structure.png
-│       ├── sup_debug.h
-│       ├── supervisor.c
-│       └── supervisor.h
-├── README.md
-├── run.sh
-└── src
-    ├── event_handler
-    │   ├── event_handler.c
-    │   ├── event_handler.h
-    │   ├── events.c
-    │   └── events.h
-    ├── main.c
-    └── supervisors
-        ├── [sups].c
-        ├── [sups].h
-        ├── supervisor_list.c
-        └── supervisor_list.h
+    .
+    ├── CMakeLists.txt
+    ├── lib
+    │   ├── CMakeLists.txt
+    │   └── supervisor
+    │       ├── CMakeLists.txt
+    │       ├── README.md
+    │       ├── structure.png
+    │       ├── sup_debug.h
+    │       ├── supervisor.c
+    │       └── supervisor.h
+    ├── README.md
+    ├── run.sh
+    └── src
+        ├── event_handler
+        │   ├── event_handler.c
+        │   ├── event_handler.h
+        │   ├── events.c
+        │   └── events.h
+        ├── main.c
+        └── supervisors
+            ├── [sups].c
+            ├── [sups].h
+            ├── supervisor_list.c
+            └── supervisor_list.h
 
 # How to use
 
