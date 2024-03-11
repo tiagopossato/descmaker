@@ -38,9 +38,9 @@ if __name__ == '__main__':
     script_path = os.path.dirname(os.path.realpath(__file__))
 
     # get parent directory of script path
-    parent_dir = os.path.dirname(script_path)
+    # parent_dir = os.path.dirname(script_path)
 
-    env_dir = os.path.join(parent_dir, 'env')
+    env_dir = os.path.join(script_path, 'env')
 
     # Path to a Python interpreter that runs any Python script
     # under the virtualenv /path/to/virtualenv/
@@ -52,8 +52,8 @@ if __name__ == '__main__':
     # verify if virtual env named 'env' exists
     if not os.path.exists(env_dir):
         # change execution path to output_dir
-        os.chdir(parent_dir)
-        print(f"Virtual env 'env' not found in '{parent_dir}'.")
+        os.chdir(script_path)
+        print(f"Virtual env 'env' not found in '{script_path}'.")
         # create virtual env
         print("Creating virtual env...")
         if(os.name == 'nt'):
@@ -68,7 +68,7 @@ if __name__ == '__main__':
         print("Virtual env created successfully!")
         # install requirements
         print("Installing requirements...")
-        result = subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r', 'app/requirements.txt'])
+        result = subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r', 'requirements.txt'])
         result.wait()
         if(result.returncode != 0):
             print("Error installing requirements!")
@@ -77,7 +77,7 @@ if __name__ == '__main__':
             print("Requirements installed successfully!")
 
     # Path to the script that must run under the virtualenv
-    maker = os.path.join(script_path, 'maker.py')
+    maker = os.path.join(script_path, 'app', 'maker.py')
 
     result = subprocess.Popen([python_bin, maker, '--input', input_file, '--output', output_dir])
     result.wait()
