@@ -77,7 +77,7 @@ if __name__ == '__main__':
             print("Requirements installed successfully!")
 
     # Path to the script that must run under the virtualenv
-    maker = os.path.join(script_path, 'app', 'maker.py')
+    maker = os.path.join(script_path, 'c_app', 'maker.py')
 
     result = subprocess.Popen([python_bin, maker, '--input', input_file, '--output', output_dir])
     result.wait()
