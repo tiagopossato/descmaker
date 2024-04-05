@@ -2,6 +2,8 @@ import os
 import shutil
 import re
 
+verified_sup_names = set()
+
 def copy_directory(source, destination, exclude_files=None, exclude_dirs=None):
     if os.path.exists(destination):
         overwrite = input("Output directory exists. Do you want to overwrite it? [y/n]: ")
@@ -38,3 +40,32 @@ def copy_directory(source, destination, exclude_files=None, exclude_dirs=None):
 
 def remove_directory(path):
     shutil.rmtree(path)
+
+def is_valid_sup_name(sup_name):
+    # Regular expression pattern to check if the sup_name is valid for C and Python
+    pattern = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
+    return re.match(pattern, sup_name)
+
+def clean_sup_name(sup_name):
+    # Remove invalid characters
+    sup_name = re.sub(r'[^a-zA-Z0-9_]', '', sup_name)
+    return sup_name
+
+def check_and_update(sup_name):
+    if is_valid_sup_name(sup_name):
+        return sup_name
+    
+    cleaned_sup_name = clean_sup_name(sup_name)
+    if cleaned_sup_name in verified_sup_names:
+        counter = 1
+        while f"{cleaned_sup_name}_{counter}" in verified_sup_names:
+            counter += 1
+        cleaned_sup_name = f"{cleaned_sup_name}_{counter}"
+    verified_sup_names.add(cleaned_sup_name)
+    return cleaned_sup_name
+
+if __name__ == "__main__":
+    # Example usage:
+    sup_name = input("Enter the sup_name: ")
+    verified_sup_name = check_and_update(sup_name)
+    print("Supervisory name after verification:", verified_sup_name)

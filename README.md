@@ -88,8 +88,8 @@ Install python3.
 run `python3 app\descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
 - `-i <input>` : input file (required)
 - `-o <output>` : output directory. Default: generated_code
-- `-l <language>` : output language. Can be c, python or micropython(under development). Default: c
-- `-e` : in Linux, if present, compile with cmake/gcc and execute the generated code. Default: no execution
+- `-l <language>` : output language. Can be C or Python. Default: C
+- `-e` :  If present, compile with cmake/gcc and execute the generated code. Default: no execution
 
 In the first run, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.
 

@@ -9,7 +9,7 @@ try:
     import os
     import argparse
     from string import Template
-    from utils import copy_directory, remove_directory
+    from utils import copy_directory, remove_directory, check_and_update
 except ImportError as e:
     print("Import error: ", e)
     exit(-1)
@@ -104,7 +104,7 @@ def convert_supervisor(input_file, output_dir):
     
     for supervisor in simple_component_supervisor:
         sup = {}
-        sup['name'] = supervisor.get('Name')
+        sup['name'] = check_and_update(supervisor.get('Name'))
 
         if(len(supervisor.find_all('NodeList')) > 1):
             print(f"Error: multiple NodeList on Supervisor {sup['name']}")

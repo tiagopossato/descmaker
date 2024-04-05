@@ -3,7 +3,7 @@ try:
     import os
     import argparse
     from string import Template
-    from utils import copy_directory, remove_directory
+    from utils import copy_directory, remove_directory, check_and_update
 except ImportError as e:
     print("Import error: ", e)
     exit(-1)
@@ -90,31 +90,33 @@ def convert_supervisor(input_file, output_dir):
     supervisors = []
     for supervisor in simple_component_supervisor:
         sup = {}
-        sup['name'] = supervisor.get('Name')
+        sup['name'] = check_and_update(supervisor.get('Name'))
 
         if(len(supervisor.find_all('NodeList')) > 1):
             print(f"Error: multiple NodeList on Supervisor {sup['name']}")
             exit(-1)
         state_list = []
+        #Create a list of states
         for node in supervisor.find_all('NodeList')[0].find_all('SimpleNode'):
             state_list.append({'Name':node.get('Name'), 'Initial': 1 if node.get('Initial')!=None else 0})
         sup['state_list'] = state_list
         
+        # Create the list of edges
         edgeList = supervisor.find_all('EdgeList')[0].find_all('Edge')
-        # if(len(EdgeList) > 1):
-        #     print(f"Error: multiple EdgeList on Supervisor {sup['name']}")
-        #     exit(-1)
         # order edgeList by Source
         edgeList = sorted(edgeList, key=lambda k: k.get('Source'))
 
         transition_list = []
         local_event_list = []
+        # Every edge has a source and a target
         for node in edgeList:
             for evt in node.find_all('SimpleIdentifier'):
                 # ignore guards
                 if evt.get('Name').startswith("{"):
                     continue
+                # make the transition list
                 transition_list.append({'Source':node.get('Source'), 'Event':evt.get('Name'), 'Target':node.get('Target')})
+                # create a local event list
                 for x in event_list:
                     if x['Name'] == evt.get('Name'):
                         e = {'Kind':x['Kind'], 'Name':evt.get('Name')}
@@ -187,7 +189,8 @@ def convert_supervisor(input_file, output_dir):
     index = 0
     for sup_index in range(len(supervisors)):
         sup = supervisors[sup_index]
-        sup['name'] = sup['name'].replace('.', '_')
+        # DONE: Comentado pois a função check_and_update remove os pontos e mais
+        # sup['name'] = sup['name'].replace('.', '_')
 
         include_supervisors += f"#include \"supervisors/{sup['name']}.h\"\n"
         handle_include_supervisors += f"#include \"{sup['name']}.h\"\n"

@@ -7,7 +7,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', type=str, help='Input file', required=True, nargs=1)
     parser.add_argument('-o', type=str, help='Output path', default='generated_code', required=False)
-    parser.add_argument('-l', type=str, help='Output language', choices=['c', 'python', 'micropython'], default='c', required=False, nargs=1)
+    parser.add_argument('-l', type=str, help='Output language', choices=['c', 'python'], default='c', required=False, nargs=1)
     parser.add_argument('-e', action=argparse.BooleanOptionalAction, help='Execute generated code', required=False)
 
     input_file = parser.parse_args().i[0]
@@ -22,9 +22,9 @@ if __name__ == '__main__':
         parser.print_help()
         exit(-1)
 
-    if output_language ==  'micropython':
-        print("Keep calm, this feature is under development...")
-        exit(-1)
+    # if output_language ==  'micropython':
+    #     print("Keep calm, this feature is under development...")
+    #     exit(-1)
    
     # print input and output files
     print(f"Input file: {input_file}")
