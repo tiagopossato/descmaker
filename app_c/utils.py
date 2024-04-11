@@ -52,6 +52,9 @@ def clean_sup_name(sup_name):
     return sup_name
 
 def check_and_update(sup_name):
+    """
+    validate the supervisor's name to match the variable naming rules in C
+    """
     if is_valid_sup_name(sup_name):
         return sup_name
     

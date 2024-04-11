@@ -1,3 +1,8 @@
+"""
+Verifica os parâmetros informados pelo usuário e 
+executa o script correspondente à linguagem selecionada
+"""
+
 import argparse
 import os
 import subprocess

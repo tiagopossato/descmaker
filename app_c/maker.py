@@ -40,6 +40,9 @@ def fill_template(template, dest, template_dict):
 base_dir = os.path.dirname(os.path.realpath(__file__))
 
 def convert_supervisor(input_file, output_dir):
+    """
+    Main function to translate FSM in input_file to code
+    """
 
     if input_file==None or not os.path.exists(input_file):
         print(f"File {input_file} not found")
@@ -109,19 +112,19 @@ def convert_supervisor(input_file, output_dir):
         transition_list = []
         local_event_list = []
         # Every edge has a source and a target
-        for node in edgeList:
-            for evt in node.find_all('SimpleIdentifier'):
+        for transition in edgeList:
+            for evt in transition.find_all('SimpleIdentifier'):
                 # ignore guards
                 if evt.get('Name').startswith("{"):
                     continue
                 # make the transition list
-                transition_list.append({'Source':node.get('Source'), 'Event':evt.get('Name'), 'Target':node.get('Target')})
+                transition_list.append({'Source':transition.get('Source'), 'Event':evt.get('Name'), 'Target':transition.get('Target')})
                 # create a local event list
-                for x in event_list:
-                    if x['Name'] == evt.get('Name'):
-                        e = {'Kind':x['Kind'], 'Name':evt.get('Name')}
-                        if(e not in local_event_list):
-                            local_event_list.append(e)
+                for global_event in event_list:
+                    if global_event['Name'] == evt.get('Name'):
+                        local_event = {'Kind':global_event['Kind'], 'Name':evt.get('Name')}
+                        if(local_event not in local_event_list):
+                            local_event_list.append(local_event)
                         break
         sup['transition_list'] = transition_list
         sup['event_list'] = local_event_list

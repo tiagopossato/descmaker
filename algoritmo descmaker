@@ -1,0 +1,48 @@
+Copia o diretorio base para o diretório de saída
+
+Abre o arquivo
+
+event_list = Lista de eventos global na tag 'EventDeclList'
+
+simple_component_supervisor = Lista de supervisores na tag 'SimpleComponent', com 'Kind' = 'SUPERVISOR' e 'Kind'='PLANT' com nome iniciando em 'H'
+
+supervisors = Lista vazia para armazenar os supervisores encontrados
+
+para cada supervisor na lista lista de supervisores:
+    sup = {}
+    sup['name'] = supervisors name
+    state_list = lista de estados do supervisor, em 'NodeList'->'SimpleNode'
+    sup['state_list'] = state_list
+    edgeList = lista de transições, em 'EdgeList'->'Edge' e ordena pelo 'Source', ou o nó de origem
+    
+    para cada transition na lista de transições:
+        
+        para cada event que habilita a transição:
+            Se o nome começa com '{', significa que tem variáveis e ignora:
+                continua
+            transition_list = Lista de transições com o 'Source' e 'Target' da transição e 'Name' do evento event
+            
+            para cada global_event na lista de eventos globais (event_list): // esse loop é necessário somente para pegar o tipo (controlável ou não) do evento, que está disponível somente na lista de eventos global
+                Se o nome do global_event for igual ao nome do event:
+                    local_event = Cria evento com o tipo do global_event e o nome do evento 
+                    Se o local_event não está na lista de eventos locais (local_event_list):
+                        Adiciona local_event na lista local_event_list
+                    break
+                    
+        sup['transition_list'] = transition_list
+        sup['event_list'] = local_event_list
+        supervisors.append(sup)
+    
+// Nesse ponto o arquivo foi analisado e as FSM's estão na lista supervisors. 
+// Em diante serão montadas as strings com o código em si
+
+
+
+
+
+
+
+
+
+
+
