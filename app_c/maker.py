@@ -73,14 +73,14 @@ def convert_supervisor(input_file, output_dir):
 
     # get all Events
     event_decl_list = bs_data.find_all('EventDeclList')
-    event_list = []
+    global_event_list = []
     for e in event_decl_list[0].find_all('EventDecl'):
         if(e.get('Kind') == 'PROPOSITION'):
             continue
-        event_list.append({'Kind':e.get('Kind'), 'Name':e.get('Name')})
+        global_event_list.append({'Kind':e.get('Kind'), 'Name':e.get('Name')})
 
     # count controllable events
-    events_controllable_count = len([x for x in event_list if x['Kind'] == 'CONTROLLABLE'])
+    events_controllable_count = len([x for x in global_event_list if x['Kind'] == 'CONTROLLABLE'])
 
     # get all supervisors
     simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
@@ -120,7 +120,7 @@ def convert_supervisor(input_file, output_dir):
                 # make the transition list
                 transition_list.append({'Source':transition.get('Source'), 'Event':evt.get('Name'), 'Target':transition.get('Target')})
                 # create a local event list
-                for global_event in event_list:
+                for global_event in global_event_list:
                     if global_event['Name'] == evt.get('Name'):
                         local_event = {'Kind':global_event['Kind'], 'Name':evt.get('Name')}
                         if(local_event not in local_event_list):
@@ -149,7 +149,7 @@ def convert_supervisor(input_file, output_dir):
     trigger_event = ""
 
     i = 0
-    for event in event_list:
+    for event in global_event_list:
         event['Name'] = event['Name'].replace('.', '_')
         # Event on = {CONTROLLABLE, 0, "on", NULL};
         events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, SUP_DEBUG_STR(\"{event['Name']}\"), NULL}};\n"

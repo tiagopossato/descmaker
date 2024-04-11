@@ -2,7 +2,7 @@ Copia o diretorio base para o diretório de saída
 
 Abre o arquivo
 
-event_list = Lista de eventos global na tag 'EventDeclList'
+global_event_list = Lista de eventos global na tag 'EventDeclList'
 
 simple_component_supervisor = Lista de supervisores na tag 'SimpleComponent', com 'Kind' = 'SUPERVISOR' e 'Kind'='PLANT' com nome iniciando em 'H'
 
@@ -22,7 +22,7 @@ para cada supervisor na lista lista de supervisores:
                 continua
             transition_list = Lista de transições com o 'Source' e 'Target' da transição e 'Name' do evento event
             
-            para cada global_event na lista de eventos globais (event_list): // esse loop é necessário somente para pegar o tipo (controlável ou não) do evento, que está disponível somente na lista de eventos global
+            para cada global_event na lista de eventos globais (global_event_list): // esse loop é necessário somente para pegar o tipo (controlável ou não) do evento, que está disponível somente na lista de eventos global
                 Se o nome do global_event for igual ao nome do event:
                     local_event = Cria evento com o tipo do global_event e o nome do evento 
                     Se o local_event não está na lista de eventos locais (local_event_list):
@@ -33,16 +33,18 @@ para cada supervisor na lista lista de supervisores:
         sup['event_list'] = local_event_list
         supervisors.append(sup)
     
-// Nesse ponto o arquivo foi analisado e as FSM's estão na lista supervisors. 
+// Nesse ponto o arquivo foi analisado e as FSM's estão na lista supervisors e global_event_list contém a lista de todos os eventos modelados. No Supremica, são os eventos em 'Editor' > 'Events'
 // Em diante serão montadas as strings com o código em si
 
+para cada evento na lista global_event_list:
+    Cria o texto para instanciar o evento. Exemplo: "Event a1 = {CONTROLLABLE, 0, SUP_DEBUG_STR("a1"), NULL};"
+    Cria o texto para definir o evento. Exemplo: "extern Event a1;"
+    Se o evento for 'CONTROLLABLE':
+        Cria texto para orientar o usuário como associar uma ação ao um evento. Exemplo: "set_event_action(&a1, default_action);"
+    Se o evento for 'UNCONTROLLABLE':
+        Cria texto para orientar o usuário como passar um evento para o manipulador de eventos. Exemplo: "trigger_event(&b1);"
+
+Preenche os templates para 'events.h', 'eventos.c' e 'main.c'
 
 
-
-
-
-
-
-
-
-
+-> Parei na linha 182, # create include supervisor files
