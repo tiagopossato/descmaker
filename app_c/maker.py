@@ -181,7 +181,7 @@ def convert_supervisor(input_file, output_dir):
 
     #include "supervisors/sup.h"
     # create include supervisor files
-    include_supervisors = ""
+    # include_supervisors = ""
 
     supervisor_initial_state = ""
     supervisor_list_create = ""
@@ -195,7 +195,7 @@ def convert_supervisor(input_file, output_dir):
         # DONE: Comentado pois a função check_and_update remove os pontos e mais
         # sup['name'] = sup['name'].replace('.', '_')
 
-        include_supervisors += f"#include \"supervisors/{sup['name']}.h\"\n"
+        # include_supervisors += f"#include \"supervisors/{sup['name']}.h\"\n"
         handle_include_supervisors += f"#include \"{sup['name']}.h\"\n"
         
         cmake_append_supervisors += f"    src/supervisors/{sup['name']}.c\n"

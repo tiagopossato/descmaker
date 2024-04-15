@@ -65,6 +65,10 @@ void set_event_action(Event *event, EventAction action) {
 
 void run_event_action(const Event *event) {
   if (event->action != NULL) {
+    SUP_DEBUG_PRINT("Running action for %s event '%s'\n",
+                    event->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                                : "UNCONTROLLABLE",
+                    event->name);
     event->action(event);
   }
 }
