@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+    <EventDeclList>
+        <EventDecl Kind="UNCONTROLLABLE" Name="e1"/>
+        <EventDecl Kind="CONTROLLABLE" Name="e2"/>
+        <EventDecl Kind="PROPOSITION" Name=":accepting"/>
+    </EventDeclList>
+    <ComponentList>
+        <SimpleComponent Kind="PLANT" Name="b">
+            <Graph>
+                <NodeList>
+                    <SimpleNode Initial="true" Name="S0"></SimpleNode>
+                </NodeList>
+                <EdgeList>
+                    <Edge Source="S0" Target="S0">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e1"/>
+                        </LabelBlock>
+                    </Edge>
+                </EdgeList>
+            </Graph>
+        </SimpleComponent>
+        <SimpleComponent Kind="PLANT" Name="c">
+            <Graph>
+                <NodeList>
+                    <SimpleNode Initial="true" Name="S0"></SimpleNode>
+                </NodeList>
+                <EdgeList>
+                    <Edge Source="S0" Target="S0">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e2"/>
+                        </LabelBlock>
+                    </Edge>
+                </EdgeList>
+            </Graph>
+        </SimpleComponent>
+        <SimpleComponent Kind="SPEC" Name="e">
+            <Graph>
+                <NodeList>
+                    <SimpleNode Initial="true" Name="S0">
+                        <EventList>
+                            <SimpleIdentifier Name=":accepting"/>
+                        </EventList>
+                    </SimpleNode>
+                    <SimpleNode Name="S1">
+                        <EventList>
+                            <SimpleIdentifier Name=":accepting"/>
+                        </EventList>
+                    </SimpleNode>
+                </NodeList>
+                <EdgeList>
+                    <Edge Source="S0" Target="S1">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e1"/>
+                        </LabelBlock>
+                    </Edge>
+                    <Edge Source="S1" Target="S0">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e2"/>
+                        </LabelBlock>
+                    </Edge>
+                    <Edge Source="S1" Target="S1">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e1"/>
+                        </LabelBlock>
+                    </Edge>
+                </EdgeList>
+            </Graph>
+        </SimpleComponent>
+        <SimpleComponent Kind="SUPERVISOR" Name="sup">
+            <Graph>
+                <NodeList>
+                    <SimpleNode Initial="true" Name="q1">
+                        <EventList>
+                            <SimpleIdentifier Name=":accepting"/>
+                        </EventList>
+                    </SimpleNode>
+                    <SimpleNode Name="q2"></SimpleNode>
+                </NodeList>
+                <EdgeList>
+                    <Edge Source="q1" Target="q2">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e1"/>
+                        </LabelBlock>
+                    </Edge>
+                    <Edge Source="q2" Target="q1">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e2"/>
+                        </LabelBlock>
+                    </Edge>
+                    <Edge Source="q2" Target="q2">
+                        <LabelBlock>
+                            <SimpleIdentifier Name="e1"/>
+                        </LabelBlock>
+                    </Edge>
+                </EdgeList>
+            </Graph>
+        </SimpleComponent>
+    </ComponentList>
+</Module>

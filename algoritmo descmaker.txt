@@ -1,50 +1,56 @@
-Copia o diretorio base para o diretório de saída
+Passo 1: Procedimentos iniciais
 
-Abre o arquivo
+    Verifica parâmetros passados, arquivo de entrada, arquivos de saída e copia o diretório base para o diretório de saída
 
-global_event_list = Lista de eventos global na tag 'EventDeclList'
+Passo 2: Leitura dos supervisores e eventos no arquivo XML
 
-simple_component_supervisor = Lista de supervisores na tag 'SimpleComponent', com 'Kind' = 'SUPERVISOR' e 'Kind'='PLANT' com nome iniciando em 'H'
-
-supervisors = Lista vazia para armazenar os supervisores encontrados
-
-para cada supervisor na lista lista de supervisores:
-    sup = {}
-    sup['name'] = supervisors name
-    state_list = lista de estados do supervisor, em 'NodeList'->'SimpleNode'
-    sup['state_list'] = state_list
-    edgeList = lista de transições, em 'EdgeList'->'Edge' e ordena pelo 'Source', ou o nó de origem
+    supervisors = Lista vazia para armazenar os supervisores encontrados
+    Abre o arquivo
+    global\_event\_list = Lista de eventos global na tag 'EventDeclList'
+    simple\_component\_supervisor = Lista de supervisores na tag 'SimpleComponent', com 'Kind' = 'SUPERVISOR' e 'Kind'='PLANT' com nome iniciando em 'H'
+    supervisors = Lista vazia para armazenar os supervisores encontrados
+    Para cada supervisor na lista lista de supervisores:        
+        sup['name'] = nome do supervisor
+        sup['state\_list'] = lista de estados do supervisor, em 'NodeList'->'SimpleNode'
+        edgeList = lista de transições, em 'EdgeList'->'Edge', ordenada pelo 'Source', ou o nó de origem
+        Para cada transition em edgeList:
+            Para cada event que habilita a transição (tag 'SimpleIdentifier' em transition)):
+                Se o nome começa com '\{', significa que tem variáveis e ignora:
+                    Continua
+                transition\_list = Lista de transições com o 'Source' e 'Target' da transição e 'Name' do evento event
+                Para cada global\_event na lista de eventos globais (global\_event\_list):
+                    Se o nome do global\_event for igual ao nome do event:
+                        local\_event = Cria evento com o tipo do global\_event e o nome do evento 
+                        Se o local\_event não está na lista de eventos locais (local\_event\_list):
+                            Adiciona local\_event na lista local\_event\_list
+                        Pára
+            sup['transition\_list'] = transition\_list
+            sup['event\_list'] = local\_event\_list
+            supervisors.append(sup)
     
-    para cada transition na lista de transições:
-        
-        para cada event que habilita a transição:
-            Se o nome começa com '{', significa que tem variáveis e ignora:
-                continua
-            transition_list = Lista de transições com o 'Source' e 'Target' da transição e 'Name' do evento event
-            
-            para cada global_event na lista de eventos globais (global_event_list): // esse loop é necessário somente para pegar o tipo (controlável ou não) do evento, que está disponível somente na lista de eventos global
-                Se o nome do global_event for igual ao nome do event:
-                    local_event = Cria evento com o tipo do global_event e o nome do evento 
-                    Se o local_event não está na lista de eventos locais (local_event_list):
-                        Adiciona local_event na lista local_event_list
-                    break
-                    
-        sup['transition_list'] = transition_list
-        sup['event_list'] = local_event_list
-        supervisors.append(sup)
-    
-// Nesse ponto o arquivo foi analisado e as FSM's estão na lista supervisors e global_event_list contém a lista de todos os eventos modelados. No Supremica, são os eventos em 'Editor' > 'Events'
-// Em diante serão montadas as strings com o código em si
+Passo 3: Montagem dos textos de código, preenchimento e salvamento dos arquivos
 
-para cada evento na lista global_event_list:
-    Cria o texto para instanciar o evento. Exemplo: "Event a1 = {CONTROLLABLE, 0, SUP_DEBUG_STR("a1"), NULL};"
-    Cria o texto para definir o evento. Exemplo: "extern Event a1;"
-    Se o evento for 'CONTROLLABLE':
-        Cria texto para orientar o usuário como associar uma ação ao um evento. Exemplo: "set_event_action(&a1, default_action);"
-    Se o evento for 'UNCONTROLLABLE':
-        Cria texto para orientar o usuário como passar um evento para o manipulador de eventos. Exemplo: "trigger_event(&b1);"
-
-Preenche os templates para 'events.h', 'eventos.c' e 'main.c'
-
-
--> Parei na linha 182, # create include supervisor files
+    Para cada evento na lista global\_event\_list:
+            Cria os textos para definir e instanciar o evento
+            Cria exemplos de associação de ações à eventos e "set\_event\_action(\&a1, default\_action);" e "trigger\_event(\&b1);"    
+            Se o evento for 'CONTROLLABLE':
+                    Cria texto para orientar o usuário como associar uma ação ao um evento. Exemplo: "set\_event\_action(\&a1, default\_action);"
+            Se o evento for 'UNCONTROLLABLE':
+                    Cria texto para orientar o usuário como passar um evento para o manipulador de eventos. Exemplo: "trigger\_event(\&b1);"
+    Preenche e salva os templates para 'events.h', 'eventos.c' e 'main.c'
+    Para cada supervisor na lista lista de supervisors:
+        Cria os textos para preencher as inclusões nos arquivos. Exemplo "#include "supExample.h""
+        Preenche a lista de supervisores
+        Para cada evento na lista de eventos local do supervisor:
+            Monta os textos para criar e instanciar a lista de eventos local do supervisor, chamada de alfabeto.
+        Para cada estado do supervisor: 
+            Monta os textos para criar a lista de estados
+        Para cada transição na lista de transições do supervisor:
+            Para cada estado do supervisor:
+                Monta os textos para instanciar a lista de estados, incluindo a primeira transição de cada estado
+            Monta os textos para criar e instanciar as transições para cada estado
+        Monta a string para criar e instanciar a estrutura que representa o supervisor, incluindo o estado inicial e o alfabeto local
+        Preenche e salva os templates do supervisor: Exemplo "/src/supervisors/supExample.c" e "/src/supervisors/supExample.h"        
+    Preenche o template com a lista de supervisores e salva o arquivo
+    Preenche o template e salva o arquivo CMakeLists.txt
+Fim
