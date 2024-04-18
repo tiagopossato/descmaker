@@ -39,31 +39,7 @@ def fill_template(template, dest, template_dict):
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 
-def convert_supervisor(input_file, output_dir):
-    """
-    Main function to translate FSM in input_file to code
-    """
-
-    if input_file==None or not os.path.exists(input_file):
-        print(f"File {input_file} not found")
-        # raise exception
-        raise FileNotFoundError
-
-    # join script path with 'base_code' folder
-    base_code_path = os.path.join(base_dir, 'base_code')
-
-    # Call the function to copy the directory structure
-    try:
-        copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
-        print("Directory copied successfully!")
-    except Exception as e:
-        print("Directory copy failed!")
-        exit(-1)
-        
-    # print input_file and output files
-    print(f"Input file: {input_file}")
-    print(f"Output path: {output_dir}")
-
+def descmaker_parser(input_file):
     # open file
     with open(input_file, 'r') as f:
         data = f.read() 
@@ -78,9 +54,6 @@ def convert_supervisor(input_file, output_dir):
         if(e.get('Kind') == 'PROPOSITION'):
             continue
         global_event_list.append({'Kind':e.get('Kind'), 'Name':e.get('Name')})
-
-    # count controllable events
-    events_controllable_count = len([x for x in global_event_list if x['Kind'] == 'CONTROLLABLE'])
 
     # get all supervisors
     simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
@@ -129,7 +102,36 @@ def convert_supervisor(input_file, output_dir):
         sup['transition_list'] = transition_list
         sup['event_list'] = local_event_list
         supervisors.append(sup)
+    
+    return supervisors, global_event_list
 
+
+def convert_supervisor(input_file, output_dir):
+    """
+    Main function to translate FSM in input_file to code
+    """
+
+    if input_file==None or not os.path.exists(input_file):
+        print(f"File {input_file} not found")
+        # raise exception
+        raise FileNotFoundError
+
+    # join script path with 'base_code' folder
+    base_code_path = os.path.join(base_dir, 'base_code')
+
+    # Call the function to copy the directory structure
+    try:
+        copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
+        print("Directory copied successfully!")
+    except Exception as e:
+        print("Directory copy failed!")
+        exit(-1)
+        
+    # print input_file and output files
+    print(f"Input file: {input_file}")
+    print(f"Output path: {output_dir}")
+
+    supervisors, global_event_list = descmaker_parser(input_file)
 
     # make file events.c
     # Event btnON = {UNCONTROLLABLE, 0, "btnON", NULL};
@@ -163,6 +165,9 @@ def convert_supervisor(input_file, output_dir):
 
     # remove last comma on controllable_event_list
     controllable_event_list = controllable_event_list[:-1]
+
+    # count controllable events
+    events_controllable_count = len([x for x in global_event_list if x['Kind'] == 'CONTROLLABLE'])
     
     fill_template(f"{base_dir}/template/src/event_handler/events-template.h",
                     f"{output_dir}/src/event_handler/events.h", 
