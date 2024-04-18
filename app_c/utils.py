@@ -51,7 +51,7 @@ def clean_sup_name(sup_name):
     sup_name = re.sub(r'[^a-zA-Z0-9_]', '', sup_name)
     return sup_name
 
-def check_and_update(sup_name):
+def validate_and_update_variable_name(sup_name):
     """
     validate the supervisor's name to match the variable naming rules in C
     """
@@ -70,5 +70,5 @@ def check_and_update(sup_name):
 if __name__ == "__main__":
     # Example usage:
     sup_name = input("Enter the sup_name: ")
-    verified_sup_name = check_and_update(sup_name)
+    verified_sup_name = validate_and_update_variable_name(sup_name)
     print("Supervisory name after verification:", verified_sup_name)
