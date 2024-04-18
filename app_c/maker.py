@@ -106,33 +106,7 @@ def descmaker_parser(input_file):
     return supervisors, global_event_list
 
 
-def convert_supervisor(input_file, output_dir):
-    """
-    Main function to translate FSM in input_file to code
-    """
-
-    if input_file==None or not os.path.exists(input_file):
-        print(f"File {input_file} not found")
-        # raise exception
-        raise FileNotFoundError
-
-    # join script path with 'base_code' folder
-    base_code_path = os.path.join(base_dir, 'base_code')
-
-    # Call the function to copy the directory structure
-    try:
-        copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
-        print("Directory copied successfully!")
-    except Exception as e:
-        print("Directory copy failed!")
-        exit(-1)
-        
-    # print input_file and output files
-    print(f"Input file: {input_file}")
-    print(f"Output path: {output_dir}")
-
-    supervisors, global_event_list = descmaker_parser(input_file)
-
+def descmaker_builder(supervisors, global_event_list, output_dir):
     # make file events.c
     # Event btnON = {UNCONTROLLABLE, 0, "btnON", NULL};
     events_c = ""
@@ -347,21 +321,33 @@ def convert_supervisor(input_file, output_dir):
                     f"{output_dir}/CMakeLists.txt", 
                     {'cmake_append_supervisors': cmake_append_supervisors})
 
-    # print("Lista de eventos:")
-    # print(event_list)
+def convert_supervisor(input_file, output_dir):
+    """
+    Main function to translate FSM in input_file to code
+    """
 
-    # # print supervisor in readable format
-    # for sup in supervisors:
-    #     print(f"Supervisor {sup['name']}:")
-    #     print(f"\tEvents:")
-    #     for event in sup['event_list']:
-    #         print(f"\t\t{event['Name']}")
-    #     print(f"\tStates:")
-    #     for state in sup['state_list']:
-    #         print(f"\t\t{state['Name']}")
-    #     print(f"\tTransitions:")
-    #     for transition in sup['transition_list']:
-    #         print(f"\t\t{transition['Source']} -> {transition['Event']} -> {transition['Target']}")
+    if input_file==None or not os.path.exists(input_file):
+        print(f"File {input_file} not found")
+        # raise exception
+        raise FileNotFoundError
+
+    # join script path with 'base_code' folder
+    base_code_path = os.path.join(base_dir, 'base_code')
+
+    # Call the function to copy the directory structure
+    try:
+        copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
+        print("Directory copied successfully!")
+    except Exception as e:
+        print("Directory copy failed!")
+        exit(-1)
+        
+    # print input_file and output files
+    print(f"Input file: {input_file}")
+    print(f"Output path: {output_dir}")
+
+    supervisors, global_event_list = descmaker_parser(input_file)
+    descmaker_builder(supervisors, global_event_list, output_dir)  
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
