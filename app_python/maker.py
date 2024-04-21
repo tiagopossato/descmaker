@@ -9,7 +9,8 @@ try:
     import os
     import argparse
     from string import Template
-    from utils import copy_directory, remove_directory, check_and_update
+    from utils import copy_directory, remove_directory
+    from descmaker_parser import descmaker_parser
 except ImportError as e:
     print("Import error: ", e)
     exit(-1)
@@ -70,74 +71,8 @@ def convert_supervisor(input_file, output_dir):
     print(f"Input file: {input_file}")
     print(f"Output path: {output_dir}")
 
-    # open file
-    with open(input_file, 'r') as f:
-        data = f.read() 
-
-    # parse file with BeautifulSoup
-    bs_data = BeautifulSoup(data, "xml")
-
-    # get all Events
-    event_decl_list = bs_data.find_all('EventDeclList')
-    event_list = []
-    for e in event_decl_list[0].find_all('EventDecl'):
-        if(e.get('Kind') == 'PROPOSITION'):
-            continue
-        event_list.append({'Kind':e.get('Kind'), 'Name':e.get('Name')})
-
-
-    # get all supervisors
-    simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
-
-    # get all simple components with kind Plant wich starts with 'H'
-    simple_component_plant = bs_data.find_all('SimpleComponent', {'Kind':'PLANT'})
-    simple_component_plant = [x for x in simple_component_plant if x.get('Name').startswith('H')]
-    simple_component_supervisor = simple_component_supervisor + simple_component_plant
-
-    supervisors = []
-    # create supervisor list for use in trigger_event
-    supervisor_list = ""
-
-    distinguishers = []
-    # create supervisor list for use in trigger_event
-    distinguisher_list = ""
-    
-    for supervisor in simple_component_supervisor:
-        sup = {}
-        sup['name'] = check_and_update(supervisor.get('Name'))
-
-        if(len(supervisor.find_all('NodeList')) > 1):
-            print(f"Error: multiple NodeList on Supervisor {sup['name']}")
-            # raise exception
-            raise Exception
-        state_list = []
-        for node in supervisor.find_all('NodeList')[0].find_all('SimpleNode'):
-            state_list.append({'Name':node.get('Name'), 'Initial': 1 if node.get('Initial')!=None else 0})
-        sup['state_list'] = state_list
-
-        edgeList = supervisor.find_all('EdgeList')[0].find_all('Edge')
-        # order edgeList by Source
-        edgeList = sorted(edgeList, key=lambda k: k.get('Source'))
-
-        transition_list = []
-        local_event_list = []
-        for node in edgeList:
-            for evt in node.find_all('SimpleIdentifier'):
-                transition_list.append({'Source':node.get('Source'), 'Event':evt.get('Name'), 'Target':node.get('Target')})
-                for x in event_list:
-                    if x['Name'] == evt.get('Name'):
-                        e = {'Kind':x['Kind'], 'Name':evt.get('Name')}
-                        if(e not in local_event_list):
-                            local_event_list.append(e)
-                        break
-        sup['transition_list'] = transition_list
-        sup['event_list'] = local_event_list
-        supervisors.append(sup)
-
-        if supervisor.get('Kind') == 'SUPERVISOR':
-            supervisor_list += f"{sup['name']},"
-        if supervisor.get('Kind') == 'PLANT':
-            distinguisher_list += f"{sup['name']},"
+    # parser
+    supervisors, global_event_list, supervisor_list, distinguisher_list = descmaker_parser(input_file)
 
 
     # make file events_names.py
@@ -153,7 +88,7 @@ def convert_supervisor(input_file, output_dir):
     trigger_event = ""
 
     i = 0
-    for event in event_list:
+    for event in global_event_list:
         event['Name'] = event['Name'].replace('.', '_')
         events += f"    '{event['Name']}': Event(EventKind.{event['Kind']}, {i}, '{event['Name']}'),\n"
         if event['Kind'] == 'CONTROLLABLE':
@@ -176,7 +111,6 @@ def convert_supervisor(input_file, output_dir):
 
     for sup in supervisors:
         import_list += f"from .{sup['name']} import {sup['name']}\n"
-        # supervisor_list += f"{sup['name']},"
         # Create states
         # q0_state = State("q0", True)
         states = ""
@@ -220,12 +154,6 @@ def convert_supervisor(input_file, output_dir):
     fill_template(f"{base_dir}/template/Supervisor/supervisors/__init__-template.py",
                     f"{output_dir}/Supervisor/supervisors/__init__.py", 
                     {'import_list': import_list})
-
-    # remove last comma
-    if len(distinguisher_list) == 0:
-        supervisor_list = supervisor_list[:-1]
-    
-    distinguisher_list = distinguisher_list[:-1]
     
     fill_template(f"{base_dir}/template/Supervisor/__init__-template.py",
                     f"{output_dir}/Supervisor/__init__.py", 

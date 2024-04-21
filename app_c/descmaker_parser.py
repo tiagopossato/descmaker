@@ -25,8 +25,11 @@ def descmaker_parser(input_file):
     simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
 
     # get all simple components with kind Plant wich starts with 'H'
+    # It has been established that the name of the distinguishing sensors begins with 'H'
     simple_component_plant = bs_data.find_all('SimpleComponent', {'Kind':'PLANT'})
     simple_component_plant = [x for x in simple_component_plant if x.get('Name').startswith('H')]
+
+    #join supervisors and distinguishers
     simple_component_supervisor = simple_component_supervisor + simple_component_plant
 
     supervisors = []
