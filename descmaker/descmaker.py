@@ -9,13 +9,16 @@ from descmaker_c_builder import descmaker_c_builder
 exclude_files = [
     r'\b\w*template\w*\b',  # Exclude a specific files with *template*
     r'\b\w*.pyc',  # Exclude a specific files with end with .pyc
-    r'sup.py'  # Exclude a specific file
+    r'sup.py',  # Exclude a specific file
+    r'sup.c',  # Exclude a specific files
+    r'sup.h',
+    r'platformio.ini'
 ]
 
 exclude_dirs = [
-    r'__pycache__'  # Exclude directories like 'internal1', 'internal2', etc.
+    r'__pycache__',
+    r'build'
 ]
-
 
 base_dir = os.path.dirname(os.path.realpath(__file__))
 

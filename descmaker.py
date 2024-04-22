@@ -1,6 +1,7 @@
 """
-Verifica os parâmetros informados pelo usuário e 
-executa o script correspondente à linguagem selecionada
+Checks the parameters provided;
+Checks and creates the virtual environment;
+Runs DEScMaker in the descmaker folder;
 """
 
 import argparse
@@ -91,9 +92,10 @@ if __name__ == '__main__':
         os.chdir(current_dir)
 
     # Path to the script that must run under the virtualenv
-    maker = os.path.join(script_path, 'app_'+output_language, 'maker.py')
-
-    result = subprocess.Popen([python_bin, maker, '--input', input_file, '--output', output_dir])
+    maker = os.path.join(script_path, 'descmaker', 'descmaker.py')
+    
+    # Runs DEScMaker with Python from the virtual environment.
+    result = subprocess.Popen([python_bin, maker, '--input', input_file, '--output', output_dir, '-l', output_language])
     result.wait()
 
     if execute and result.returncode == 0:
