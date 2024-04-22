@@ -89,15 +89,15 @@ Install python3.
 
 ## Generate code
 
-run `python3 app\descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
+run `python3 descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
 - `-i <input>` : input file (required)
 - `-o <output>` : output directory. Default: generated_code
-- `-l <language>` : output language. Can be C or Python. Default: C
+- `-l <language>` : output language. Can be c or python. Default: c
 - `-e` :  If present, compile with cmake/gcc and execute the generated code. Default: no execution
 
 In the first run, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.
 
-The script will generate a structure with the same name of the output directory. The folder will contain the generated code, arranged in the same structure of the `base_code`. Inside generated code also will be a `README.md` with the instructions to run the code. Now, this can be readed in `app/base_code/README.md`.
+The script will generate a structure with the same name of the output directory. The folder will contain the generated code, arranged in the same structure of the `descmaker/templates_[language]/base_code`. Inside generated code also will be a `README.md` with the instructions to run the code. Now, this can be readed in `descmaker/templates_[language]/base_code/README.md`.
 
 
 # Visual description
