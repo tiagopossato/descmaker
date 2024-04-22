@@ -9,8 +9,8 @@ from descmaker_c_builder import descmaker_c_builder
 exclude_files = [
     r'\b\w*template\w*\b',  # Exclude a specific files with *template*
     r'\b\w*.pyc',  # Exclude a specific files with end with .pyc
-    r'sup.py',  # Exclude a specific file
-    r'sup.c',  # Exclude a specific files
+    r'sup.py',  # Exclude a specific files
+    r'sup.c',
     r'sup.h',
     r'platformio.ini'
 ]
@@ -47,6 +47,8 @@ def convert_supervisor(input_file, output_dir, output_language):
 
     # parser
     supervisors, global_event_list, supervisor_list, distinguisher_list = descmaker_parser(input_file)
+    
+    # builder
     if(output_language=='python'):
         descmaker_python_builder(supervisors, global_event_list, supervisor_list, distinguisher_list, base_dir, output_dir)
     if(output_language=='c'):

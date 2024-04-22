@@ -1,6 +1,5 @@
 """
-Exemplo de supervisor gerado.
-É substituído pelo maker.py na hora de converter o supervisor.
+Example code. It will be overwritten by DEScMaker
 """
 from .. import Events, State, Supervisor
 

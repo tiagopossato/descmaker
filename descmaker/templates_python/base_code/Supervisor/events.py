@@ -1,5 +1,5 @@
 """
-Eventos lidos no arquivo do supremica
+Example code. It will be overwritten by DEScMaker
 """
 from . import Event, EventKind
 

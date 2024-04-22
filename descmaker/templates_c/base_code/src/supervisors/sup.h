@@ -1,3 +1,4 @@
+// Example code. It will be overwritten by DEScMaker
 #ifndef __SUP_H__
 #define __SUP_H__
 

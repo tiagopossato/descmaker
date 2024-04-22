@@ -1,3 +1,4 @@
+// Example code. It will be ignored by DEScMaker
 #include <stdbool.h>
 #include <stdlib.h>
 

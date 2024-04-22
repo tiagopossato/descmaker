@@ -5,16 +5,20 @@ This tool can parse a "Waters/Supremica" file (.wmod) and generate code with the
 The code generated is independent and don't any requeriment.
 
 # File tree
-    .
-    ├── app_c
-    │   ├── base_code
-    │   ├── template
-    │   └── maker.py
-    ├── app_python
-    │   ├── base_code
-    │   ├── template
-    │   └── maker.py
-    └── descmaker.py
+.
+├── descmaker
+│   ├── descmaker.py
+│   ├── descmaker_parser.py
+│   ├── descmaker_c_builder.py
+│   ├── descmaker_python_builder.py
+│   ├── templates_c
+│   │   ├── base_code
+│   │   └── template
+│   ├── templates_python
+│   │   ├── base_code
+│   │   └── template
+│   └── utils.py
+└── descmaker.py
 
 ## Generated Python code file tree
     .

@@ -1,3 +1,4 @@
+// Example code. It will be overwritten by DEScMaker
 #include <stdlib.h>
 #include "events.h"
 // create events
