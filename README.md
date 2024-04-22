@@ -18,7 +18,8 @@ The code generated is independent and don't any requeriment.
     │   │   ├── base_code
     │   │   └── template
     │   └── utils.py
-    └── descmaker.py
+    ├── descmaker.py
+    └── requirements.txt
 
 ## Generated Python code file tree
     .

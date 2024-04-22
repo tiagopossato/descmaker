@@ -81,7 +81,7 @@ if __name__ == '__main__':
         print("Virtual env created successfully!")
         # install requirements
         print("Installing requirements...")
-        result = subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r', 'requirements.txt'])
+        result = subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r', 'descmaker/requirements.txt'])
         result.wait()
         if(result.returncode != 0):
             print("Error installing requirements!")
