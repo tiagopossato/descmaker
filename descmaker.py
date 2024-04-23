@@ -1,7 +1,7 @@
 """
 Checks the parameters provided;
 Checks and creates the virtual environment;
-Runs DEScMaker in the descmaker folder;
+Runs DEScMaker in the app folder;
 """
 
 import argparse
@@ -81,7 +81,7 @@ if __name__ == '__main__':
         print("Virtual env created successfully!")
         # install requirements
         print("Installing requirements...")
-        result = subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r', 'descmaker/requirements.txt'])
+        result = subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r', 'app/requirements.txt'])
         result.wait()
         if(result.returncode != 0):
             print("Error installing requirements!")
@@ -92,7 +92,7 @@ if __name__ == '__main__':
         os.chdir(current_dir)
 
     # Path to the script that must run under the virtualenv
-    maker = os.path.join(script_path, 'descmaker', 'descmaker.py')
+    maker = os.path.join(script_path, 'app', 'descmaker.py')
     
     # Runs DEScMaker with Python from the virtual environment.
     result = subprocess.Popen([python_bin, maker, '--input', input_file, '--output', output_dir, '-l', output_language])

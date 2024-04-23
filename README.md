@@ -6,7 +6,7 @@ The code generated is independent and don't any requeriment.
 
 # File tree
     .
-    ├── descmaker
+    ├── app
     │   ├── descmaker.py
     │   ├── descmaker_parser.py
     │   ├── descmaker_c_builder.py
@@ -98,7 +98,7 @@ run `python3 descmaker.py -i <input> -o <output> -l <language> -e` with terminal
 
 In the first run, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.
 
-The script will generate a structure with the same name of the output directory. The folder will contain the generated code, arranged in the same structure of the `descmaker/templates_[language]/base_code`. Inside generated code also will be a `README.md` with the instructions to run the code. Now, this can be readed in `descmaker/templates_[language]/base_code/README.md`.
+The script will generate a structure with the same name of the output directory. The folder will contain the generated code, arranged in the same structure of the `app/templates_[language]/base_code`. Inside generated code also will be a `README.md` with the instructions to run the code. Now, this can be readed in `app/templates_[language]/base_code/README.md`.
 
 
 # Visual description
