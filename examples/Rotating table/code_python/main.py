@@ -12,7 +12,6 @@ Events['a2'].set_action(default_action)
 Events['a0'].set_action(default_action)
 Events['a3'].set_action(default_action)
 Events['a4'].set_action(default_action)
-Events['a5'].set_action(default_action)
 
 
 if __name__ == '__main__':
@@ -23,5 +22,4 @@ if __name__ == '__main__':
     trigger_event(Events['b0'])
     trigger_event(Events['b3'])
     trigger_event(Events['b4'])
-    trigger_event(Events['b5'])
 

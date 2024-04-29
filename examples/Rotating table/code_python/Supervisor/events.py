@@ -16,8 +16,6 @@ Events = {
     'a4': Event(EventKind.CONTROLLABLE, 8, 'a4'),
     'b3': Event(EventKind.UNCONTROLLABLE, 9, 'b3'),
     'b4': Event(EventKind.UNCONTROLLABLE, 10, 'b4'),
-    'a5': Event(EventKind.CONTROLLABLE, 11, 'a5'),
-    'b5': Event(EventKind.UNCONTROLLABLE, 12, 'b5'),
 }
 
 def get_event_by_id(event_id: int) -> Event:

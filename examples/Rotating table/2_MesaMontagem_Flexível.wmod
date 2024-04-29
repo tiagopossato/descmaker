@@ -15,8 +15,6 @@
 <EventDecl Kind="CONTROLLABLE" Name="a4"/>
 <EventDecl Kind="UNCONTROLLABLE" Name="b3"/>
 <EventDecl Kind="UNCONTROLLABLE" Name="b4"/>
-<EventDecl Kind="CONTROLLABLE" Name="a5"/>
-<EventDecl Kind="UNCONTROLLABLE" Name="b5"/>
 </EventDeclList>
 <ComponentList>
 <SimpleComponent Kind="PLANT" Name="Sensor">
