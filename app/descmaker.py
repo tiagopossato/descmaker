@@ -46,11 +46,11 @@ def convert_supervisor(input_file, output_dir, output_language):
     print(f"Output path: {output_dir}")
 
     # parser
-    supervisors, global_event_list, supervisor_list, distinguisher_list = descmaker_parser(input_file)
+    supervisors, global_event_list, supervisor_list = descmaker_parser(input_file)
     
     # builder
     if(output_language=='python'):
-        descmaker_python_builder(supervisors, global_event_list, supervisor_list, distinguisher_list, base_dir, output_dir)
+        descmaker_python_builder(supervisors, global_event_list, supervisor_list, base_dir, output_dir)
     if(output_language=='c'):
         descmaker_c_builder(supervisors, global_event_list, base_dir, output_dir)
 

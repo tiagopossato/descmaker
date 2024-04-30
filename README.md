@@ -1,6 +1,6 @@
 # DEScMaker
 
-This tool can parse a "Waters/Supremica" file (.wmod) and generate code with the same structure of the inside supervisors and distinguishers.
+This tool can parse a "Waters/Supremica" file (.wmod) and generate code with the same structure of the inside supervisors.
 
 The code generated is independent and don't any requeriment.
 
@@ -85,8 +85,6 @@ Install python3.
 - For convenience, when synthesizing a supervisor, mark the 'Rename states' option.
 - Before send supervisor 'To editor', 'Rename automaton' to remove caracteres and spaces. Keep only letters and numbers.
 - Do not name a supervisor as 'supervisor'
-- The name of all distinguishers MUST start with H. For example, H1, HD2, H_whatever, etc.
-- It is imperative that no other component has a name beginning with "H".
 
 ## Generate code
 

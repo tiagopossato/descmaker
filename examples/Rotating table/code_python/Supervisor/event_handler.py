@@ -3,7 +3,7 @@ Verifies that the event is enabled, runs the event and its action
 """
 from . import Event, Events
 from . import EventKind
-from . import supervisors_list, distinguishers_list
+from . import supervisors_list
 from . import log_error, log_state
 from threading import Lock
 
@@ -31,14 +31,7 @@ def handle_event(event: Event):
                 else:
                     # log_error(event, sup, f"Event not enabled")
                     return False
-        # same from distinguishers
-        for dis in distinguishers_list:
-            if event in dis.get_alphabet():
-                if event in dis.get_enabled_events():
-                    execution_list.append(dis)
-                else:
-                    return False
-                
+
         # verify len of execution_list
         # if len is 0, no supervisor is observing the event
         if len(execution_list) == 0:

@@ -24,21 +24,10 @@ def descmaker_parser(input_file):
     # get all supervisors
     simple_component_supervisor = bs_data.find_all('SimpleComponent', {'Kind':'SUPERVISOR'})
 
-    # get all simple components with kind Plant wich starts with 'H'
-    # It has been established that the name of the distinguishing sensors begins with 'H'
-    simple_component_plant = bs_data.find_all('SimpleComponent', {'Kind':'PLANT'})
-    simple_component_plant = [x for x in simple_component_plant if x.get('Name').startswith('H')]
-
-    #join supervisors and distinguishers
-    simple_component_supervisor = simple_component_supervisor + simple_component_plant
-
     supervisors = []
     
     # create supervisor list for use in trigger_event
     supervisor_list = ""
-
-    # create supervisor list for use in trigger_event
-    distinguisher_list = ""
 
     for supervisor in simple_component_supervisor:
         sup = {}
@@ -83,12 +72,8 @@ def descmaker_parser(input_file):
         # used only for python output
         if supervisor.get('Kind') == 'SUPERVISOR':
             supervisor_list += f"{sup['name']},"
-        if supervisor.get('Kind') == 'PLANT':
-            distinguisher_list += f"{sup['name']},"
 
     # remove last comma. Used only for python output
-    if len(distinguisher_list) == 0:
-        supervisor_list = supervisor_list[:-1]
-    distinguisher_list = distinguisher_list[:-1]
+    supervisor_list = supervisor_list[:-1]
 
-    return supervisors, global_event_list, supervisor_list, distinguisher_list
+    return supervisors, global_event_list, supervisor_list

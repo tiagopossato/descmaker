@@ -1,6 +1,6 @@
 from utils import fill_template
 
-def descmaker_python_builder(supervisors, global_event_list, supervisor_list, distinguisher_list, base_dir, output_dir):
+def descmaker_python_builder(supervisors, global_event_list, supervisor_list, base_dir, output_dir):
        # make file events_names.py
     # 'Se': Event(EventKind.UNCONTROLLABLE, 0, "Se"),
     events = ""
@@ -83,5 +83,4 @@ def descmaker_python_builder(supervisors, global_event_list, supervisor_list, di
     
     fill_template(f"{base_dir}/templates_python/template/Supervisor/__init__-template.py",
                     f"{output_dir}/Supervisor/__init__.py", 
-                    {'supervisor_list': supervisor_list,
-                     'distinguisher_list': distinguisher_list})
+                    {'supervisor_list': supervisor_list})

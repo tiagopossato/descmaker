@@ -1,0 +1,8 @@
+2023-04-03 09:07:45,924; INFO; btn; [sup: G1S0_E1S0_E2S0_G2S0 -> G1S0_E1S1_E2S1_G2S0]
+2023-04-03 09:07:45,924; INFO; liga; [sup: G1S0_E1S1_E2S1_G2S0 -> G1S0_E1S0_E2S1_G2S1]
+2023-04-03 09:07:45,925; ERROR; desliga[EventKind.CONTROLLABLE]; sup; G1S0_E1S0_E2S1_G2S1; Event not enabled
+2024-04-30 09:46:13,654; INFO; se; [supR0EsteiraSensor: S0_S0_S0 -> S1_S0_S0]
+2024-04-30 09:46:13,654; INFO; a1; [supR0EsteiraSensor: S1_S0_S0 -> S0_S1_S0]
+2024-04-30 09:46:13,654; INFO; a1; [supEsteiraMesa_GiratoriaR1: S0_S0_S0 -> S1_S0_S1]
+2024-04-30 09:46:13,654; INFO; a1; [supR5EsteiraMesa_GiratoriaFuradeira: S4_S0_S0_S0 -> S4_S1_S0_S0]
+2024-04-30 09:46:13,654; INFO; a1; [supR8EsteiraMesa_GiratoriaFuradeiraTeste: S0_S0_S0_S0_S0 -> S0_S1_S0_S0_S0]
