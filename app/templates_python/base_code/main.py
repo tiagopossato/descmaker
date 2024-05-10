@@ -7,10 +7,6 @@ from time import sleep
 # install getkey with: pip install getkey
 from getkey import getkey
 
-def btn_action(event: Event):
-    trigger_event(Events['liga'])
-    trigger_event(Events['desliga'])
-
 def liga_action(event: Event):
     print('\n\nLigando...\n')
 
