@@ -22,7 +22,6 @@ void setup(){
   set_event_action(&a0, default_action);
   set_event_action(&a3, default_action);
   set_event_action(&a4, default_action);
-  set_event_action(&a5, default_action);
 
   // trigger uncontrolable event for teste
   trigger_event(&b1);
@@ -31,7 +30,6 @@ void setup(){
   trigger_event(&b0);
   trigger_event(&b3);
   trigger_event(&b4);
-  trigger_event(&b5);
 
 }
 

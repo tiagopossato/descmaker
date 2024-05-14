@@ -19,7 +19,7 @@
 <EventDecl Kind="UNCONTROLLABLE" Name="b5"/>
 </EventDeclList>
 <ComponentList>
-<SimpleComponent Kind="PLANT" Name="Sensor">
+<SimpleComponent Kind="PLANT" Name="GSe_Sensor">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G1">
@@ -52,7 +52,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="PLANT" Name="Esteira">
+<SimpleComponent Kind="PLANT" Name="G1_Esteira">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G2">
@@ -104,7 +104,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="PLANT" Name="Mesa_Giratoria">
+<SimpleComponent Kind="PLANT" Name="G0_Mesa_Giratoria">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G3">
@@ -156,7 +156,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="PLANT" Name="Furadeira">
+<SimpleComponent Kind="PLANT" Name="G2_Furadeira">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G4">
@@ -208,7 +208,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="PLANT" Name="Teste">
+<SimpleComponent Kind="PLANT" Name="G3_Teste">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="G5">
@@ -260,7 +260,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="PLANT" Name="Robo">
+<SimpleComponent Kind="PLANT" Name="G4_OutConveyor">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="S0">
@@ -312,7 +312,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R0">
+<SimpleComponent Kind="SPEC" Name="E0">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="E0">
@@ -378,7 +378,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R1">
+<SimpleComponent Kind="SPEC" Name="E1">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="E1">
@@ -435,7 +435,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R2">
+<SimpleComponent Kind="SPEC" Name="E2">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="E2">
@@ -492,7 +492,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R3">
+<SimpleComponent Kind="SPEC" Name="E3">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="E3">
@@ -549,7 +549,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R4">
+<SimpleComponent Kind="SPEC" Name="E4">
 <Graph>
 <NodeList>
 <SimpleNode Name="S4">
@@ -606,7 +606,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R5">
+<SimpleComponent Kind="SPEC" Name="E5">
 <Graph>
 <NodeList>
 <SimpleNode Name="S2">
@@ -718,7 +718,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R6">
+<SimpleComponent Kind="SPEC" Name="E6">
 <Graph>
 <NodeList>
 <SimpleNode Name="S2">
@@ -830,7 +830,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R7">
+<SimpleComponent Kind="SPEC" Name="E7">
 <Graph>
 <NodeList>
 <SimpleNode Name="S0">
@@ -936,7 +936,7 @@
 </EdgeList>
 </Graph>
 </SimpleComponent>
-<SimpleComponent Kind="SPEC" Name="R8">
+<SimpleComponent Kind="SPEC" Name="E8">
 <Graph>
 <NodeList>
 <SimpleNode Initial="true" Name="E8">

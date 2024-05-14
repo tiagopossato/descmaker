@@ -5,7 +5,7 @@
 
 #include "../../lib/supervisor/supervisor.h"
 
-#define CONTROLLABLE_EVENTS_COUNT 6
+#define CONTROLLABLE_EVENTS_COUNT 5
 
 // create events
 extern Event a1;
@@ -19,8 +19,6 @@ extern Event a3;
 extern Event a4;
 extern Event b3;
 extern Event b4;
-extern Event a5;
-extern Event b5;
 
 extern Event *controllable_event_list[CONTROLLABLE_EVENTS_COUNT];
 

@@ -12,7 +12,5 @@ Event a3 = {CONTROLLABLE, 7, SUP_DEBUG_STR("a3"), NULL};
 Event a4 = {CONTROLLABLE, 8, SUP_DEBUG_STR("a4"), NULL};
 Event b3 = {UNCONTROLLABLE, 9, SUP_DEBUG_STR("b3"), NULL};
 Event b4 = {UNCONTROLLABLE, 10, SUP_DEBUG_STR("b4"), NULL};
-Event a5 = {CONTROLLABLE, 11, SUP_DEBUG_STR("a5"), NULL};
-Event b5 = {UNCONTROLLABLE, 12, SUP_DEBUG_STR("b5"), NULL};
 
-Event *controllable_event_list[CONTROLLABLE_EVENTS_COUNT] = {&a1,&a2,&a0,&a3,&a4,&a5};
+Event *controllable_event_list[CONTROLLABLE_EVENTS_COUNT] = {&a1,&a2,&a0,&a3,&a4};
