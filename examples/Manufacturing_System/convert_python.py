@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-input_file = '2_MesaMontagem_Flexível.wmod'
+input_file = 'Manufacturing_System_models.wmod'
 
 output_dir = 'code_python'
 
