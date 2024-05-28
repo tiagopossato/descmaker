@@ -31,7 +31,7 @@ bool make_supervisor_transition(Supervisor *supervisor, const Event *event) {
 
   while (transition != NULL) {
     if (transition->event->id == event->id) {
-      supervisor->current_state = transition->target;
+      supervisor->current_state = transition->target_event;
       supervisor->last_state = last_state;
       SUP_DEBUG_PRINT("%s, event %s %s => %s -> %s\n", supervisor->name,
                       event->kind == CONTROLLABLE
@@ -53,7 +53,7 @@ void print_state(const State *state) {
   const Transition *transition = state->transitions;
   while (transition != NULL) {
     SUP_DEBUG_PRINT("%s->%s%s", transition->event->name,
-                    transition->target->name,
+                    transition->target_event->name,
                     transition->next != NULL ? ", " : "]\n");
     transition = transition->next;
   }

@@ -25,6 +25,7 @@ def descmaker_c_builder(supervisors, global_event_list, base_dir, output_dir):
         # Event on = {CONTROLLABLE, 0, "on", NULL};
         events_c += f"Event {event['Name']} = {{{event['Kind']}, {i}, SUP_DEBUG_STR(\"{event['Name']}\"), NULL}};\n"
         events_h += f"extern Event {event['Name']};\n"
+        # set examples
         if event['Kind'] == 'CONTROLLABLE':
             set_action += f"  set_event_action(&{event['Name']}, default_action);\n"
             controllable_event_list += f"&{event['Name']},"

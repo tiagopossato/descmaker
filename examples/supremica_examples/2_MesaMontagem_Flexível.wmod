@@ -412,13 +412,7 @@
 <LabelBlock>
 <SimpleIdentifier Name="a1"/>
 <SimpleIdentifier Name="a0"/>
-<LabelGeometry Anchor="NW">
-<Point X="-11" Y="-1"/>
-</LabelGeometry>
 </LabelBlock>
-<SplineGeometry>
-<Point X="110" Y="138"/>
-</SplineGeometry>
 </Edge>
 <Edge Source="S1" Target="E1">
 <LabelBlock>
