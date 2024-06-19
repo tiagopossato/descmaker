@@ -38,7 +38,7 @@ def convert_supervisor(input_file, output_dir, output_language):
     base_code_path = os.path.join(base_dir, 'templates_'+output_language, 'base_code')
 
     # Call the function to copy the directory structure
-        
+    copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
     print("Directory copied successfully!")
         
     # print input and output files
