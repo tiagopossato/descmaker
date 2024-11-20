@@ -12,8 +12,8 @@ mkdir -p build
 # entra na pasta
 cd build
 # https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html
-#cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Release ../
-cmake .. -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Debug ../
+#cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_BUILD_TYPE=Release ..
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCMAKE_C_COMPILER=gcc -DCMAKE_BUILD_TYPE=Debug  ..
 # make clean all
 make supervisor
 ./supervisor
