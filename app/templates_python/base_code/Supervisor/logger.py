@@ -30,15 +30,21 @@ def log_error(event:Event, sup: Supervisor, msg: str):
     Log error
     """
     try:
-        logger.error(f"{event.get_name()}[{event.get_kind()}]; {sup.get_name()}; {sup.get_current_state().get_name()}; {msg}")
+        logger.error(
+            "%s[%s]; %s; %s; %s",
+            event.get_name(),
+            event.get_kind(),
+            sup.get_name(),
+            sup.get_current_state().get_name(),
+            msg
+        )
     except Exception as e:
         # verify if event is in Events dictionary
         if not isinstance(event, Event):
-            raise TypeError("event must be instance of Event")
+            raise TypeError("event must be instance of Event") from e
         # verify if supervisor is a Supervisor instance
         if not isinstance(sup, Supervisor):
-            raise TypeError("supervisor must be instance of Supervisor")
-        
+            raise TypeError("supervisor must be instance of Supervisor") from e
         raise e
 
 def log_state(event: Event, supervisors: List[Supervisor]):
@@ -49,19 +55,20 @@ def log_state(event: Event, supervisors: List[Supervisor]):
         # make log with list of transitions using last state and actual state
         transtions = "["
         for sup in supervisors:
-            transtions += f"{sup.get_name()}: {sup.get_last_state().get_name()} -> {sup.get_current_state().get_name()}, "
+            transtions += (
+                f"{sup.get_name()}: {sup.get_last_state().get_name()} "
+                f"-> {sup.get_current_state().get_name()}, "
+            )
         transtions = transtions[:-2] + "]"
-        logger.info(f"{event.get_name()}; {transtions}")
-        # logger.info(f"{event.get_name()}; [{', '.join([str(sup.get_last_state().get_name()) for sup in supervisors])}]")
+        logger.info("%s; %s", event.get_name(), transtions)
     except Exception as e:
         # verify if event is in Events dictionary
         if not isinstance(event, Event):
-            raise TypeError("event must be instance of Event")        
+            raise TypeError("event must be instance of Event") from e
         # verify if states is a list of State instances
         if not isinstance(supervisors, List):
-            raise TypeError("states must be a list")
+            raise TypeError("states must be a list") from e
         for state in supervisors:
             if not isinstance(state, Supervisor):
-                raise TypeError("states must be a list of State instances")
-        
+                raise TypeError("states must be a list of State instances") from e
         raise e

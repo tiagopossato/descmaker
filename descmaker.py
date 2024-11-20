@@ -117,6 +117,6 @@ if __name__ == '__main__':
             os.chdir(output_dir)
             # execute main.py
             if os.name == 'nt':
-                os.system('python3.exe main.py')
+                os.system('python.exe main.py')
             else:
                 os.system('python3 main.py')

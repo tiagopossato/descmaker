@@ -1,3 +1,6 @@
+"""
+Main controller
+"""
 from Supervisor import Events, Event, trigger_event
 
 def default_action(event: Event):
