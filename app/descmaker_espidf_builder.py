@@ -1,6 +1,6 @@
 from utils import fill_template
 
-def descmaker_esp32_builder(supervisors, global_event_list, base_dir, output_dir):
+def descmaker_espidf_builder(supervisors, global_event_list, base_dir, output_dir):
 
     # make file events.c
     # Event btnON = {UNCONTROLLABLE, 0, "btnON", NULL};
