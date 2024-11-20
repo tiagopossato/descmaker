@@ -1,3 +1,6 @@
+"""
+Script to convert the code
+"""
 import os
 import argparse
 from utils import copy_directory, remove_directory
@@ -25,8 +28,10 @@ base_dir = os.path.dirname(os.path.realpath(__file__))
 
 
 def convert_supervisor(input_file, output_dir, output_language):
-    
-    if input_file==None or not os.path.exists(input_file):
+    """
+    Does convert the code
+    """
+    if input_file is None or not os.path.exists(input_file):
         print(f"File {input_file} not found")
         # raise exception
         raise FileNotFoundError
@@ -41,36 +46,39 @@ def convert_supervisor(input_file, output_dir, output_language):
     # Call the function to copy the directory structure
     copy_directory(base_code_path, output_dir, exclude_files, exclude_dirs)
     print("Directory copied successfully!")
-        
+
     # print input and output files
     print(f"Input file: {input_file}")
     print(f"Output path: {output_dir}")
 
     # parser
     supervisors, global_event_list, supervisor_list = descmaker_parser(input_file)
-    
+
     # builder
-    if(output_language=='python'):
-        descmaker_python_builder(supervisors, global_event_list, supervisor_list, base_dir, output_dir)
-    if(output_language=='c'):
+    if output_language=='python':
+        descmaker_python_builder(supervisors, global_event_list, supervisor_list,
+                                 base_dir, output_dir)
+    if output_language=='c':
         descmaker_c_builder(supervisors, global_event_list, base_dir, output_dir)
-    if(output_language=='esp-idf'):
+    if output_language=='esp-idf':
         descmaker_espidf_builder(supervisors, global_event_list, base_dir, output_dir)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, help='Input file', required=True)
-    parser.add_argument('--output', type=str, help='Output path', default='generated_code', required=False)
-    parser.add_argument('-l', type=str, help='Output language', choices=['c', 'python', 'esp-idf'], default='c', required=False, nargs=1)
+    parser.add_argument('--output', type=str, help='Output path',
+                        default='generated_code', required=False)
+    parser.add_argument('-l', type=str, help='Output language',
+                        choices=['c', 'python', 'esp-idf'], default='c', required=False, nargs=1)
 
-    input_file = parser.parse_args().input
-    output_dir = parser.parse_args().output
-    output_language = parser.parse_args().l[0]
+    input_file_ = parser.parse_args().input
+    output_dir_ = parser.parse_args().output
+    output_language_ = parser.parse_args().l[0]
 
     try:
-        convert_supervisor(input_file, output_dir, output_language)
+        convert_supervisor(input_file_, output_dir_, output_language_)
         print("Supervisor converted successfully!")
     except Exception as e:
         # remove output directory
-        remove_directory(output_dir)
+        remove_directory(output_dir_)
         print(e)

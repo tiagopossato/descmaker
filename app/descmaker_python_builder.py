@@ -1,7 +1,13 @@
+"""
+descmaker_python_builder
+"""
 from utils import fill_template
 
 def descmaker_python_builder(supervisors, global_event_list, supervisor_list, base_dir, output_dir):
-       # make file events_names.py
+    """
+    descmaker_python_builder
+    """
+    # make file events_names.py
     # 'Se': Event(EventKind.UNCONTROLLABLE, 0, "Se"),
     events = ""
 
@@ -24,11 +30,11 @@ def descmaker_python_builder(supervisors, global_event_list, supervisor_list, ba
         i = i + 1
 
     fill_template(f"{base_dir}/templates_python/template/Supervisor/events-template.py",
-                    f"{output_dir}/Supervisor/events.py", 
+                    f"{output_dir}/Supervisor/events.py",
                     {'events': events})
 
     fill_template(f"{base_dir}/templates_python/template/main-template.py",
-                    f"{output_dir}/main.py", 
+                    f"{output_dir}/main.py",
                     {'set_action': set_action,
                     'trigger_event': trigger_event})
 
@@ -43,7 +49,7 @@ def descmaker_python_builder(supervisors, global_event_list, supervisor_list, ba
         for state in sup['state_list']:
             # change . to _ in state name
             state['Name'] = state['Name'].replace('.', '_')
-            states += f"{state['Name']}_state = State(\"{state['Name']}\", {True if state['Initial']==1 else False})\n"
+            states += f"{state['Name']}_state = State(\"{state['Name']}\", {state['Initial']==1})\n"
 
         # Create transitions
         # q0_state.add_transition(Events['btnON'], q3_state)
@@ -78,9 +84,9 @@ def descmaker_python_builder(supervisors, global_event_list, supervisor_list, ba
                     'supervisor_name': sup['name']})
 
     fill_template(f"{base_dir}/templates_python/template/Supervisor/supervisors/__init__-template.py",
-                    f"{output_dir}/Supervisor/supervisors/__init__.py", 
+                    f"{output_dir}/Supervisor/supervisors/__init__.py",
                     {'import_list': import_list})
-    
+
     fill_template(f"{base_dir}/templates_python/template/Supervisor/__init__-template.py",
-                    f"{output_dir}/Supervisor/__init__.py", 
+                    f"{output_dir}/Supervisor/__init__.py",
                     {'supervisor_list': supervisor_list})

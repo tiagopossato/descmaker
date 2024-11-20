@@ -1,12 +1,13 @@
 import os
 import shutil
 import re
+import sys
 from string import Template
 
 verified_sup_names = set()
 
 class CustomTemplate(Template):
-	delimiter = '%$%'
+    delimiter = '%$%'
 
 def fill_template(template, dest, template_dict):
     # verify if script is being executed on Windows and convert paths to Windows format
@@ -15,13 +16,12 @@ def fill_template(template, dest, template_dict):
         dest = dest.replace('/', '\\')
 
     # make the names of the files
-    with open(template, 'r') as f:
+    with open(template, 'r', encoding='utf-8') as f:
         src = CustomTemplate(f.read())
         result = src.safe_substitute(template_dict)
 
-    arquivo = open(dest,'w')
-    arquivo.write(result)
-    arquivo.close()
+    with open(dest,'w', encoding='utf-8') as arquivo:
+        arquivo.write(result)
 
 
 def copy_directory(source, destination, exclude_files=None, exclude_dirs=None):
@@ -31,7 +31,7 @@ def copy_directory(source, destination, exclude_files=None, exclude_dirs=None):
             # remove directory
             shutil.rmtree(destination)
         else:
-            exit(-1)
+            sys.exit(-1)
     # Create the destination directory
     os.makedirs(destination)
 
@@ -61,24 +61,24 @@ def copy_directory(source, destination, exclude_files=None, exclude_dirs=None):
 def remove_directory(path):
     shutil.rmtree(path)
 
-def is_valid_sup_name(sup_name):
+def is_valid_sup_name(_sup_name):
     # Regular expression pattern to check if the sup_name is valid for C and Python
     pattern = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
-    return re.match(pattern, sup_name)
+    return re.match(pattern, _sup_name)
 
-def clean_sup_name(sup_name):
+def clean_sup_name(_sup_name):
     # Remove invalid characters
-    sup_name = re.sub(r'[^a-zA-Z0-9_]', '', sup_name)
-    return sup_name
+    _sup_name = re.sub(r'[^a-zA-Z0-9_]', '', _sup_name)
+    return _sup_name
 
-def validate_and_update_variable_name(sup_name):
+def validate_and_update_variable_name(_sup_name):
     """
     validate the supervisor's name to match the variable naming rules in C
     """
-    if is_valid_sup_name(sup_name):
-        return sup_name
-    
-    cleaned_sup_name = clean_sup_name(sup_name)
+    if is_valid_sup_name(_sup_name):
+        return _sup_name
+
+    cleaned_sup_name = clean_sup_name(_sup_name)
     if cleaned_sup_name in verified_sup_names:
         counter = 1
         while f"{cleaned_sup_name}_{counter}" in verified_sup_names:
