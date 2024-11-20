@@ -8,7 +8,7 @@
 #include "event_handler/event_handler.h"
 
 void default_action(const Event *event) {
-  printf("Action for %s event '%s'\n",
+  SUP_DEBUG_PRINT("Action for %s event '%s'\n",
                   event->kind == CONTROLLABLE ? "CONTROLLABLE"
                                               : "UNCONTROLLABLE",
                   event->name);
