@@ -4,6 +4,7 @@ from utils import copy_directory, remove_directory
 from descmaker_parser import descmaker_parser
 from descmaker_python_builder import descmaker_python_builder
 from descmaker_c_builder import descmaker_c_builder
+from descmaker_esp32_builder import descmaker_esp32_builder
 
 # Specify the regex patterns to exclude files and directories
 exclude_files = [
@@ -30,7 +31,7 @@ def convert_supervisor(input_file, output_dir, output_language):
         # raise exception
         raise FileNotFoundError
 
-    if output_language not in ('c', 'python'):
+    if output_language not in ('c', 'python', 'esp32'):
         print(f'{output_language} not implemented')
         raise NotImplementedError
 
@@ -53,12 +54,14 @@ def convert_supervisor(input_file, output_dir, output_language):
         descmaker_python_builder(supervisors, global_event_list, supervisor_list, base_dir, output_dir)
     if(output_language=='c'):
         descmaker_c_builder(supervisors, global_event_list, base_dir, output_dir)
+    if(output_language=='esp32'):
+        descmaker_esp32_builder(supervisors, global_event_list, base_dir, output_dir)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, help='Input file', required=True)
     parser.add_argument('--output', type=str, help='Output path', default='generated_code', required=False)
-    parser.add_argument('-l', type=str, help='Output language', choices=['c', 'python'], default='c', required=False, nargs=1)
+    parser.add_argument('-l', type=str, help='Output language', choices=['c', 'python', 'esp32'], default='c', required=False, nargs=1)
 
     input_file = parser.parse_args().input
     output_dir = parser.parse_args().output

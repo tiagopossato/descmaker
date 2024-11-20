@@ -1,0 +1,4 @@
+idf_component_register(SRCS 
+%$%{cmake_append_supervisors}                    "supervisor_list.c"
+                    INCLUDE_DIRS "."
+                    REQUIRES supervisor event_handler)
