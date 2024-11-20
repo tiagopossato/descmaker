@@ -14,7 +14,7 @@ The code generated is independent and don't any requeriment.
     │   ├── templates_c
     │   │   ├── base_code
     │   │   └── template
-    │   ├── templates_esp32
+    │   ├── templates_esp-idf
     │   │   ├── base_code
     │   │   └── template
     │   ├── templates_python
@@ -119,7 +119,7 @@ Install python3.
 run `python3 descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
 - `-i <input>` : input file (required)
 - `-o <output>` : output directory. Default: generated_code
-- `-l <language>` : output language. Can be c, python or esp32. Default: c
+- `-l <language>` : output language. Can be c, python or esp-idf. Default: c
 - `-e` :  If present, compile with cmake/gcc and execute the generated code. Default: no execution
 
 In the first run, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.

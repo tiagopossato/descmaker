@@ -39,17 +39,17 @@ def descmaker_esp32_builder(supervisors, global_event_list, base_dir, output_dir
     # count controllable events
     events_controllable_count = len([x for x in global_event_list if x['Kind'] == 'CONTROLLABLE'])
     
-    fill_template(f"{base_dir}/templates_esp32/template/components/event_handler/events-template.h",
+    fill_template(f"{base_dir}/templates_esp-idf/template/components/event_handler/events-template.h",
                     f"{output_dir}/components/event_handler/events.h", 
                     {'events_controllable_count': events_controllable_count,
                     'events_h': events_h})
 
-    fill_template(f"{base_dir}/templates_esp32/template/components/event_handler/events-template.c",
+    fill_template(f"{base_dir}/templates_esp-idf/template/components/event_handler/events-template.c",
                     f"{output_dir}/components/event_handler/events.c", 
                     {'events_c': events_c,
                      'controllable_event_list':controllable_event_list})
 
-    fill_template(f"{base_dir}/templates_esp32/template/main/main-template.c",
+    fill_template(f"{base_dir}/templates_esp-idf/template/main/main-template.c",
                     f"{output_dir}/main/main.c", 
                     {'set_action': set_action,
                     'trigger_event': trigger_event})
@@ -186,7 +186,7 @@ def descmaker_esp32_builder(supervisors, global_event_list, base_dir, output_dir
         #  Supervisor sup = {&sup_q0, &sup_q0, NULL, &sup_evt0, "sup"};
         supervisor_create = f"Supervisor {sup['name']} = {{&{supervisor_initial_state}, &{supervisor_initial_state}, NULL,  &{first_alphabet_event}, \"{sup['name']}\"}};\n"
         # create supervisor file
-        fill_template(f"{base_dir}/templates_esp32/template/components/supervisors/supervisor-template.c",
+        fill_template(f"{base_dir}/templates_esp-idf/template/components/supervisors/supervisor-template.c",
                     f"{output_dir}/components/supervisors/{sup['name']}.c",
                     {'sup_name_source': sup['name'],
                     'alphabet_create_source': alphabet_create,
@@ -197,7 +197,7 @@ def descmaker_esp32_builder(supervisors, global_event_list, base_dir, output_dir
                     'supervisor_create_source': supervisor_create
                     })
 
-        fill_template(f"{base_dir}/templates_esp32/template/components/supervisors/supervisor-template.h",
+        fill_template(f"{base_dir}/templates_esp-idf/template/components/supervisors/supervisor-template.h",
                     f"{output_dir}/components/supervisors/{sup['name']}.h",
                     {'supervisor_name_upper': sup['name'].upper(),
                     'supervisor_create_header': f"extern Supervisor {sup['name']};\n"
@@ -206,13 +206,13 @@ def descmaker_esp32_builder(supervisors, global_event_list, base_dir, output_dir
 
     # -------- end of for "sup in supervisors:" ---------------
 
-    fill_template(f"{base_dir}/templates_esp32/template/components/supervisors/supervisor_list-template.c",
+    fill_template(f"{base_dir}/templates_esp-idf/template/components/supervisors/supervisor_list-template.c",
                     f"{output_dir}/components/supervisors/supervisor_list.c", 
                     {'supervisor_list_create': supervisor_list_create,
                     'supervisor_list_init': supervisor_list_init,
                     'supervisor_list_head': supervisor_list_head,
                     'handle_include_supervisors':handle_include_supervisors})
 
-    fill_template(f"{base_dir}/templates_esp32/template/components/supervisors/CMakeLists-template.txt",
+    fill_template(f"{base_dir}/templates_esp-idf/template/components/supervisors/CMakeLists-template.txt",
                     f"{output_dir}/components/supervisors/CMakeLists.txt", 
                     {'cmake_append_supervisors': cmake_append_supervisors})
