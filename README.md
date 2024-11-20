@@ -14,6 +14,9 @@ The code generated is independent and don't any requeriment.
     │   ├── templates_c
     │   │   ├── base_code
     │   │   └── template
+    │   ├── templates_esp32
+    │   │   ├── base_code
+    │   │   └── template
     │   ├── templates_python
     │   │   ├── base_code
     │   │   └── template
@@ -75,6 +78,31 @@ The code generated is independent and don't any requeriment.
             ├── supervisor_list.c
             └── supervisor_list.h
 
+## Generated code for ESP32 using ESP-IDF file tree
+    .
+    ├── components
+    │   ├── supervisor
+    │   │   ├── CMakeLists.txt
+    │   │   ├── sup_debug.h
+    │   │   ├── supervisor.c
+    │   │   └── supervisor.h
+    │   ├── event_handler
+    │   │   ├── CMakeLists.txt
+    │   │   ├── event_handler.c
+    │   │   ├── event_handler.h
+    │   │   ├── events.c
+    │   │   └── events.h
+    │   └── supervisors
+    │       ├── CMakeLists.txt
+    │       ├── supervisor_list.c
+    │       ├── supervisor_list.h
+    │       ├── [sups].c
+    │       └── [sups].h
+    ├── main
+    │   ├── CMakeLists.txt
+    │   └── main.c
+    └── CMakeLists.txt
+
 # How to use
 
 ## Pre-requisites
@@ -91,7 +119,7 @@ Install python3.
 run `python3 descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
 - `-i <input>` : input file (required)
 - `-o <output>` : output directory. Default: generated_code
-- `-l <language>` : output language. Can be c or python. Default: c
+- `-l <language>` : output language. Can be c, python or esp32. Default: c
 - `-e` :  If present, compile with cmake/gcc and execute the generated code. Default: no execution
 
 In the first run, the script will create the virtual environment and install the dependencies. This can take a while. After that, the script will generate the code.
