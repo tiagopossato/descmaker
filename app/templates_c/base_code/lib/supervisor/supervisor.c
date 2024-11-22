@@ -31,7 +31,7 @@ bool make_supervisor_transition(Supervisor *supervisor, const Event *event) {
 
   while (transition != NULL) {
     if (transition->event->id == event->id) {
-      supervisor->current_state = transition->target_event;
+      supervisor->current_state = (State *) transition->target_state;
       supervisor->last_state = last_state;
       SUP_DEBUG_PRINT("%s, event %s %s => %s -> %s\n", supervisor->name,
                       event->kind == CONTROLLABLE
@@ -53,7 +53,7 @@ void print_state(const State *state) {
   const Transition *transition = state->transitions;
   while (transition != NULL) {
     SUP_DEBUG_PRINT("%s->%s%s", transition->event->name,
-                    transition->target_event->name,
+                    transition->target_state->name,
                     transition->next != NULL ? ", " : "]\n");
     transition = transition->next;
   }
@@ -105,7 +105,7 @@ uint16_t get_enabled_controllable_events(Supervisor *supervisor,
   const Transition *transition = current_state->transitions;
   while (transition != NULL) {
     if (transition->event->kind == CONTROLLABLE) {
-      events[i] = transition->event;
+      events[i] = (Event *) transition->event;
       i++;
     }
     transition = transition->next;
@@ -117,5 +117,5 @@ void set_supervisor_to_initial_state(Supervisor *supervisor) {
   // Save last state
   supervisor->last_state = supervisor->current_state;
   // Puts fsm to initial state
-  supervisor->current_state = supervisor->initial_state;
+  supervisor->current_state = (State *) supervisor->initial_state;
 }

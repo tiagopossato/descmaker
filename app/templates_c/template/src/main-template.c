@@ -3,9 +3,9 @@
  *
  * @brief Main file for the supervisor project
  */
-#include <stdio.h>
-#include "event_handler/events.h"
 #include "event_handler/event_handler.h"
+#include "event_handler/events.h"
+#include <stdio.h>
 
 void default_action(const Event *event) {
   SUP_DEBUG_PRINT("Action for %s event '%s'\n",
@@ -14,7 +14,7 @@ void default_action(const Event *event) {
                   event->name);
 }
 
-void setup(){
+void setup(void) {
   printf("Start supervisor!\n\n");
   // set action on controllable events for example
 %$%{set_action}
@@ -22,13 +22,10 @@ void setup(){
 %$%{trigger_event}
 }
 
-void loop(){
-}
-
 int main(void) {
   setup();
   // while (1) {
-  //   loop();
+  //   loop
   // }
   return 0;
 }

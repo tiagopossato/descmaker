@@ -28,23 +28,28 @@ const Transition sup_G1S0_E1S0_G2S0_t0 = {&btn, &sup_G1S0_E1S1_G2S0, NULL};
 
 const Transition sup_G1S0_E1S0_G2S1_t0;
 const Transition sup_G1S0_E1S0_G2S1_t1;
-const Transition sup_G1S0_E1S0_G2S1_t0 = {&off, &sup_G1S0_E1S0_G2S0, &sup_G1S0_E1S0_G2S1_t1};
+const Transition sup_G1S0_E1S0_G2S1_t0 = {&off, &sup_G1S0_E1S0_G2S0,
+                                          &sup_G1S0_E1S0_G2S1_t1};
 const Transition sup_G1S0_E1S0_G2S1_t1 = {&btn, &sup_G1S0_E1S1_G2S1, NULL};
 
 const Transition sup_G1S0_E1S1_G2S0_t0;
 const Transition sup_G1S0_E1S1_G2S0_t1;
-const Transition sup_G1S0_E1S1_G2S0_t0 = {&btn, &sup_G1S0_E1S0_G2S0, &sup_G1S0_E1S1_G2S0_t1};
+const Transition sup_G1S0_E1S1_G2S0_t0 = {&btn, &sup_G1S0_E1S0_G2S0,
+                                          &sup_G1S0_E1S1_G2S0_t1};
 const Transition sup_G1S0_E1S1_G2S0_t1 = {&on, &sup_G1S0_E1S1_G2S1, NULL};
 
 const Transition sup_G1S0_E1S1_G2S1_t0;
 const Transition sup_G1S0_E1S1_G2S1_t0 = {&btn, &sup_G1S0_E1S0_G2S1, NULL};
 
-
 // states init
-const State sup_G1S0_E1S0_G2S0 = {true, SUP_DEBUG_STR("G1S0_E1S0_G2S0"), &sup_G1S0_E1S0_G2S0_t0};
-const State sup_G1S0_E1S0_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S0_G2S1"), &sup_G1S0_E1S0_G2S1_t0};
-const State sup_G1S0_E1S1_G2S0 = {false, SUP_DEBUG_STR("G1S0_E1S1_G2S0"), &sup_G1S0_E1S1_G2S0_t0};
-const State sup_G1S0_E1S1_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S1_G2S1"), &sup_G1S0_E1S1_G2S1_t0};
+const State sup_G1S0_E1S0_G2S0 = {true, SUP_DEBUG_STR("G1S0_E1S0_G2S0"),
+                                  &sup_G1S0_E1S0_G2S0_t0};
+const State sup_G1S0_E1S0_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S0_G2S1"),
+                                  &sup_G1S0_E1S0_G2S1_t0};
+const State sup_G1S0_E1S1_G2S0 = {false, SUP_DEBUG_STR("G1S0_E1S1_G2S0"),
+                                  &sup_G1S0_E1S1_G2S0_t0};
+const State sup_G1S0_E1S1_G2S1 = {false, SUP_DEBUG_STR("G1S0_E1S1_G2S1"),
+                                  &sup_G1S0_E1S1_G2S1_t0};
 
-// Supervisor create
-Supervisor sup = {&sup_G1S0_E1S0_G2S0, &sup_G1S0_E1S0_G2S0, NULL,  &sup_btn_evt0, "sup"};
+
+Supervisor sup = {(State *)&sup_G1S0_E1S0_G2S0, (State *)&sup_G1S0_E1S0_G2S0, NULL, &sup_btn_evt0, "sup"};

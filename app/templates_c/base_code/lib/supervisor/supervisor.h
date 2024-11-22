@@ -1,10 +1,9 @@
 #ifndef __SUPERVISOR_H__
 #define __SUPERVISOR_H__
 
+#include "sup_debug.h"
 #include <stdbool.h>
 #include <stdint.h>
-
-#include "sup_debug.h"
 
 // abstract data types
 typedef struct _Transition Transition;
@@ -20,7 +19,7 @@ struct _State {
   const bool is_start;
   const char *name;
   const Transition *transitions;
-};
+} __attribute__((packed));
 
 /**
  * @brief The alphabet
@@ -28,16 +27,16 @@ struct _State {
 struct _Alphabet {
   const Event *event;
   const Alphabet *next;
-};
+} __attribute__((packed));
 
 /**
  * @brief A transition
  */
 struct _Transition {
   const Event *event;
-  const State *target_event;
+  const State *target_state;
   const Transition *next;
-};
+} __attribute__((packed));
 
 /**
  * @brief The kind of event
@@ -62,7 +61,7 @@ struct _Event {
   const uint16_t id;
   const char *name;
   EventAction action;
-};
+} __attribute__((packed));
 
 /**
  * @brief The supervisor
@@ -73,7 +72,7 @@ struct _Supervisor {
   State *last_state;
   const Alphabet *alphabet;
   const char *name;
-};
+} __attribute__((packed));
 
 #ifdef __cplusplus
 extern "C" {
@@ -119,7 +118,8 @@ bool is_supervisor_event_enabled(Supervisor *supervisor, const Event *event);
  * @param event The event to be checked.
  * @return True if the event is in the alphabet, false otherwise.
  */
-bool is_event_in_supervisor_alphabet(Supervisor *supervisor, const Event *event);
+bool is_event_in_supervisor_alphabet(Supervisor *supervisor,
+                                     const Event *event);
 
 /**
  * Get the enabled controllable events in the current state of the supervisor.
@@ -141,7 +141,7 @@ bool make_supervisor_transition(Supervisor *supervisor, const Event *event);
 /**
  * Puts the supervisor in the initial state
  * @param supervisor The supervisor.
-*/
+ */
 void set_supervisor_to_initial_state(Supervisor *supervisor);
 #ifdef __cplusplus
 }

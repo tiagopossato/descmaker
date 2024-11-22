@@ -35,7 +35,7 @@ struct _Alphabet {
  */
 struct _Transition {
   const Event *event;
-  const State *target_event;
+  const State *target_state;
   const Transition *next;
 };
 

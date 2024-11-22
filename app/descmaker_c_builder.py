@@ -215,8 +215,8 @@ def descmaker_c_builder(supervisors, global_event_list, base_dir, output_dir):
         # supervisor_create
         #  Supervisor sup = {&sup_q0, &sup_q0, NULL, &sup_evt0, "sup"};
         supervisor_create = (
-            f"Supervisor {sup['name']} = {{&{supervisor_initial_state}, "
-            f"&{supervisor_initial_state}, NULL,  &{first_alphabet_event}, \"{sup['name']}\"}};\n"
+            f"Supervisor {sup['name']} = {{(State *)&{supervisor_initial_state}, "
+            f"(State *)&{supervisor_initial_state}, NULL,  &{first_alphabet_event}, \"{sup['name']}\"}};\n"
             )
         # create supervisor file
         fill_template(f"{base_dir}/templates_c/template/src/supervisors/supervisor-template.c",
