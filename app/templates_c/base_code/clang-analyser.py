@@ -1,6 +1,12 @@
 import os
 import subprocess
 
+print("-----------------\nBuilding output path and compile database\n-----------------\n")
+
+subprocess.run(['/bin/sh', 'run.sh', '--build_only'])
+
+print("\n-----------------\nPerforming static analysis\n-----------------\n")
+
 for directory in ['lib', 'src']:
     for root, dirs, files in os.walk(directory):
         for file in files:
