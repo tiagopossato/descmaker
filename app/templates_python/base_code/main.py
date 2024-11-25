@@ -2,10 +2,9 @@
 Arquivo principal do projeto. 
 É substituído pelo maker.py na hora de converter o supervisor.
 """
-from Supervisor import Events, Event, trigger_event
-from time import sleep
 # install getkey with: pip install getkey
 from getkey import getkey
+from Supervisor import Events, Event, trigger_event
 
 def liga_action(event: Event):
     print('\n\nLigando...\n')

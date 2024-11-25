@@ -1,3 +1,9 @@
+"""
+File with the creation, initialization and 
+linking of supervisor structures
+"""
+# pylint: disable=C0103
+
 from .. import Events, State, Supervisor
 
 # Create states

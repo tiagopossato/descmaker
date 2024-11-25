@@ -1,6 +1,8 @@
 """
 Class for handling the supervisor
 """
+# pylint: disable=C0103
+
 from typing import List
 from . import State
 from . import Event
@@ -40,7 +42,9 @@ class Supervisor:
         # Verify if the states list has only one start state
         start_states = [state for state in _states_list if state.is_start()]
         if len(start_states) != 1:
+            # pylint: disable=W0719
             raise Exception("The states list must have only one start state.")
+            # pylint: enable=W0719
 
         self.__start = start_states[0]
         self.__current_state = self.__start
@@ -136,4 +140,3 @@ class Supervisor:
             str: The name of the supervisor.
         """
         return self.__name
-    

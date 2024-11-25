@@ -1,6 +1,8 @@
 """
 Class for handling events
 """
+# pylint: disable=C0103
+
 from enum import Enum
 
 class EventKind(Enum):

@@ -1,6 +1,7 @@
 """
 Example code. It will be overwritten by DEScMaker
 """
+# pylint: disable=C0103
 from .. import Events, State, Supervisor
 
 # Create states

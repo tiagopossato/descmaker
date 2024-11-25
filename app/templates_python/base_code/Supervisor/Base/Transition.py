@@ -1,6 +1,8 @@
 """
 Class for handling transitions
 """
+# pylint: disable=C0103
+
 from . import Event
 from . import State
 

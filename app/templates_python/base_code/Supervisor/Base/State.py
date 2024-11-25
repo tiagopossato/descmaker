@@ -1,8 +1,9 @@
 """
 Class for handling states
 """
-from typing import List
+# pylint: disable=C0103
 
+from typing import List
 from .Event import Event
 from .Transition import Transition
 
