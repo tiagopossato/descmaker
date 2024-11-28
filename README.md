@@ -152,3 +152,5 @@ Possato, T., Valentini, J. H., Southier, L. F. P., & Teixeira, M. (2023). DEScMa
 ```abnt
 Possato, T., Valentini, J. H., Southier, L. F. P., Teixeira, M. DEScMaker. 2023. Disponível em: <https://github.com/tiagopossato/descmaker>. Acesso em: dia mes. ano.
 ```
+
+Version 2.2.0: esp-idf output adjusted
