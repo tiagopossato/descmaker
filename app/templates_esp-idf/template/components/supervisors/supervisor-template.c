@@ -1,8 +1,7 @@
-#include <stdbool.h>
-#include <stdlib.h>
-
 #include "events.h"
 #include "%$%{sup_name_source}.h"
+#include <stdbool.h>
+#include <stdlib.h>
 
 // Supervisor specific instances
 // alphabet create

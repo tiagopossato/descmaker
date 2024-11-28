@@ -2,9 +2,9 @@
 #ifndef __EVENTS_H__
 #define __EVENTS_H__
 
+#include "supervisor.h"
 #include <stdlib.h>
 
-#include "supervisor.h"
 
 #define CONTROLLABLE_EVENTS_COUNT 2
 

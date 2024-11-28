@@ -41,9 +41,8 @@ bool is_event_enabled(const Event *event) {
 bool handle_event(const Event *event) {
   SupervisorList *sup = &sup_list;
   SUP_DEBUG_PRINT("Handling the %s event '%s'\n",
-                        event->kind == CONTROLLABLE
-                            ? SUP_DEBUG_STR("CONTROLLABLE")
-                            : SUP_DEBUG_STR("UNCONTROLLABLE"),
+                  event->kind == CONTROLLABLE ? "CONTROLLABLE"
+                                              : "UNCONTROLLABLE",
                   event->name);
 
   if (!is_event_enabled(event)) {
