@@ -9,4 +9,4 @@ from .supervisors import %$%{supervisor_list}
 supervisors_list = [%$%{supervisor_list}]
 # import trigger_event after supervisor_list for avoid circular import
 # pylint: disable=C0413
-from .event_handler import trigger_event
+from .event_handler import trigger_event, controller_start

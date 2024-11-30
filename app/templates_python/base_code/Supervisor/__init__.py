@@ -9,4 +9,4 @@ from .supervisors import sup
 supervisors_list = [sup]
 # import trigger_event after supervisor_list for avoid circular import
 # pylint: disable=C0413
-from .event_handler import trigger_event
+from .event_handler import controller_start, trigger_event

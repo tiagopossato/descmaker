@@ -24,7 +24,7 @@ def descmaker_python_builder(supervisors, global_event_list, supervisor_list, ba
         event['Name'] = event['Name'].replace('.', '_')
         events += f"    '{event['Name']}': Event(EventKind.{event['Kind']}, {i}, '{event['Name']}'),\n"
         if event['Kind'] == 'CONTROLLABLE':
-            set_action += f"Events['{event['Name']}'].set_action(default_action)\n"
+            set_action += f"    Events['{event['Name']}'].set_action(default_action)\n"
         if event['Kind'] == 'UNCONTROLLABLE':
             trigger_event += f"    trigger_event(Events['{event['Name']}'])\n"
         i = i + 1

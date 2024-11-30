@@ -85,7 +85,17 @@ def trigger_event(event: Event):
 
     event.run_action()
     for _event in get_controllable_events():
-        # print(f"Automatic running event: {event.get_name()}")
+        # print(f"Automatic running event: {_event.get_name()}")
         if trigger_event(_event):
             break
     return True
+
+def controller_start():
+    """
+    Start the controller by triggering the controllable events.
+    Only enabled events will be executed by the event handler.
+    """
+    for _event in get_controllable_events():
+        # print(f"Automatic running event: {_event.get_name()}")
+        if trigger_event(_event):
+            break

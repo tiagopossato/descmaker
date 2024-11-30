@@ -62,14 +62,18 @@ def remove_directory(path):
     shutil.rmtree(path)
 
 def is_valid_sup_name(_sup_name):
-    # Regular expression pattern to check if the sup_name is valid for C and Python
-    pattern = r'^[a-zA-Z_][a-zA-Z0-9_]*$'
+    """
+    Regular expression pattern to check if the sup_name is valid for C and Python
+    (max 10 characters)
+    """
+    pattern = r'^[a-zA-Z_][a-zA-Z0-9_]{0,9}$'
     return re.match(pattern, _sup_name)
 
 def clean_sup_name(_sup_name):
     # Remove invalid characters
     _sup_name = re.sub(r'[^a-zA-Z0-9_]', '', _sup_name)
-    return _sup_name
+    # Limit the length to 10 characters
+    return _sup_name[:10]
 
 def validate_and_update_variable_name(_sup_name):
     """
