@@ -1,0 +1,12 @@
+2024-12-01 00:37:29; Average execution time for examples\other_examples\1_PequenaFabrica.wmod with language python; 299 milliseconds
+2024-12-01 00:37:36; Average execution time for examples\other_examples\2_Labirinto.wmod with language python; 312 milliseconds
+2024-12-01 00:37:43; Average execution time for examples\other_examples\3_syncTransferLine.wmod with language python; 375 milliseconds
+2024-12-01 00:37:50; Average execution time for examples\other_examples\4_MesaMontagem.wmod with language python; 346 milliseconds
+2024-12-01 00:39:31; Average execution time for examples\other_examples\5_poultryprocess.wmod with language python; 5002 milliseconds
+2024-12-01 01:28:08; Average execution time for examples\other_examples\6_automotiveline.wmod with language python; 145871 milliseconds
+2024-12-01 01:28:14; Average execution time for examples\other_examples\1_PequenaFabrica.wmod with language c; 295 milliseconds
+2024-12-01 01:28:21; Average execution time for examples\other_examples\2_Labirinto.wmod with language c; 318 milliseconds
+2024-12-01 01:28:29; Average execution time for examples\other_examples\3_syncTransferLine.wmod with language c; 387 milliseconds
+2024-12-01 01:28:36; Average execution time for examples\other_examples\4_MesaMontagem.wmod with language c; 352 milliseconds
+2024-12-01 01:31:51; Average execution time for examples\other_examples\5_poultryprocess.wmod with language c; 9767 milliseconds
+2024-12-01 12:04:51; Average execution time for examples\other_examples\6_automotiveline.wmod with language c; 1898955 milliseconds
