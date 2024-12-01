@@ -8,6 +8,7 @@ extern "C" {
 #endif
 
 bool trigger_event(const Event *event);
+void controller_start(void);
 
 #ifdef __cplusplus
 }

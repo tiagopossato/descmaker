@@ -18,7 +18,10 @@ void setup(void) {
   printf("Start supervisor!\n\n");
   // set action on controllable events for example
 %$%{set_action}
-  // trigger uncontrolable event for teste
+  // start the controller
+  controller_start();
+  
+  // trigger uncontrolable event for test
 %$%{trigger_event}
 }
 

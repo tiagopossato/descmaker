@@ -65,6 +65,29 @@ bool trigger_event(const Event *event) {
 
   for (uint16_t i = 0; i < CONTROLLABLE_EVENTS_COUNT; i++) {
     // tries to execute the event. The handle_event function itself checks that
+    // it is enabled on all other supervisors. There's no need to build a list of
+    // the events enabled in all the supervisors, because if it isn't enabled in
+    // one supervisor, it won't be in the others
+    if (trigger_event(controllable_event_list[i]) == true) {
+      // if true, the event was executed successfully
+      // thus, the supervisors have already been updated and there is no need to
+      // continue execution
+      break;
+    }
+    // if false, the event was not executed successfully
+    // so the supervisors have not been updated and can be
+    // continue execution
+  }
+  return true;
+}
+
+/**
+ * Start the controller by triggering the controllable events.
+ * Only enabled events will be executed by the event handler.
+ */
+void controller_start(void) {
+  for (uint16_t i = 0; i < CONTROLLABLE_EVENTS_COUNT; i++) {
+    // tries to execute the event. The handle_event function itself checks that
     // it is enabled on all other supervisors There's no need to build a list of
     // the events enabled in all the supervisors, because if it isn't enabled in
     // one supervisor, it won't be in the others
@@ -73,12 +96,9 @@ bool trigger_event(const Event *event) {
       // thus, the supervisors have already been updated and there is no need to
       // continue execution
       break;
-    } else {
-      // if false, the event was not executed successfully
-      // so the supervisors have not been updated and can be
-      // continue execution
-      continue;
     }
+    // if false, the event was not executed successfully
+    // so the supervisors have not been updated and can be
+    // continue execution
   }
-  return true;
 }

@@ -13,11 +13,11 @@ def desliga_action(event: Event):
     print('\n\nDesligando...\n')
 
 if __name__ == '__main__':
-    # set default action for example
+    # set action on controllable events for example
     Events['liga'].set_action(liga_action)
     Events['desliga'].set_action(desliga_action)
 
-    # handle events for teste
+    # start the controller
     controller_start()
     
     while True:

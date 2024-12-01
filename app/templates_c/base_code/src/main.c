@@ -25,7 +25,10 @@ void setup(void) {
   set_event_action(&on, on_action);
   set_event_action(&off, off_action);
 
-  // trigger uncontrolable event for teste
+  // start the controller
+  controller_start();
+
+  // trigger uncontrolable event for test
   trigger_event(&btn);
   printf("\n-----------------------------------------\n");
   trigger_event(&btn);
