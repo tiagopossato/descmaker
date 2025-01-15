@@ -25,7 +25,7 @@ char output_buffer_tran_2[256] = [];
 uint8_t send_message(char *buffer, uint8_t transmitter);
 
 /**
- * Receives a message from the transmission channel
+ * Receives a message from the transmitter
  * The implementation should be done in a separate file
  *
  * @param buffer A pointer to a character array where the received message will
@@ -45,7 +45,7 @@ uint8_t receive_message(char *buffer, uint8_t transmitter);
  * Action for controllable event tran_1
  */
 void tran_1_action(const Event *event) {
-  if (send_message(output_buffer_tran_1, 1)) {
+  if (0 == send_message(output_buffer_tran_1, 1)) {
     trigger_event(&ack_1); // TODO: This check must be asynchronous
   }
 }
@@ -54,7 +54,7 @@ void tran_1_action(const Event *event) {
  * Action for controllable event tran_2
  */
 void tran_2_action(const Event *event) {
-  if (send_message(output_buffer_tran_2, 2)) {
+  if (0 == send_message(output_buffer_tran_2, 2)) {
     trigger_event(&ack_2); // TODO: This check must be asynchronous
   }
 }
@@ -71,10 +71,10 @@ void setup(void) {
 int main(void) {
   setup();
   while (true) {
-    if (receive_message(output_buffer_tran_1, 1)) {
+    if (0 == receive_message(output_buffer_tran_1, 1)) {
       trigger_event(&arr_1);
     }
-    if (receive_message(output_buffer_tran_2, 2)) {
+    if (0 == receive_message(output_buffer_tran_2, 2)) {
       trigger_event(&arr_2);
     }
   }
