@@ -1,7 +1,3 @@
-# Testing the code
+# Example code
 
-To compile and run use: `./run.sh`
-
-# ESP32 with PlatformIO
-
-To use with PlatformIO, comment the main function in `main.c` and rename `main.c` to `main.cpp`. 
+Example of code generated for the transmission system. It is necessary to code the function for receiving messages from transmitters and the function for sending the message over the channel.

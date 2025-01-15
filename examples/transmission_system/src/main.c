@@ -78,4 +78,5 @@ int main(void) {
       trigger_event(&arr_2);
     }
   }
+  return 0;
 }
