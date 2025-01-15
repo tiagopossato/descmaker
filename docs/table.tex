@@ -1,0 +1,55 @@
+\begin{table}[]
+    \begin{tabular}{c|l|c|c|c}
+    Example & \multicolumn{1}{c}{Description}       & Supervisor & Average time to generate C code (ms) & Average time to generate Python code (ms) \\
+    1       & Industrial Transfer Line              & 6          & 295                                  & 299                                       \\
+    2       & Competing robots in factory floor     & 17         & 318                                  & 312                                       \\
+    3       & Synchronized Industrial Transfer Line & 216        & 387                                  & 375                                       \\
+    4       & Concurrent Components Assembling      & 302        & 352                                  & 346                                       \\
+    5       & Dispatch Factory Control              & 8400       & 9767                                 & 5002                                      \\
+    6       & Automotive Assembly Line              & 153289     & 1898955                              & 145871                                   
+    \end{tabular}
+    \end{table}
+
+\begin{table}[h!]
+    \small
+    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}l|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X}
+    Example & Description  & Supervisor & \makecell{Average time\\ to generate\\ C code (ms)} & \makecell{Average time\\ to generate\\ Python code (ms)} \\
+    \hline
+    1       & \makecell[l]{Industrial Transfer\\ Line}              & 6          & 295                                  & 299                                       \\
+    \hline
+    2       & \makecell[l]{Competing robots in\\ factory floor}     & 17         & 318                                  & 312                                       \\
+    \hline
+    3       & \makecell[l]{Synchronized Industrial\\ Transfer Line} & 216        & 387                                  & 375                                       \\
+    \hline
+    4       & \makecell[l]{Concurrent Components\\ Assembling}      & 302        & 352                                  & 346                                       \\
+    \hline
+    5       & \makecell[l]{Dispatch Factory\\ Control}              & 8400       & 9767                                 & 5002                                      \\
+    \hline
+    6       & \makecell[l]{Automotive Assembly\\ Line}              & 153289     & 1898955                              & 145871                                   
+    \end{tabularx}
+\end{table}
+
+
+\begin{table}[h!]
+    \small
+    \begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}l|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X|>{\centering\arraybackslash}X}
+    & DESTool and libFAUDES \cite{Moor2008}
+    & DESLAB \cite{Clavijo2012}
+    & CIF and Eclipse ESCET\textsuperscript{TM} \cite{Beek2014, Fokkink2023}
+    & Nadzoru \cite{Pinheiro2015} 
+    & Supremica \cite{Supremica} \\
+    \hline
+    design                                 & x & x & x & x & x \\
+    \hline
+    \makecell[l]{processing, synthesis \\and verification} & x & x & x & x & x \\
+    \hline
+    simulation                             & x & x & x & x & x \\
+    \hline
+    PLC code generation                    & - & - & x & - & - \\
+    \hline
+    C code generation                      & - & - & x & x & - \\
+    \hline
+    Python code generation                 & - & - & - & - & - \\
+    \end{tabularx}
+    \end{table}
+    

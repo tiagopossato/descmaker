@@ -14,7 +14,7 @@ function Measure-ExecutionTime {
     $total_time_ms = 0
 
     # Loop to execute the command 10 times
-    for ($i = 1; $i -le 20; $i++) {
+    for ($i = 1; $i -le 10; $i++) {
         # Check if the directory exists and remove it if it does
         if (Test-Path -Path "generated_code") {
             Remove-Item -Recurse -Force "generated_code"
@@ -28,7 +28,7 @@ function Measure-ExecutionTime {
     }
 
     # Calculate the average time in milliseconds
-    $average_time_ms = [math]::Round($total_time_ms / 20)
+    $average_time_ms = [math]::Round($total_time_ms / 10)
 
     # Display the average execution time in milliseconds
     [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
