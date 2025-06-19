@@ -20,13 +20,13 @@ authors:
     family-names: Southier
     email: luizsouthier@gmail.com
     affiliation: UTFPR
+  - given-names: Marco A. C.
+    family-names: Barbosa
+    affiliation: UTFPR
   - given-names: Marcelo
     family-names: Teixeira
     email: mtex@utfpr.edu.br
     affiliation: UTFPR
-identifiers:
-  - type: doi
-    value: 10.1007/978-3-031-49342-3_7
 repository-code: 'https://github.com/tiagopossato/descmaker'
 abstract: >-
   A software to parse "Waters/Supremica" files and generate
@@ -36,4 +36,4 @@ keywords:
   - Model conversion
   - Code generation
 license: GPL-3.0+
-date-released: '2023-04-03'
+date-released: '2025-14-01'
