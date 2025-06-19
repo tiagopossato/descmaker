@@ -134,23 +134,26 @@ The script will generate a structure with the same name of the output directory.
 # How to cite this work
 
 ```bibtex
-@software{Possato2023,
-author = {Possato, Tiago and Valentini, João H. and Southier, Luiz F. P. and Teixeira, Marcelo},
-license = {GPL-3.0+},
-month = {4},
-title = {{DEScMaker}},
-url = {https://github.com/tiagopossato/descmaker},
-year = {2023}
+@article{Possato2026,
+title = {DEScMaker: A tool for automated code generation for discrete event systems controllers},
+journal = {Science of Computer Programming},
+volume = {247},
+pages = {103350},
+year = {2026},
+issn = {0167-6423},
+doi = {https://doi.org/10.1016/j.scico.2025.103350},
+url = {https://www.sciencedirect.com/science/article/pii/S0167642325000899},
+author = {Tiago Possato and João H. Valentini and Luiz F.P. Southier and Marco A.C. Barbosa and Marcelo Teixeira},
+keywords = {Formal modeling, Automated code generation, Implementation},
 }
-
 ```
 
 ```apa
-Possato, T., Valentini, J. H., Southier, L. F. P., & Teixeira, M. (2023). DEScMaker [Computer software]. https://github.com/tiagopossato/descmaker
+Possato, T., Valentini, J. H., Southier, L. F. P., Barbosa, M. A. C., & Teixeira, M. (2026). DEScMaker: A tool for automated code generation for discrete event systems controllers. Science of Computer Programming, 247, 103350. https://doi.org/10.1016/j.scico.2025.103350
 ```
 
 ```abnt
-Possato, T., Valentini, J. H., Southier, L. F. P., Teixeira, M. DEScMaker. 2023. Disponível em: <https://github.com/tiagopossato/descmaker>. Acesso em: dia mes. ano.
+POSSATO, T. et al. DEScMaker: A tool for automated code generation for discrete event systems controllers. Science of Computer Programming, v. 247, p. 103350, jan. 2026. Disponível em: <https://www.sciencedirect.com/science/article/pii/S0167642325000899>. Acesso em: dia mes. ano.
 ```
 
 Version 2.2.0: esp-idf output adjusted
