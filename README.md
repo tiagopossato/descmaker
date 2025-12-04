@@ -116,7 +116,7 @@ Install python3.
 
 ## Generate code
 
-run `python3 descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
+**In the root folder (not in '\app')** run `python3 descmaker.py -i <input> -o <output> -l <language> -e` with terminal to execute the software:
 - `-i <input>` : input file (required)
 - `-o <output>` : output directory. Default: generated_code
 - `-l <language>` : output language. Can be c, python or esp-idf. Default: c
