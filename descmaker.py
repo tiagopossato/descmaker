@@ -13,17 +13,17 @@ if __name__ == '__main__':
     # verify if user set params
     parser = argparse.ArgumentParser()
     parser.add_argument('-i', type=str, help='Input file', required=True, nargs=1)
-    parser.add_argument('-o', type=str, help='Output path', default='generated_code',
-                        required=False)
+    parser.add_argument('-o', type=str, help='Output path', default='generated_code', required=False)
     parser.add_argument('-l', type=str, help='Output language',
-                        choices=['c', 'python', 'esp-idf'], default='c', required=False, nargs=1)
+                        choices=['c', 'python', 'esp-idf'], default='c', required=False)
     parser.add_argument('-e', action=argparse.BooleanOptionalAction,
                         help='Execute generated code', required=False)
 
-    input_file = parser.parse_args().i[0]
-    output_dir = parser.parse_args().o
-    output_language = parser.parse_args().l[0]
-    execute = parser.parse_args().e
+    args = parser.parse_args()
+    input_file = args.i[0]
+    output_dir = args.o
+    output_language = args.l
+    execute = args.e
 
     if not os.path.exists(input_file):
         print(f"Input file '{input_file}' not found.")
@@ -73,7 +73,7 @@ if __name__ == '__main__':
         if os.name == 'nt':
             PYTHON_NAME = 'python'
 
-        with subprocess.Popen([PYTHON_NAME, '-m', 'venv', 'env']) as process:
+        with subprocess.Popen([PYTHON_NAME, '-m', 'venv', 'env'], shell=(os.name == 'nt')) as process:
             RESULT = process.wait()
 
         if RESULT != 0:
@@ -84,8 +84,12 @@ if __name__ == '__main__':
         # install requirements
         print("Installing requirements...")
 
+        # FIX
+        requirements_path = os.path.join(script_path, 'app/requirements.txt')
+
+
         with subprocess.Popen([python_bin, '-m', 'pip', 'install', '-r',
-                               'app/requirements.txt']) as process:
+                               requirements_path], shell=(os.name == 'nt')) as process:
             RESULT = process.wait()
 
         if RESULT != 0:
@@ -101,7 +105,7 @@ if __name__ == '__main__':
 
     # Runs DEScMaker with Python from the virtual environment.
     with subprocess.Popen([python_bin, maker, '--input', input_file, '--output',
-                           output_dir, '-l', output_language]) as process:
+                           output_dir, '-l', output_language], shell=(os.name == 'nt')) as process:
         RESULT = process.wait()
 
     if execute and RESULT == 0:
